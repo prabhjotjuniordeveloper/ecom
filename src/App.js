@@ -59,13 +59,14 @@ import ProductSidebar from './components/productpages/ProductSidebar';
 import ProductSticky from './components/productpages/ProductSticky';
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
+import { authService } from './Api/service/authService';
 
 function App() {
-const {isAuthenticated } = useContext(AuthProvider)
   // Centralized Dashboard state
-  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.isAuthenticated());
   return (
-    <Router>
+  <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
+      <Router>
       <Header isLoggedIn={isLoggedIn} />
       <Routes>
 
@@ -142,6 +143,7 @@ const {isAuthenticated } = useContext(AuthProvider)
       <Footer />
       <MobileMenu />
     </Router>
+  </AuthProvider>
 
   );
 }
