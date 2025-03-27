@@ -9,30 +9,31 @@ import { use } from "react";
 const Header = ({ isLoggedIn }) => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showNewsletter, setShowNewsletter] = useState(false);
-  const [logo, setLogo] = useState([]);
+  const [logo, setLogo] = useState('');
 
   console.log("Login", isLoggedIn)
 
   useEffect(() => {
     const fetchLogo = async () => {
       try {
-        const response = await axios.get(
-          "/companyLogo/getAllCompanyLogo"
-        );
-
-        setLogo(response?.data.AllLogos?.image)
+        const response = await axios.get("/companyLogo/getAllCompanyLogo");
+  
         console.log("API Response:", response.data);
+  
         if (response.status === 200) {
+          const imageUrl = response.data?.AllLogos?.[0]?.image;
+          setLogo(imageUrl);
         } else {
           console.error("Error Response:", response.data);
         }
       } catch (error) {
-        console.error("Network Error:", error.response);
+        console.error("Network Error:", error);
       }
     };
-
+  
     fetchLogo();
   }, []);
+  
 
   console.log(logo)
 
