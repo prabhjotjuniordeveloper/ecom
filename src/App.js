@@ -73,9 +73,9 @@ function App() {
 
         {/* <Routes> */}
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        {/* <Route path="/account" element={isLoggedIn ? <Account /> : <Login setIsLoggedIn={setIsLoggedIn} />} /> */}
+        <Route path="/account" element={isLoggedIn ? <Account /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage isLoggedIn={isLoggedIn}/>} />
         <Route path="/About" element={<About />} />
         <Route path="/FullWidth" element={<FullWidth />} />
         {/* <Route path="/Dashboard" element={<Dashboard/>} /> */}
@@ -94,7 +94,7 @@ function App() {
         <Route path="/VideoBanner" element={<VideoBanner />} />
         <Route path="/ElementsProducts" element={<ElementsProducts />} />
         <Route path="/ElementsTabs" element={<ElementsTabs />} />
-        <Route path="/ProductCenterd/:slug" element={<ProductCenterd />} />
+        <Route path="/ProductCenterd/:slug" element={<ProductCenterd isLoggedIn={isLoggedIn} />} />
         <Route path="/ProductExtend/:id" element={<ProductExtend />} />
         <Route path="/ProductFW" element={<ProductFW />} />
         <Route path="/ProductMasonry" element={<ProductMasonry />} />
@@ -112,7 +112,7 @@ function App() {
         <Route path="/BlogPage" element={<BlogPage />} />
         <Route path="/Cart" element={<ShoppingCart />} />
 
-        <Route path="/ShopList" element={<ShopList />} />
+        <Route path="/ShopList" element={<ShopList isLoggedIn={isLoggedIn} />} />
         <Route path="/ShopGrid2" element={<ShopGrid2 />} />
         <Route path="/ShopGrid2" element={<ShopGrid2 />} />
         <Route path="/BlogGrid" element={<BlogGrid />} />

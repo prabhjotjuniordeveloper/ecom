@@ -1,30 +1,97 @@
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../../Api/product/product";
 import { getAllProducts } from "../../Api/product/allProduct";
+import { addProductToCart } from "../../Api/product/addCart";
+import { addToWishlist } from "../../Api/product/addWish";
 
-const ProductCenterd = () => {
+const ProductCenterd = ({ isLoggedIn }) => {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const id = slug?.split("-").pop();
 
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToWish, setIsAddedToWish] = useState(false);
 
   const handleColorSelect = (color) => {
     setSelectedColor(color);
-    console.log("Selected Color:", color);
   };
 
   const handleSizeChange = (event) => {
     setSelectedSize(event.target.value);
-    console.log("Selected Size:", event.target.value);
   };
 
   const handleQuantityChange = (event) => {
     const value = parseInt(event.target.value, 10);
     setQuantity(value);
-    console.log("Selected Quantity:", value);
+  };
+
+  const goToCart = () => {
+    navigate("/shopping-cart");
+  };
+
+  const handleAddToCart = async () => {
+    if (!isLoggedIn) {
+      alert("Please log in to add products to the cart.");
+      navigate("/login");
+      return;
+    }
+    if (!selectedColor) {
+      alert("Color selection is required.");
+      return;
+    }
+    if (!selectedSize) {
+      alert("Size selection is required.");
+      return;
+    }
+    if (!quantity || quantity <= 0) {
+      alert("Valid quantity is required.");
+      return;
+    }
+    if (quantity > 10) {
+      alert("Max quantity is 10.");
+      return;
+    }
+
+    try {
+      const data = { color: selectedColor, size: selectedSize, quantity };
+      const response = await addProductToCart(id, data);
+
+      if (response.Message === "Cart has been updated") {
+        setIsAddedToCart(true);
+        handleColorSelect(null);
+        handleSizeChange({ target: { value: "" } });
+        handleQuantityChange({ target: { value: 1 } });
+      }
+    } catch (error) {
+      console.error("Failed to add product to cart:", error);
+    }
+  };
+  const handleAddToWish = async () => {
+    if (!isLoggedIn) {
+      alert("Please log in to add products to the cart.");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      const response = await addToWishlist(id);
+
+      if (response.Message === "Wish list has been updated") {
+        console.log(response);
+        setIsAddedToWish(true);
+      }
+    } catch (error) {
+      console.error("Failed to add product to wishlist:", error);
+    }
+  };
+
+  const handleGoToWishlist = () => {
+    navigate("/Wishlist#/Wishlist");
   };
 
   const [product, setproduct] = useState([]);
@@ -189,7 +256,7 @@ const ProductCenterd = () => {
                             className="form-control"
                             value={quantity}
                             min={1}
-                            max={product?.stock}
+                            max={10}
                             step={1}
                             onChange={handleQuantityChange}
                             required
@@ -197,20 +264,31 @@ const ProductCenterd = () => {
                         </div>
                       </div>
                     </div>
-                  
+
                     <div className="product-details-action">
-                      <div className="details-action-col">
-                        <a href="#" className="btn-product btn-cart">
-                          <span>add to cart</span>
+                      <div
+                        className="details-action-col "
+                        onClick={isAddedToCart ? goToCart : handleAddToCart}
+                      >
+                        <a className="btn-product btn-cart cursor-pointer">
+                          <span>
+                            {isAddedToCart ? "Go to Cart" : "Add to Cart"}
+                          </span>
                         </a>
                       </div>
                       <div className="details-action-wrapper">
                         <a
-                          href="#"
-                          className="btn-product btn-wishlist"
+                          onClick={
+                            isAddedToWish ? handleGoToWishlist : handleAddToWish
+                          }
+                          className="btn-product cursor-pointer"
                           title="Wishlist"
                         >
-                          <span>Add to Wishlist</span>
+                          <span>
+                            {isAddedToWish
+                              ? "Go to Wishlist"
+                              : "Add to Wishlist"}
+                          </span>
                         </a>
                       </div>
                     </div>

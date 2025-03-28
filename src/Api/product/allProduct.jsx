@@ -6,7 +6,8 @@ export const getAllProducts = async (
   maxPrice,
   minPrice,
   size,
-  brand
+  brand,
+  gender
 ) => {
   try {
     // Filter out undefined/null/empty values and convert strings to lowercase
@@ -18,6 +19,7 @@ export const getAllProducts = async (
         minPrice,
         size,
         brand,
+        gender
       }).filter(([_, value]) => 
         value !== undefined && value !== null && !(Array.isArray(value) && value.length === 0)
       ).map(([key, value]) => [
