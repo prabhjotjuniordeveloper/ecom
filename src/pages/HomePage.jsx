@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-// import Product from '../components/Product'
+import React, { useState, useEffect } from 'react';
 import axios from '../Api/axios/axios_config.js';
 
 const HomePage = () => {
@@ -10,38 +9,38 @@ const HomePage = () => {
   useEffect(() => {
     const fetchHeroSection = async () => {
         try {
-            const response = await axios.get(
-                "/companyLogo/getAllCompanyLogo"
-            );
-
+            const response = await axios.get("/homePage/heroSection/getAllHeroSectionImages");
             console.log("API Hero Response:", response.data);
-// setHeroSection(response.data.AllLogos[0].image);
-
+            // Assuming response.data contains a key AllLogos with an image property
+            if (response.data.AllLogos && response.data.AllLogos.length > 0) {
+              setHeroSection(response.data.All_Hero_Sections[0].image);
+            }
         } catch (error) {
-            console.error("Network Error:", error.response);
+            console.error("Network Error:", error.response ? error.response : error.message);
         }
     };
-    // fetch brand section
+
     const fetchBrandsSection = async () => {
       try {
-          const response = await axios.get(
-              "https://e-comm-app-fo7i.onrender.com/homePage/brandSection/getBrandSection/67a4a088fcd416d35ffc3ee9"
-          );
-
+          const response = await axios.get("/homePage/brandSection/getAllBrandSection");
+          
           if (response.status === 200) {
-              // console.log("API Brands Response:", response.data);
-              setBrands(response.data.Brands_section.image);
+              console.log("API Brands Response:", response.data);
+              if (response.data.Brands_section && response.data.Brands_section.image) {
+                  setBrands(response.data.Brands_section.image);
+              }
           } else {
               console.error("Error Response:", response.data);
           }
       } catch (error) {
-          console.error("Network Error:", error.response);
+          console.error("Network Error:", error.response ? error.response : error.message);
       }
-  };
+    };
 
-  fetchBrandsSection();
+    // Fetch both sections
     fetchHeroSection();
-}, []);
+    fetchBrandsSection();
+  }, []);
 
 // console.log(brands);
   return (
@@ -69,7 +68,7 @@ const HomePage = () => {
             <i className="icon-long-arrow-right" />
           </a>
         </div>{/* End .intro-content */}
-        <img className="position-right" src={heroSection} />
+        <img className="position-right" src="assets/images/demos/demo-8/slider/img-1.png" />
       </div>{/* End .intro-slide */}
       <div className="intro-slide" style={{backgroundImage: `url(${heroSection})`}}>
         <div className="container intro-content text-right">
@@ -153,7 +152,7 @@ const HomePage = () => {
                   }">
                     {brands.map((brand) => (
     <a href="#" className="brand me-3" key={brand.id}>
-        <img src={`https://e-comm-app-fo7i.onrender.com/${brand.path}`} alt={brand.name || "Brand"} className='me-6' />
+        <img src={brand} alt={brand.name || "Brand"} className='me-6' />
     </a>
 ))}
         {/* <a href="#" className="brand">
