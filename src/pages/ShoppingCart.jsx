@@ -9,7 +9,7 @@ const ShoppingCart = () => {
     const fetchCart = async () => {
       try {
         const response = await allCart();
-        if (response?.status === "Successful") {
+        if (response?.status === "true") {
           setproduct(response.cart);
         }
       } catch (error) {
@@ -65,10 +65,10 @@ const ShoppingCart = () => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <Link href="/">Home</Link>
+              <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <Link href="/">Shop</Link>
+            <a href="/#/shoplist">Shop</a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Shopping Cart
@@ -244,7 +244,7 @@ const ShoppingCart = () => {
                       <tr className="summary-shipping-estimate">
                         <td>
                           Estimate for Your Place
-                          <br /> <Link href="/Checkout">Change address</Link>
+                          <br /> <Link href="/#/checkout">Change address</Link>
                         </td>
                         <td>&nbsp;</td>
                       </tr>
@@ -255,7 +255,7 @@ const ShoppingCart = () => {
                     </tbody>
                   </table>
                   <Link
-                    to="/"
+                    to="/checkout"
                     className="btn btn-outline-primary-2 btn-order btn-block"
                   >
                     PROCEED TO CHECKOUT

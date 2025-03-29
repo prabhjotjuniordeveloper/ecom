@@ -1,5 +1,5 @@
 // App.js
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useEffect } from 'react';
 import { HashRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -60,15 +60,26 @@ import ProductSticky from './components/productpages/ProductSticky';
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
 import { authService } from './Api/service/authService';
+import { useLocation } from "react-router-dom";
 
-function App() {
-  // Centralized Dashboard state
+
+function AppContent() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      sessionStorage.removeItem("homePageReloaded");
+    }
+  }, [location.pathname]);
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(authService.isAuthenticated());
   return (
   <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
-      <Router>
+
       <Header isLoggedIn={isLoggedIn} />
       <Routes>
+        
 
 
         {/* <Routes> */}
@@ -142,9 +153,17 @@ function App() {
       </Routes>
       <Footer />
       <MobileMenu />
-    </Router>
+
   </AuthProvider>
 
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

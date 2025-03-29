@@ -18,9 +18,8 @@ const Header = ({ isLoggedIn }) => {
       try {
         const response = await axios.get("/companyLogo/getAllCompanyLogo");
 
-        setLogo(response?.data.AllLogos?.image);
-        console.log("API Response:", response.data);
-  
+        setLogo(response?.data.AllLogos[0]?.image);
+        // console.log("API Response:", response.data);
         if (response.status === 200) {
           const imageUrl = response.data?.AllLogos?.[0]?.image;
           setLogo(imageUrl);
@@ -220,7 +219,7 @@ const Header = ({ isLoggedIn }) => {
                       style={{ position: "relative" }}
                     >
                       {isLoggedIn ? (
-                        <Link to="/account" className="">
+                        <Link to="/dashboard" className="">
                           Dashboard
                         </Link>
                       ) : (

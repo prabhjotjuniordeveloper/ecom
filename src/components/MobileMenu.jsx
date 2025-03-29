@@ -16,7 +16,7 @@ const MobileMenu = () => {
 
             <div className="mobile-menu-container">
                 <div className="mobile-menu-wrapper">
-                    <span className="mobile-menu-close"><i className="icon-close"></i></span>
+              
 
                     <form action="#" method="get" className="mobile-search">
                         <label htmlFor="mobile-search" className="sr-only">Search</label>
@@ -28,21 +28,19 @@ const MobileMenu = () => {
                         <ul className="mobile-menu">
                             {/* Add your menu items here */}
                             <li className="active">
-                                <a href="index.html">Home</a>
-                                <ul>
-                                    <li><a href="index-1.html">01 - furniture store</a></li>
-                                    {/* More items... */}
-                                </ul>
+                                <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="category.html">Shop</a>
-                                <ul>
-                                    <li><a href="category-list.html">Shop List</a></li>
-                                    {/* More items... */}
-                                </ul>
+                                <a href="/#/shoplist">Shop</a>
                             </li>
-                            {/* More menu items... */}
+                            <li>
+                                <a href="/#/blogmask">Blog</a>
+                            </li>
+                            <li>
+                                <a href="/#/dashboard">Dashboard</a>
+                            </li>
                         </ul>
+
                     </nav>
 
                     <div className="social-icons">
@@ -189,7 +187,7 @@ const MobileMenu = () => {
                                     </form>
                                     <div className="newsletter-checkbox">
                                         <label style={{padding:"35px"}}>
-                                            <input type="checkbox"  style={{"marginRight":"20px"}}/>
+                                            <input type="checkbox" id="never-show-popup"  style={{"marginRight":"20px"}}/>
                                             Don't show this popup again
                                         </label>
                                     </div>

@@ -21,7 +21,7 @@ const Checkout = () => {
               <a href="/">Home</a>
             </li>
             <li className="breadcrumb-item">
-              <a href="#">Shop</a>
+              <a href="/#/shoplist">Shop</a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Checkout
