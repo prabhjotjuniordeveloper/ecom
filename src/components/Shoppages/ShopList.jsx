@@ -1,19 +1,29 @@
 import { React, useState, useEffect } from "react";
 import ReactSlider from "react-slider";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { allCat } from "../../Api/product/allCategory";
 import { allBrands } from "../../Api/product/allBrands";
 import { getAllProducts } from "../../Api/product/allProduct";
 import { allColors } from "../../Api/product/allColors";
+import { addToWishlist } from "../../Api/product/addWish";
+import { useLocation } from "react-router-dom";
 
-const ShopList = ({ onChange, step = 10, colors  }) => {
+
+const ShopList = ({ onChange, step = 10, isLoggedIn  }) => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const [selectedTab, setselectedTab] = useState("");
+  useEffect(() => {
+    setselectedTab(location.state?.gender || location.state?.selectedTab || "");
+  }, [location]);
 
   const generateSlug = (name, id) => {
     return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
 };
 
-
-  const [cat, setCat] = useState([]);
+const [cat, setCat] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const handleCategoryChange = (category) => {
     setSelectedCategories((prevSelected) =>
@@ -116,10 +126,11 @@ const ShopList = ({ onChange, step = 10, colors  }) => {
       const data = await getAllProducts(
         selectedColor,
         selectedCategories,
-        values[1], // maxPrice
-        values[0], // minPrice
+        values[1],
+        values[0],
         selectedSizes,
-        selectedBrands
+        selectedBrands,
+        selectedTab
       );
   
       if (data) {
@@ -128,7 +139,7 @@ const ShopList = ({ onChange, step = 10, colors  }) => {
     };
   
     fetchProducts();
-  }, [selectedColor, selectedCategories, values, selectedSizes, selectedBrands]);
+  }, [selectedColor, selectedCategories, values, selectedSizes, selectedBrands,selectedTab]);
   
 
  
@@ -162,7 +173,33 @@ const ShopList = ({ onChange, step = 10, colors  }) => {
     setSelectedCategories([]);
     setSelectedSizes([]);
     setSelectedColors([]);
+    setselectedTab("");
   }
+
+    const [isAddedToWish, setIsAddedToWish] = useState(false);
+
+      const handleAddToWish = async (id) => {
+        if (!isLoggedIn) {
+          alert("Please log in to add products to the cart.");
+          navigate("/login");
+          return;
+        }
+    
+        try {
+          const response = await addToWishlist(id);
+    
+          if (response.Message === "Wish list has been updated") {
+            console.log(response);
+            setIsAddedToWish(true);
+          }
+        } catch (error) {
+          console.error("Failed to add product to wishlist:", error);
+        }
+      };
+    
+      const handleGoToWishlist = () => {
+        navigate("/Wishlist#/Wishlist");
+      };
 
 
   return (
@@ -303,19 +340,27 @@ const ShopList = ({ onChange, step = 10, colors  }) => {
                         </div>
 
                         {/* Add to Cart Button */}
-                        <button
+                        {/* <button
                           className="btn-product btn-cart"
                           disabled={isOutOfStock}
                         >
                           <span>{isOutOfStock ? "Out of Stock" : "Add to Cart"}</span>
-                        </button>
+                        </button> */}
                       </div>
                     </div>
 
                     {/* Product Info */}
                     <div className="col-lg-6">
                       <div className="product-body product-action-inner">
-                      <a href="#" className="btn-product btn-wishlist" title="Add to wishlist"><span>add to wishlist</span></a>
+                      <a 
+                        onClick={() => handleAddToWish(product._id)} 
+                        className="btn-product btn-wishlist" 
+                        title="Add to wishlist"
+                        style={{ display: isLoggedIn ? "inline-block" : "none" }}
+                      >
+                        <span>{isAddedToWish ? "Added to wishlist" : "Add to wishlist"}</span>
+                      </a>
+
 
                         <div className="product-cat">
                           <span>{product.productCategory}</span>

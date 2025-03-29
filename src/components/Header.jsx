@@ -5,19 +5,20 @@ import { Link } from "react-router-dom";
 import axios from "../Api/axios/axios_config.js";
 import blacklogo from "../images/blacklogo.png";
 import { use } from "react";
+import { allCart } from "../Api/product/getCart.jsx";
+import { allWish } from "../Api/product/getWish.jsx";
 
 const Header = ({ isLoggedIn }) => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showNewsletter, setShowNewsletter] = useState(false);
   const [logo, setLogo] = useState('');
 
-  console.log("Login", isLoggedIn)
-
   useEffect(() => {
     const fetchLogo = async () => {
       try {
         const response = await axios.get("/companyLogo/getAllCompanyLogo");
-  
+
+        setLogo(response?.data.AllLogos?.image);
         console.log("API Response:", response.data);
   
         if (response.status === 200) {
@@ -35,7 +36,24 @@ const Header = ({ isLoggedIn }) => {
   }, []);
   
 
-  console.log(logo)
+  const [product, setproduct] = useState("");
+  const [wish, setWish] = useState("");
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await allCart();
+        const response2 = await allWish();
+        if (response?.status === "Successful") {
+          setproduct(response.cart.length);
+        }
+        setWish(response2.wishlist?.products?.length ?? 0);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchCart();
+  }, []);
 
   return (
     <div className="page-wrapper">
@@ -57,8 +75,8 @@ const Header = ({ isLoggedIn }) => {
                                 <h4 className='d-flex justify-content-center algin-items-center m-0' style={{fontWeight: 'bold '}}>PROBO</h4>
                             </Link> */}
             </div>
-           
-            <div className="header-center" style={{marginRight:"0rem"}}>
+
+            <div className="header-center" style={{ marginRight: "0rem" }}>
               <nav className="main-nav">
                 <ul className="menu sf-arrows">
                   {/* Home Menu Item */}
@@ -264,115 +282,28 @@ const Header = ({ isLoggedIn }) => {
               </div>
               {/* End .header-search */}
 
-              {/* Wishlist Link */}
-              <a
-                href="/Wishlist"
-                className="wishlist-link"
-                aria-label="Wishlist"
-              >
-                <i className="icon-heart-o"></i>
-                <span className="wishlist-count">3</span>
-              </a>
+              {isLoggedIn && (
+                <>
+                  <a
+                    href="/Wishlist#/Wishlist"
+                    className="wishlist-link"
+                    aria-label="Wishlist"
+                  >
+                    <i className="icon-heart-o"></i>
+                    <span className="wishlist-count">{wish}</span>
+                  </a>
 
-              {/* Cart Dropdown */}
-              <div className="dropdown cart-dropdown">
-                <a
-                  href="#"
-                  className="dropdown-toggle"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  data-display="static"
-                >
-                  <i className="icon-shopping-cart"></i>
-                  <span className="cart-count">2</span>
-                  <span className="cart-txt">$ 164.00</span>
-                </a>
-
-                <div className="dropdown-menu dropdown-menu-right">
-                  <div className="dropdown-cart-products">
-                    {/* Product 1 */}
-                    <div className="product">
-                      <div className="product-cart-details">
-                        <h4 className="product-title">
-                          <a href="/Product">
-                            Beige knitted elastic runner shoes
-                          </a>
-                        </h4>
-                        <span className="cart-product-info">
-                          <span className="cart-product-qty">1</span>x $84.00
-                        </span>
-                      </div>
-                      {/* End .product-cart-details */}
-
-                      <figure className="product-image-container">
-                        <a href="/Product" className="product-image">
-                          <img
-                            src="assets/images/products/cart/product-1.jpg"
-                            alt="Beige knitted elastic runner shoes"
-                          />
-                        </a>
-                      </figure>
-                      <a href="#" className="btn-remove" title="Remove Product">
-                        <i className="icon-close"></i>
-                      </a>
-                    </div>
-                    {/* End .product */}
-
-                    {/* Product 2 */}
-                    <div className="product">
-                      <div className="product-cart-details">
-                        <h4 className="product-title">
-                          <a href="/Product">
-                            Blue utility pinafore denim dress
-                          </a>
-                        </h4>
-                        <span className="cart-product-info">
-                          <span className="cart-product-qty">1</span>x $76.00
-                        </span>
-                      </div>
-                      {/* End .product-cart-details */}
-
-                      <figure className="product-image-container">
-                        <a href="/Product" className="product-image">
-                          <img
-                            src="assets/images/products/cart/product-2.jpg"
-                            alt="Blue utility pinafore denim dress"
-                          />
-                        </a>
-                      </figure>
-                      <a href="#" className="btn-remove" title="Remove Product">
-                        <i className="icon-close"></i>
-                      </a>
-                    </div>
-                    {/* End .product */}
+                  <div className="dropdown cart-dropdown">
+                    <a
+                      href="/shopping-cart#/shopping-cart"
+                      className="dropdown-toggle"
+                    >
+                      <i className="icon-shopping-cart"></i>
+                      <span className="cart-count">{product}</span>
+                    </a>
                   </div>
-                  {/* End .dropdown-cart-products */}
-
-                  {/* Dropdown Cart Total */}
-                  <div className="dropdown-cart-total">
-                    <span>Total</span>
-                    <span className="cart-total-price">$160.00</span>
-                  </div>
-                  {/* End .dropdown-cart-total */}
-
-                  {/* Dropdown Cart Action */}
-                  <div className="dropdown-cart-action">
-                    <Link to="/shopping-cart" className="btn btn-primary">
-                      View Cart
-                    </Link>
-
-                    <Link to="/checkout" className="btn btn-primary">
-                      <span style={{ color: "white" }}>Checkout</span>
-                      <i className="icon-long-arrow-right"></i>
-                    </Link>
-                  </div>
-                  {/* End .dropdown-cart-action */}
-                </div>
-                {/* End .dropdown-menu */}
-              </div>
-              {/* End .cart-dropdown */}
+                </>
+              )}
             </div>
           </div>
         </div>

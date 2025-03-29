@@ -1,10 +1,9 @@
 import api from "../axios/axios_config";
 
-export const addProductToCart = async (productId, data) => {
-  console.log(data)
+export const addToWishlist = async (productId) => {
   console.log("id", productId)
   try {
-    const response = await api.post(`/cart/addProductInCart/${productId}`, data);
+    const response = await api.post(`/wishList/addProductInWishList/${productId}`);
     return response.data;
   } catch (error) {
     console.error('Error adding product to cart:', error);

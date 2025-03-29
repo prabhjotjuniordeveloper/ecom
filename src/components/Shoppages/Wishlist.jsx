@@ -1,122 +1,132 @@
-import React from 'react'
+import { React, useState, useEffect } from "react";
+import { allWish } from "../../Api/product/getWish";
+import { delWish } from "../../Api/product/delWish";
 
 const Wishlist = () => {
-    const wishlistItems = [
-        {
-            id: 1,
-            name: 'Beige knitted elastic runner shoes',
-            price: 84.00,
-            stockStatus: 'In stock',
-            image: 'assets/images/products/table/product-1.jpg',
-            outOfStock: false
-        },
-        {
-            id: 2,
-            name: 'Blue utility pinafore denim dress',
-            price: 76.00,
-            stockStatus: 'In stock',
-            image: 'assets/images/products/table/product-2.jpg',
-            outOfStock: false
-        },
-        {
-            id: 3,
-            name: 'Orange saddle lock front chain cross body bag',
-            price: 52.00,
-            stockStatus: 'Out of stock',
-            image: 'assets/images/products/table/product-3.jpg',
-            outOfStock: true
-        },
-    ];
+  const [wish, setWish] = useState([]);
+  const generateSlug = (name, id) => {
+    return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
+};
+  useEffect(() => {
+    const fetchWish = async () => {
+      try {
+        const response2 = await allWish();
+        setWish(response2.wishlist?.products || []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setWish([])
+      }
+    };
 
-    const handleRemoveItem = (id) => {
-        // Logic to remove the item from the wishlist
-        console.log(`Remove item with id: ${id}`);
+    fetchWish();
+  }, [wish]);
+
+    const handleRemoveItem = async (id) => {
+      try {
+        const response = await delWish(id);
+        console.log(response);
+        if (response?.status === "Successful") {
+        }
+      } catch (error) {
+        console.error("Error deleting product:", error);
+      }
     };
 
   return (
     <div>
-              <main className="main">
-            <div className="page-header text-center" style={{ backgroundImage: "url('assets/images/page-header-bg.jpg')" }}>
-                <div className="container">
-                    <h1 className="page-title">Wishlist<span>Shop</span></h1>
-                </div>
-            </div>
-            <nav aria-label="breadcrumb" className="breadcrumb-nav">
-                <div className="container">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Wishlist</li>
-                    </ol>
-                </div>
-            </nav>
+      <main className="main">
+        <div
+          className="page-header text-center"
+          style={{ backgroundImage: "url('assets/images/page-header-bg.jpg')" }}
+        >
+          <div className="container">
+            <h1 className="page-title">
+              Wishlist
+            </h1>
+          </div>
+        </div>
+        <nav aria-label="breadcrumb" className="breadcrumb-nav">
+          <div className="container">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li className="breadcrumb-item">
+                <a href="/shoplist">Shop</a>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                Wishlist
+              </li>
+            </ol>
+          </div>
+        </nav>
 
-            <div className="page-content">
-                <div className="container">
-                    <table className="table table-wishlist table-mobile">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Stock Status</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
+        <div className="page-content">
+          <div className="container">
+            <table className="table table-wishlist table-mobile">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Stock Status</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
 
-                        <tbody>
-                            {wishlistItems.map(item => (
-                                <tr key={item.id}>
-                                    <td className="product-col">
-                                        <div className="product">
-                                            <figure className="product-media">
-                                                <a href="#">
-                                                    <img src={item.image} alt="Product image" />
-                                                </a>
-                                            </figure>
+              <tbody>
+                {wish?.map((item) => (
+                  <tr key={item._id}>
+                    <td className="product-col">
+                      <div className="product">
+                        <figure className="product-media">
+                          <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`}>
+                            <img src={item.mainImage} alt="Product image" />
+                          </a>
+                        </figure>
 
-                                            <h3 className="product-title">
-                                                <a href="#">{item.name}</a>
-                                            </h3>
-                                        </div>
-                                    </td>
-                                    <td className="price-col">${item.price.toFixed(2)}</td>
-                                    <td className="stock-col">
-                                        <span className={item.outOfStock ? 'out-of-stock' : 'in-stock'}>{item.stockStatus}</span>
-                                    </td>
-                                    <td className="action-col">
-                                        {item.outOfStock ? (
-                                            <button className="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
-                                        ) : (
-                                            <button className="btn btn-block btn-outline-primary-2"><i className="icon-cart-plus"></i>Add to Cart</button>
-                                        )}
-                                    </td>
-                                    <td className="remove-col">
-                                        <button className="btn-remove" onClick={() => handleRemoveItem(item.id)}>
-                                            <i className="icon-close"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                        <h3 className="product-title">
+                          <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`}>{item.productName}</a>
+                        </h3>
+                      </div>
+                    </td>
+                    <td className="price-col">₹{item.price.toFixed(2)}</td>
+                    <td className="stock-col">
+                      <span
+                        className={item.stock > 0 ? "in-stock" : "out-of-stock"}
+                      >
+                        {item.stock > 0 ? "In stock" : "Out of stock"}
+                      </span>
+                    </td>
+                    <td className="action-col">
+                      {item.stock > 0 ? (
+                        <button className="btn btn-block btn-outline-primary-2">
+                          <i className="icon-cart-plus"></i>Add to Cart
+                        </button>
+                      ) : (
+                        <button className="btn btn-block btn-outline-primary-2 disabled">
+                          Out of Stock
+                        </button>
+                      )}
+                    </td>
 
-                    <div className="wishlist-share">
-                        <div className="social-icons social-icons-sm mb-2">
-                            <label className="social-label">Share on:</label>
-                            <a href="#" className="social-icon" title="Facebook" target="_blank" rel="noopener noreferrer"><i className="icon-facebook-f"></i></a>
-                            <a href="#" className="social-icon" title="Twitter" target="_blank" rel="noopener noreferrer"><i className="icon-twitter"></i></a>
-                            <a href="#" className="social-icon" title="Instagram" target="_blank" rel="noopener noreferrer"><i className="icon-instagram"></i></a>
-                            <a href="#" className="social-icon" title="Youtube" target="_blank" rel="noopener noreferrer"><i className="icon-youtube"></i></a>
-                            <a href="#" className="social-icon" title="Pinterest" target="_blank" rel="noopener noreferrer"><i className="icon-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
+                    <td className="remove-col">
+                      <button
+                        className="btn-remove"
+                        onClick={() => handleRemoveItem(item._id)}
+                      >
+                        <i className="icon-close"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default Wishlist
+export default Wishlist;

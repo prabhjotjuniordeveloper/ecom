@@ -1,48 +1,194 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import axios from '../Api/axios/axios_config.js';
+import { addToWishlist } from '../Api/product/addWish.jsx';
+import $ from "jquery";
+import { getAllProducts } from '../Api/product/allProduct.jsx';
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage = ({ isLoggedIn }) => {
+  const generateSlug = (name, id) => {
+    if (!name) {
+        return `unknown-${id}`;
+    }
+    return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
+};
 
-  const [heroSection, setHeroSection] = useState("");
-  const [brands, setBrands] = useState([]);
-  
+const [selectedTab, setSelectedTab] = useState("");
+const [selectedCategories, setSelectedCategories] = useState([]);
+
+const handleTabClick = (event) => {
+  event.preventDefault(); // Prevent default anchor behavior
+  const tabValue = event.target.textContent.trim().toLowerCase().replace(/\s+/g, ""); // Remove spaces
+
+  if (tabValue === "all") {
+    // Reset both states when "All" is selected
+    setSelectedTab("");
+    setSelectedCategories([]);
+  } else if (tabValue === "men" || tabValue === "women") {
+    // Set only selectedTab
+    setSelectedTab(tabValue);
+    setSelectedCategories([]); // Ensure selectedCategories remains unchanged
+  } else if (tabValue === "shoes&boots") {
+    // Set only selectedCategories
+    setSelectedCategories([tabValue]);
+    setSelectedTab(""); // Ensure selectedTab remains unchanged
+  }
+};
+
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    const fetchHeroSection = async () => {
-        try {
-            const response = await axios.get("/homePage/heroSection/getAllHeroSectionImages");
-            console.log("API Hero Response:", response.data);
-            // Assuming response.data contains a key AllLogos with an image property
-            if (response.data.AllLogos && response.data.AllLogos.length > 0) {
-              setHeroSection(response.data.All_Hero_Sections[0].image);
-            }
-        } catch (error) {
-            console.error("Network Error:", error.response ? error.response : error.message);
-        }
+    const fetchProducts = async () => {
+      const data = await getAllProducts(
+        "",
+        selectedCategories,
+        "",
+        "",
+        "",
+        "",
+        selectedTab
+      );
+  
+      if (data) {
+        setProducts(data.products);
+      }
     };
+  
+    fetchProducts();
+  }, [selectedTab]);
 
-    const fetchBrandsSection = async () => {
+
+  const navigate = useNavigate();
+  const [heroSection, setHeroSection] = useState("");
+  const [saleSection, setSaleSection] = useState([]);
+  const [arrival, setArrival] = useState([]);
+  const [league, setLeague] = useState("");
+  // const [heroSection, setHeroSection] = useState("");
+  const [brands, setBrands] = useState([]);
+  const [saleProducts, setOnSaleProducts] = useState({ onSaleSection: [] });
+  const [topProducts, setTopProducts] = useState({ topRatedSection: [] });
+  const [featureProducts, setFeatureProducts] = useState({ featuredSection: [] });
+  
+//   useEffect(() => {
+//     const fetchHeroSection = async () => {
+//         try {
+//             const response = await axios.get(
+//                 "/companyLogo/getAllCompanyLogo"
+//             );
+
+//             // console.log("API Hero Response:", response.data);
+// // setHeroSection(response.data.AllLogos[0].image);
+
+//         } catch (error) {
+//             console.error("Network Error:", error.response);
+//         }
+//     };
+//     // fetch brand section
+//     const fetchBrandsSection = async () => {
+//       try {
+//           const response = await axios.get(
+//               "https://e-comm-app-fo7i.onrender.com/homePage/brandSection/getBrandSection/67a4a088fcd416d35ffc3ee9"
+//           );
+
+//           if (response.status === 200) {
+//               // console.log("API Brands Response:", response.data);
+//               setBrands(response.data.Brands_section.image);
+//           } else {
+//               console.error("Error Response:", response.data);
+//           }
+//       } catch (error) {
+//           console.error("Network Error:", error.response);
+//       }
+//   };
+
+//   fetchBrandsSection();
+//     fetchHeroSection();
+// }, []);
+
+useEffect(() => {
+  const fetchHomeSection = async () => {
       try {
-          const response = await axios.get("/homePage/brandSection/getAllBrandSection");
-          
-          if (response.status === 200) {
-              console.log("API Brands Response:", response.data);
-              if (response.data.Brands_section && response.data.Brands_section.image) {
-                  setBrands(response.data.Brands_section.image);
-              }
-          } else {
-              console.error("Error Response:", response.data);
-          }
+          const response = await axios.get(
+              "/homePage/heroSection/getAllHeroSectionImages"
+          );
+          const response2 = await axios.get(
+              "/homePage/brandSection/getAllBrandSection"
+          );
+          const response3 = await axios.get(
+              "/homePage/saleSection/getAllSaleSection"
+          );
+          const response4 = await axios.get(
+              "/homePage/newLeagueSection/getAllNewLeagueSectionImages"
+          );
+          const response5 = await axios.get(
+              "/homePage/newArrivalSection/getAllNewArrivalSection"
+          );
+          setHeroSection(response.data.All_Hero_Sections[0].image)
+          setBrands(response2.data)
+          setSaleSection(response3?.data.All_sale_section)
+          setLeague(response4.data.All_NewLeague_Sections)
+          setArrival(response5.data.All_NewArrival_section)
+        
       } catch (error) {
           console.error("Network Error:", error.response ? error.response : error.message);
       }
-    };
+  };
+  fetchHomeSection();
+}, []);
 
-    // Fetch both sections
-    fetchHeroSection();
-    fetchBrandsSection();
-  }, []);
+// console.log("brands-",arrival[0]?.image1.path)
 
-// console.log(brands);
+useEffect(() => {
+  const fetchOnSale = async () => {
+      try {
+          const response = await axios.get(
+              "/homePage/onSaleSection/getOnSaleSection"
+          );
+          const response2  = await axios.get(
+              "/homePage/topRatedSection/getTopRatedSection"
+          );
+          const response3  = await axios.get(
+              "/homePage/featuredSection/getAllFeaturedProducts"
+          );
+          setOnSaleProducts(response.data)
+          setTopProducts(response2.data)
+          setFeatureProducts(response3.data)
+        
+      } catch (error) {
+          console.error("Network Error:", error.response);
+      }
+  };
+  fetchOnSale();
+}, []);
+
+
+useEffect(() => {
+  if (saleProducts?.onSaleSection?.length > 0) {
+    setTimeout(() => {
+      $(".owl-carousel").trigger("refresh.owl.carousel");
+    }, 500); // Small delay to ensure products are added before refresh
+  }
+}, [saleProducts]);
+
+  const handleAddToWish = async (id) => {
+    if (!isLoggedIn) {
+      alert("Please log in to add products to the cart.");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      const response = await addToWishlist(id);
+
+      if (response.Message === "Wish list has been updated") {
+        console.log(response);
+        // setIsAddedToWish(true);
+      }
+    } catch (error) {
+      console.error("Failed to add product to wishlist:", error);
+    }
+  };
+
   return (
     <div>
   
@@ -63,18 +209,18 @@ const HomePage = () => {
           <h3 className="intro-subtitle">Limited time only *</h3>{/* End .h3 intro-subtitle */}
           <h1 className="intro-title">Summer<br /><strong>sale</strong></h1>{/* End .intro-title */}
           <h3 className="intro-subtitle">Up to 50% off</h3>{/* End .h3 intro-subtitle */}
-          <a href="/Shop" className="btn">
+          <a href="/#/Shoplist" className="btn">
             <span>SHOP NOW</span>
             <i className="icon-long-arrow-right" />
           </a>
         </div>{/* End .intro-content */}
-        <img className="position-right" src="assets/images/demos/demo-8/slider/img-1.png" />
+        {/* <img className="position-right" src={heroSection} /> */}
       </div>{/* End .intro-slide */}
       <div className="intro-slide" style={{backgroundImage: `url(${heroSection})`}}>
         <div className="container intro-content text-right">
           <h3 className="intro-subtitle">PREMIUM QUALITY</h3>{/* End .h3 intro-subtitle */}
           <h1 className="intro-title">coats <span className="highlight">&amp;</span><br />jackets</h1>{/* End .intro-title */}
-          <a href="/Category" className="btn">
+          <a href="/#/Shoplist" className="btn">
             <span>SHOP NOW</span>
             <i className="icon-long-arrow-right" />
           </a>
@@ -92,7 +238,7 @@ const HomePage = () => {
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
               <a href="#">
-                <img src="assets/images/demos/demo-8/banners/banner-1.jpg" alt="Banner" />
+                <img src={saleSection[0]?.image1.path || "assets/images/demos/demo-8/banners/banner-1.jpg"} alt="Banner" />
               </a>
               <div className="banner-content">
                 <h4 className="banner-subtitle"><a href="#">Final reduction</a></h4>{/* End .banner-subtitle */}
@@ -104,7 +250,7 @@ const HomePage = () => {
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
               <a href="#">
-                <img src="assets/images/demos/demo-8/banners/banner-2.jpg" alt="Banner" />
+                <img src={saleSection[0]?.image2.path ||"assets/images/demos/demo-8/banners/banner-2.jpg"} alt="Banner" />
               </a>
               <div className="banner-content">
                 <h4 className="banner-subtitle"><a href="#">Limited time only.</a></h4>{/* End .banner-subtitle */}
@@ -116,11 +262,11 @@ const HomePage = () => {
           <div className="col-sm-6 col-lg-4 d-none d-lg-block">
             <div className="banner banner-overlay">
               <a href="#">
-                <img src="assets/images/demos/demo-8/banners/banner-3.jpg" alt="Banner" />
+                <img src={saleSection[0]?.image3.path||"assets/images/demos/demo-8/banners/banner-3.jpg"}  alt="Banner" />
               </a>
               <div className="banner-content">
                 <h4 className="banner-subtitle"><a href="#">This week we love...</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#"><strong>Women's <br />Accessories </strong> <br />from $6.99</a></h3>{/* End .banner-title */}
+                <h3 className="banner-title"><a href="#"><strong>Women's <br />Accessories </strong> <br />from ₹699</a></h3>{/* End .banner-title */}
                 <a href="#" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
@@ -150,9 +296,9 @@ const HomePage = () => {
                           }
                       }
                   }">
-                    {brands.map((brand) => (
+                    {brands?.All_Brands_section?.map((brand) => (
     <a href="#" className="brand me-3" key={brand.id}>
-        <img src={brand} alt={brand.name || "Brand"} className='me-6' />
+        <img src={`${brand.image}`} alt={brand.name || "Brand"} className='me-6' />
     </a>
 ))}
         {/* <a href="#" className="brand">
@@ -192,9 +338,10 @@ const HomePage = () => {
         <a className="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab" aria-controls="products-top-tab" aria-selected="false">Top Rated</a>
       </li>
     </ul>
+
     <div className="tab-content tab-content-carousel">
-      <div className="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
-        <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
+    <div className="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
+    <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
                           &quot;nav&quot;: false, 
                           &quot;dots&quot;: true,
                           &quot;margin&quot;: 20,
@@ -219,121 +366,97 @@ const HomePage = () => {
                               }
                           }
                       }">
+                        
           <div className="product product-2">
             <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-1-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-1-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`}>
+                <img src={featureProducts?.featuredSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+                <img src={featureProducts?.featuredSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[0]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+
+            </figure>{/* End .product-media */}
+            <div className="product-body">
+              <div className="product-cat">
+                <a>{featureProducts?.featuredSection[0]?.productCategory}</a>
+              </div>{/* End .product-cat */}
+              <h3 className="product-title"><a>{featureProducts?.featuredSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <div className="product-price">
+              ₹{featureProducts?.featuredSection[0]?.price}
+              </div>{/* End .product-price */}
+            </div>{/* End .product-body */}
+          </div>{/* End .product */}
+          
+          <div className="product product-2">
+            <figure className="product-media">
+            <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`}>
+            <img src={featureProducts?.featuredSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={featureProducts?.featuredSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
+              </a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[1]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{featureProducts?.featuredSection[1]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Denim jacket</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a>{featureProducts?.featuredSection[1]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                $19.99
-              </div>{/* End .product-price */}
-              <div className="product-nav product-nav-thumbs">
-                <a href="#" className="active">
-                  <img src="assets/images/demos/demo-8/products/product-1-thumb.jpg" alt="product desc" />
-                </a>
-                <a href="#">
-                  <img src="assets/images/demos/demo-8/products/product-1-2-thumb.jpg" alt="product desc" />
-                </a>
-                <a href="#">
-                  <img src="assets/images/demos/demo-8/products/product-1-3-thumb.jpg" alt="product desc" />
-                </a>
-              </div>
-            </div>{/* End .product-body */}
-          </div>{/* End .product */}
-          <div className="product product-2">
-            <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-2-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-2-2.jpg" alt="Product image" className="product-image-hover" />
-              </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-              </div>{/* End .product-action */}
-            </figure>{/* End .product-media */}
-            <div className="product-body">
-              <div className="product-cat">
-                <a href="#">Shoes</a>
-              </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Sandals</a></h3>{/* End .product-title */}
-              <div className="product-price">
-                $24.99
+              ₹{featureProducts?.featuredSection[1]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-3-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-3-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`}>
+              <img src={featureProducts?.featuredSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={featureProducts?.featuredSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[2]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{featureProducts?.featuredSection[2]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Printed sweatshirt</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a>{featureProducts?.featuredSection[2]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                <span className="new-price">Now $7.99</span>
-                <span className="old-price">Was $12.99</span>
+              ₹{featureProducts?.featuredSection[2]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
           <div className="product product-2">
             <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-4-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-4-2.jpg" alt="Product image" className="product-image-hover" />
+            <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`}>
+            <img src={featureProducts?.featuredSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={featureProducts?.featuredSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[3]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{featureProducts?.featuredSection[3]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Linen-blend paper bag trousers</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a>{featureProducts?.featuredSection[3]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                $17.99
+              ₹{featureProducts?.featuredSection[3]?.price}
               </div>{/* End .product-price */}
-              <div className="product-nav product-nav-thumbs">
-                <a href="#" className="active">
-                  <img src="assets/images/demos/demo-8/products/product-4-thumb.jpg" alt="product desc" />
-                </a>
-                <a href="#">
-                  <img src="assets/images/demos/demo-8/products/product-4-2-thumb.jpg" alt="product desc" />
-                </a>
-              </div>
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
         </div>{/* End .owl-carousel */}
       </div>{/* .End .tab-pane */}
+
       <div className="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
         <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
                           &quot;nav&quot;: false, 
@@ -342,7 +465,7 @@ const HomePage = () => {
                           &quot;loop&quot;: false,
                           &quot;responsive&quot;: {
                               &quot;0&quot;: {
-                                  &quot;items&quot;:1
+                                  &quot;items&quot;:2
                               },
                               &quot;480&quot;: {
                                   &quot;items&quot;:2
@@ -360,65 +483,106 @@ const HomePage = () => {
                               }
                           }
                       }">
+                        
           <div className="product product-2">
             <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-2-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-2-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`}>
+                <img src={saleProducts?.onSaleSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+                <img src={saleProducts?.onSaleSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist#" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[0]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+
+            </figure>{/* End .product-media */}
+            <div className="product-body">
+              <div className="product-cat">
+                <a>{saleProducts?.onSaleSection[0]?.productCategory}</a>
+              </div>{/* End .product-cat */}
+              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <div className="product-price">
+              ₹{saleProducts?.onSaleSection[0]?.price}
+              </div>{/* End .product-price */}
+            </div>{/* End .product-body */}
+          </div>{/* End .product */}
+          
+          <div className="product product-2">
+            <figure className="product-media">
+            <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`}>
+            <img src={saleProducts?.onSaleSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={saleProducts?.onSaleSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
+              </a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[1]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Shoes</a>
+                <a href="#">{saleProducts?.onSaleSection[1]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Sandals</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                $24.99
+              ₹{saleProducts?.onSaleSection[1]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-3-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-3-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`}>
+              <img src={saleProducts?.onSaleSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={saleProducts?.onSaleSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[2]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{saleProducts?.onSaleSection[2]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Printed sweatshirt</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[2]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                <span className="new-price">Now $7.99</span>
-                <span className="old-price">Was $12.99</span>
+              ₹{saleProducts?.onSaleSection[1]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
+          <div className="product product-2">
+            <figure className="product-media">
+            <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`}>
+            <img src={saleProducts?.onSaleSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={saleProducts?.onSaleSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
+              </a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[3]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+              </div>{/* End .product-action */}
+            </figure>{/* End .product-media */}
+            <div className="product-body">
+              <div className="product-cat">
+                <a href="#">{saleProducts?.onSaleSection[3]?.productCategory}</a>
+              </div>{/* End .product-cat */}
+              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <div className="product-price">
+              ₹{saleProducts?.onSaleSection[3]?.price}
+              </div>{/* End .product-price */}
+            </div>{/* End .product-body */}
+          </div>{/* End .product */}
+
         </div>{/* End .owl-carousel */}
       </div>{/* .End .tab-pane */}
+
       <div className="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
-        <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
+    <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
                           &quot;nav&quot;: false, 
                           &quot;dots&quot;: true,
                           &quot;margin&quot;: 20,
                           &quot;loop&quot;: false,
                           &quot;responsive&quot;: {
                               &quot;0&quot;: {
-                                  &quot;items&quot;:1
+                                  &quot;items&quot;:2
                               },
                               &quot;480&quot;: {
                                   &quot;items&quot;:2
@@ -436,147 +600,190 @@ const HomePage = () => {
                               }
                           }
                       }">
+                        
           <div className="product product-2">
             <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-2-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-2-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`}>
+                <img src={topProducts?.topRatedSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+                <img src={topProducts?.topRatedSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[0]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+
+            </figure>{/* End .product-media */}
+            <div className="product-body">
+              <div className="product-cat">
+                <a>{topProducts?.topRatedSection[0]?.productCategory}</a>
+              </div>{/* End .product-cat */}
+              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <div className="product-price">
+              ₹{topProducts?.topRatedSection[0]?.price}
+              </div>{/* End .product-price */}
+            </div>{/* End .product-body */}
+          </div>{/* End .product */}
+          
+          <div className="product product-2">
+            <figure className="product-media">
+            <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`}>
+            <img src={topProducts?.topRatedSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={topProducts?.topRatedSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
+              </a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[1]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Shoes</a>
+                <a href="#">{topProducts?.topRatedSection[1]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Sandals</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                $24.99
+              ₹{topProducts?.topRatedSection[1]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-3-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-3-2.jpg" alt="Product image" className="product-image-hover" />
+              <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`}>
+              <img src={topProducts?.topRatedSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={topProducts?.topRatedSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[2]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{topProducts?.topRatedSection[2]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Printed sweatshirt</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[2]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                <span className="new-price">Now $7.99</span>
-                <span className="old-price">Was $12.99</span>
+              ₹{topProducts?.topRatedSection[1]?.price}
               </div>{/* End .product-price */}
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
           <div className="product product-2">
             <figure className="product-media">
-              <a href="/ProductExtend">
-                <img src="assets/images/demos/demo-8/products/product-4-1.jpg" alt="Product image" className="product-image" />
-                <img src="assets/images/demos/demo-8/products/product-4-2.jpg" alt="Product image" className="product-image-hover" />
+            <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`}>
+            <img src={topProducts?.topRatedSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
+              <img src={topProducts?.topRatedSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
               </a>
-              <div className="product-action-vertical">
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
-              </div>{/* End .product-action */}
-              <div className="product-action ">
-                <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[3]?._id)}>
+                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">Clothing</a>
+                <a href="#">{topProducts?.topRatedSection[3]?.productCategory}</a>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">Linen-blend paper bag trousers</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</a></h3>{/* End .product-title */}
               <div className="product-price">
-                $17.99
+              ₹{topProducts?.topRatedSection[3]?.price}
               </div>{/* End .product-price */}
-              <div className="product-nav product-nav-thumbs">
-                <a href="#" className="active">
-                  <img src="assets/images/demos/demo-8/products/product-4-thumb.jpg" alt="product desc" />
-                </a>
-                <a href="#">
-                  <img src="assets/images/demos/demo-8/products/product-4-2-thumb.jpg" alt="product desc" />
-                </a>
-              </div>
             </div>{/* End .product-body */}
           </div>{/* End .product */}
+
         </div>{/* End .owl-carousel */}
       </div>{/* .End .tab-pane */}
+      
     </div>{/* End .tab-content */}
   </div>
+
   <div className="mb-3 mb-xl-2" />
   <div className="trending">
     <a href="#">
-      <img src="assets/images/demos/demo-8/banners/banner-4.jpg" alt="Banner" />
+      <img src={league[0]?.image} alt="Banner" />
     </a>
     <div className="banner banner-big d-md-block">
       <div className="banner-content text-center">
         <h4 className="banner-subtitle text-white">Trending</h4>{/* End .banner-subtitle */}
         <h3 className="banner-title text-white">New League</h3>{/* End .banner-title */}
         <p className="d-none d-lg-block text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br />Donec odio. Quisque volutpat mattis eros. </p> 
-        <a href="/Category" className="btn btn-primary-white"><span>Shop Now</span><i className="icon-long-arrow-right" /></a>
+        <a href="/#/shoplist" className="btn btn-primary-white"><span>Shop Now</span><i className="icon-long-arrow-right" /></a>
       </div>{/* End .banner-content */}
-    </div>{/* End .banner */}
+    </div>{/* End .banner */} 
   </div>
-  <div className="container new-arrivals">
-    <div className="row">
-      <div className="col-md-6">
-        <div className="banner banner-overlay">
-          <a href="#">
-            <img src="assets/images/demos/demo-8/banners/banner-5.jpg" alt="Banner" />
-          </a>
-          <div className="banner-content">
-            <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>{/* End .banner-subtitle */}
-            <h3 className="banner-title"><a href="#">Women’s</a></h3>{/* End .banner-title */}
-            <a href="#" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
-          </div>{/* End .banner-content */}
-        </div>{/* End .banner */}
-      </div>{/* End .col-md-6 */}
-      <div className="col-md-6">
-        <div className="banner banner-overlay">
-          <a href="">
-            <img src="assets/images/demos/demo-8/banners/banner-6.jpg" alt="Banner" />
-          </a>
-          <div className="banner-content">
-            <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>{/* End .banner-subtitle */}
-            <h3 className="banner-title "><a href="#">Men’s</a></h3>{/* End .banner-title */}
-            <a href="/ShopList" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
-          </div>{/* End .banner-content */}
-        </div>{/* End .banner */}
-      </div>{/* End .col-md-6 */}
-    </div>{/* End .row */}
-  </div>{/* End .container */}
+
+<div className="container new-arrivals">
+  <div className="row">
+    <div className="col-md-6">
+      <div className="banner banner-overlay">
+        <Link to="/ShopList" state={{ gender: "Women" }}>
+          <img src={arrival[0]?.image1.path || "assets/images/demos/demo-8/banners/banner-5.jpg"} alt="Banner" />
+        </Link>
+        <div className="banner-content">
+          <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>
+          <h3 className="banner-title"><Link to="/ShopList" state={{ gender: "Women" }}>Women’s</Link></h3>
+          <Link to="/ShopList" state={{ gender: "Women" }} className="btn btn-outline-white banner-link">
+            Shop Now <i className="icon-long-arrow-right" />
+          </Link>
+        </div>
+      </div>
+    </div>
+
+    <div className="col-md-6">
+      <div className="banner banner-overlay">
+        <Link to="/ShopList" state={{ gender: "Men" }}>
+        <img src={arrival[0]?.image2.path || "assets/images/demos/demo-8/banners/banner-6.jpg"} alt="Banner" />
+        </Link>
+        <div className="banner-content">
+          <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>
+          <h3 className="banner-title"><Link to="/ShopList" state={{ gender: "Men" }}>Men’s</Link></h3>
+          <Link to="/ShopList" state={{ gender: "Men" }} className="btn btn-outline-white banner-link">
+            Shop Now <i className="icon-long-arrow-right" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <div className="mb-5" />{/* End .mb-5 */}
   <div className="container recent-arrivals">
     <div className="heading heading-flex align-items-center mb-3">
       <h2 className="title title-lg">Recent Arrivals</h2>{/* End .title */}
       <ul className="nav nav-pills nav-border-anim justify-content-center" role="tablist">
         <li className="nav-item">
-          <a className="nav-link active" id="recent-all-link" data-toggle="tab" href="#recent-all-tab" role="tab" aria-controls="recent-all-tab" aria-selected="true">All</a>
+          <a
+            className={`nav-link ${selectedTab === "all" ? "active" : ""}`}
+            href="#"
+            onClick={handleTabClick}
+          >
+            All
+          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="recent-women-link" data-toggle="tab" href="#recent-women-tab" role="tab" aria-controls="recent-women-tab" aria-selected="false">Women</a>
+          <a
+            className={`nav-link ${selectedTab === "women" ? "active" : ""}`}
+            href="#"
+            onClick={handleTabClick}
+          >
+            Women
+          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="recent-men-link" data-toggle="tab" href="#recent-men-tab" role="tab" aria-controls="recent-men-tab" aria-selected="false">Men</a>
+          <a
+            className={`nav-link ${selectedTab === "men" ? "active" : ""}`}
+            href="#"
+            onClick={handleTabClick}
+          >
+            Men
+          </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="recent-shoes-link" data-toggle="tab" href="#recent-shoes-tab" role="tab" aria-controls="recent-shoes-tab" aria-selected="false">Shoes &amp; Boots</a>
+          <a
+            className={`nav-link ${selectedTab === "shoes & boots" ? "active" : ""}`}
+            href="#"
+            onClick={handleTabClick}
+          >
+            Shoes &amp; Boots
+          </a>
         </li>
       </ul>
     </div>{/* End .heading */}
@@ -584,437 +791,58 @@ const HomePage = () => {
       <div className="tab-pane p-0 fade show active" id="recent-all-tab" role="tabpanel" aria-labelledby="recent-all-link">
         <div className="products">
           <div className="row justify-content-center">
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <span className="product-label label-sale">Sale</span>
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-5-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-5-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Tie-detail top</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    <span className="new-price">Now $3.99</span>
-                    <span className="old-price">Was $6.99</span>
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-6-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-6-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Shoes</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Sandals</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $12.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-7-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-7-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Bags</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Small bucket bag</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $14.99
-                  </div>{/* End .product-price */}
-                  <div className="product-nav product-nav-thumbs">
-                    <a href="/ProductFW" className="active">
-                      <img src="assets/images/demos/demo-8/products/product-7-thumb.jpg" alt="product desc" />
-                    </a>
-                    <a href="/ProductFW">
-                      <img src="assets/images/demos/demo-8/products/product-7-2-thumb.jpg" alt="product desc" />
-                    </a>
-                  </div>{/* End .product-nav */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-8-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-8-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Denim jacket</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $34.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-9-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-9-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">BShort wrap dress</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $17.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-10-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-10-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Biker jacket</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $34.99
-                  </div>{/* End .product-price */}
-                  <div className="product-nav product-nav-thumbs">
-                    <a href="/ProductFW" className="active">
-                      <img src="assets/images/demos/demo-8/products/product-10-thumb.jpg" alt="product desc" />
-                    </a>
-                    <a href="/ProductFW">
-                      <img src="assets/images/demos/demo-8/products/product-10-2-thumb.jpg" alt="product desc" />
-                    </a>
-                  </div>{/* End .product-nav */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-11-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-11-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/Cart">Shoes</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Loafers</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $9.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <span className="product-label label-sale">sale</span>
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-12-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-12-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/ShopList">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Super Skinny High Jeggings</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    <span className="new-price">Now $12.99</span>
-                    <span className="old-price">Was $17.99</span>
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
+
+          {products?.slice(0,8).map(product => (
+        <div className="col-6 col-md-4 col-lg-3" key={product._id}>
+          <div className="product product-2 text-center">
+            <figure className="product-media">
+              {product.onSale && <span className="product-label label-sale">Sale</span>}
+              <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>
+
+                <img src={product.mainImage} alt={product.productName} className="product-image" />
+                {product.subImages.length > 0 && (
+                  <img src={product.subImages[0]} alt="Product preview" className="product-image-hover" />
+                )}
+              </a>
+              <div className="product-action-vertical" onClick={()=>handleAddToWish(product?._id)}>
+                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable">
+                  <span>add to wishlist</span>
+                </a>
+              </div>
+            </figure>
+            <div className="product-body">
+              <div className="product-cat">
+                <a href={`/category/${product.productCategory}`}>{product.productCategory}</a>
+              </div>
+              <h3 className="product-title">
+              <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>{product.productName}</a>
+              </h3>
+              <div className="product-price">
+                <span className="new-price">Now ₹{product.price}</span>
+                <span className="old-price">Was ₹{product.mrp}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
           </div>{/* End .row */}
         </div>{/* End .products */}
       </div>{/* .End .tab-pane */}
-      <div className="tab-pane p-0 fade" id="recent-women-tab" role="tabpanel" aria-labelledby="recent-women-link">
-        <div className="products">
-          <div className="row justify-content-center">
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <span className="product-label label-sale">Sale</span>
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-5-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-5-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/ShopList">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Tie-detail top</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    <span className="new-price">Now $3.99</span>
-                    <span className="old-price">Was $6.99</span>
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-6-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-6-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/ShopList">Shoes</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Sandals</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $12.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-          </div>{/* End .row */}
-        </div>{/* End .products */}
-      </div>{/* .End .tab-pane */}
-      <div className="tab-pane p-0 fade" id="recent-men-tab" role="tabpanel" aria-labelledby="recent-men-link">
-        <div className="products">
-          <div className="row justify-content-center">
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-11-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-11-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/ShopList#">Shoes</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Loafers</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    $9.99
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            <div className="col-6 col-md-4 col-lg-3">
-              <div className="product product-2 text-center">
-                <figure className="product-media">
-                  <span className="product-label label-sale">sale</span>
-                  <a href="/ProductExtend">
-                    <img src="assets/images/demos/demo-8/products/product-12-1.jpg" alt="Product image" className="product-image" />
-                    <img src="assets/images/demos/demo-8/products/product-12-2.jpg" alt="Product image" className="product-image-hover" />
-                  </a>
-                  <div className="product-action-vertical">
-                    <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                  </div>{/* End .product-action-vertical */}
-                  <div className="product-action">
-                    <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                  </div>{/* End .product-action */}
-                </figure>{/* End .product-media */}
-                <div className="product-body">
-                  <div className="product-cat">
-                    <a href="/ShopList">Clothing</a>
-                  </div>{/* End .product-cat */}
-                  <h3 className="product-title"><a href="/ProductExtend">Super Skinny High Jeggings</a></h3>{/* End .product-title */}
-                  <div className="product-price">
-                    <span className="new-price">Now $12.99</span>
-                    <span className="old-price">Was $17.99</span>
-                  </div>{/* End .product-price */}
-                </div>{/* End .product-body */}
-              </div>{/* End .product */}
-            </div>{/* End .row */}
-          </div>{/* End .products */}
-        </div>{/* .End .tab-pane */}
-        <div className="tab-pane p-0 fade" id="recent-shoes-tab" role="tabpanel" aria-labelledby="recent-shoes-link">
-          <div className="products">
-            <div className="row justify-content-center">
-              <div className="col-6 col-md-4 col-lg-3">
-                <div className="product product-2 text-center">
-                  <figure className="product-media">
-                    <a href="/ProductExtend">
-                      <img src="assets/images/demos/demo-8/products/product-7-1.jpg" alt="Product image" className="product-image" />
-                      <img src="assets/images/demos/demo-8/products/product-7-2.jpg" alt="Product image" className="product-image-hover" />
-                    </a>
-                    <div className="product-action-vertical">
-                      <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                    </div>{/* End .product-action-vertical */}
-                    <div className="product-action">
-                      <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                    </div>{/* End .product-action */}
-                  </figure>{/* End .product-media */}
-                  <div className="product-body">
-                    <div className="product-cat">
-                      <a href="/ShopList">Bags</a>
-                    </div>{/* End .product-cat */}
-                    <h3 className="product-title"><a href="/ProductExtend">Small bucket bag</a></h3>{/* End .product-title */}
-                    <div className="product-price">
-                      $14.99
-                    </div>{/* End .product-price */}
-                    <div className="product-nav product-nav-thumbs">
-                      <a href="/ShopList" className="active">
-                        <img src="assets/images/demos/demo-8/products/product-7-thumb.jpg" alt="product desc" />
-                      </a>
-                      <a href="/ShopList">
-                        <img src="assets/images/demos/demo-8/products/product-7-2-thumb.jpg" alt="product desc" />
-                      </a>
-                    </div>{/* End .product-nav */}
-                  </div>{/* End .product-body */}
-                </div>{/* End .product */}
-              </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-              <div className="col-6 col-md-4 col-lg-3">
-                <div className="product product-2 text-center">
-                  <figure className="product-media">
-                    <a href="/ProductExtend">
-                      <img src="assets/images/demos/demo-8/products/product-8-1.jpg" alt="Product image" className="product-image" />
-                      <img src="assets/images/demos/demo-8/products/product-8-2.jpg" alt="Product image" className="product-image-hover" />
-                    </a>
-                    <div className="product-action-vertical">
-                      <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                    </div>{/* End .product-action-vertical */}
-                    <div className="product-action">
-                      <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                    </div>{/* End .product-action */}
-                  </figure>{/* End .product-media */}
-                  <div className="product-body">
-                    <div className="product-cat">
-                      <a href="/ShopList">Clothing</a>
-                    </div>{/* End .product-cat */}
-                    <h3 className="product-title"><a href="/ProductExtend">Denim jacket</a></h3>{/* End .product-title */}
-                    <div className="product-price">
-                      $34.99
-                    </div>{/* End .product-price */}
-                  </div>{/* End .product-body */}
-                </div>{/* End .product */}
-              </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-              <div className="col-6 col-md-4 col-lg-3">
-                <div className="product product-2 text-center">
-                  <figure className="product-media">
-                    <a href="/ProductExtend">
-                      <img src="assets/images/demos/demo-8/products/product-9-1.jpg" alt="Product image" className="product-image" />
-                      <img src="assets/images/demos/demo-8/products/product-9-2.jpg" alt="Product image" className="product-image-hover" />
-                    </a>
-                    <div className="product-action-vertical">
-                      <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                    </div>{/* End .product-action-vertical */}
-                    <div className="product-action">
-                      <a href="/Cart" className="btn-product btn-cart"><span>add to cart</span></a>
-                    </div>{/* End .product-action */}
-                  </figure>{/* End .product-media */}
-                  <div className="product-body">
-                    <div className="product-cat">
-                      <a href="/ShopList">Clothing</a>
-                    </div>{/* End .product-cat */}
-                    <h3 className="product-title"><a href="/ProductExtend">BShort wrap dress</a></h3>{/* End .product-title */}
-                    <div className="product-price">
-                      $17.99
-                    </div>{/* End .product-price */}
-                  </div>{/* End .product-body */}
-                </div>{/* End .product */}
-              </div>{/* End .col-sm-6 col-md-4 col-lg-3 */}
-            </div>{/* End .row */}
-          </div>{/* End .products */}
-        </div>{/* .End .tab-pane */}
-      </div>{/* End .tab-content */}
+      
+
       <div className="more-container text-center mt-3 mb-3">
-        <a href="/Category" className="btn btn-outline-dark-3 btn-more"><span>View More</span><i className="icon-long-arrow-right" /></a>
-      </div>{/* End .more-container */}
+      <Link
+  to={{
+    pathname: "/shoplist",
+  }}
+  state={{ selectedTab }}
+  className="btn btn-outline-dark-3 btn-more"
+>
+  <span>View More</span>
+  <i className="icon-long-arrow-right" />
+</Link>
+</div>{/* End .more-container */}
     </div>{/* End .container */}
     <div className="mb-7" />{/* End .mb-5 */}
     <div className="container">
