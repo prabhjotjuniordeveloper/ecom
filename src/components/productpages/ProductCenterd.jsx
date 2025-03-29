@@ -5,9 +5,17 @@ import { getProduct } from "../../Api/product/product";
 import { getAllProducts } from "../../Api/product/allProduct";
 import { addProductToCart } from "../../Api/product/addCart";
 import { addToWishlist } from "../../Api/product/addWish";
+import { getReview } from "../../Api/product/getReview";
+import { addReview } from "../../Api/product/addReview";
 
 const ProductCenterd = ({ isLoggedIn }) => {
   const navigate = useNavigate();
+  const generateSlug = (name, id) => {
+    if (!name) {
+      return `unknown-${id}`;
+    }
+    return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
+  };
   const { slug } = useParams();
   const id = slug?.split("-").pop();
 
@@ -95,14 +103,17 @@ const ProductCenterd = ({ isLoggedIn }) => {
   };
 
   const [product, setproduct] = useState([]);
+  const [review, setReview] = useState([]);
   const [moreProduct, setMoreProduct] = useState([]);
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await getProduct(id);
+        const response2 = await getReview(id);
         if (response?.success === true) {
           setproduct(response.product);
         }
+        setReview(response2.reviews);
       } catch (error) {
         console.error("Error fetching colors:", error);
       }
@@ -122,6 +133,40 @@ const ProductCenterd = ({ isLoggedIn }) => {
 
     fetchTopProducts();
   }, []);
+
+  const [review2, setReview2] = useState("");
+  const [rating, setRating] = useState(0);
+
+  const handleSubmit = async(e) => {
+    if (!isLoggedIn) {
+      alert("Please log in to post review.");
+      navigate("/login");
+      return;
+    }
+    if (!rating) {
+      alert("Rating is required.");
+      return;
+    }
+    if (!review2) {
+      alert("Enter a review.");
+      return;
+    }
+
+    try {
+      const data = { productId: id, rating: rating, comment:review2 };
+      const response = await addReview(data);
+
+      if (response.message === "Review has been saved") {
+        setReview2("")
+        setRating(0)
+      }
+    } catch (error) {
+      console.error("Failed to add review", error);
+    }
+
+    console.log("Selected Rating:", rating);
+    console.log("Review Comment:", review2);
+  };
 
   return (
     <div>
@@ -391,7 +436,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
                     aria-controls="product-review-tab"
                     aria-selected="false"
                   >
-                    Reviews (2)
+                    Reviews ({review?.slice(0, 5).length})
                   </a>
                 </li>
               </ul>
@@ -451,105 +496,82 @@ const ProductCenterd = ({ isLoggedIn }) => {
                   aria-labelledby="product-review-link"
                 >
                   <div className="reviews">
-                    <h3>Reviews (2)</h3>
-                    <div className="review">
-                      <div className="row no-gutters">
-                        <div className="col-auto">
-                          <h4>
-                            <a href="#">Samanta J.</a>
-                          </h4>
-                          <div className="ratings-container">
-                            <div className="ratings">
-                              <div
-                                className="ratings-val"
-                                style={{ width: "80%" }}
-                              />
-                              {/* End .ratings-val */}
+                    <h3>Reviews ({review.slice(0, 5).length})</h3>
+
+                    <div>
+                      {review?.slice(0, 5).map((review) => (
+                        <div className="review">
+                          <div className="row no-gutters">
+                            <div className="col-auto">
+                              <h4>
+                                <a href="#">{review.userId.name}</a>
+                              </h4>
+                              <div className="ratings-container">
+                                <div className="ratings">
+                                  <div
+                                    className="ratings-val"
+                                    style={{
+                                      width: `${(review.rating / 5) * 100}%`,
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                              <span className="review-date">
+                                {new Date(
+                                  review.createdAt
+                                ).toLocaleDateString()}
+                              </span>
                             </div>
-                            {/* End .ratings */}
-                          </div>
-                          {/* End .rating-container */}
-                          <span className="review-date">6 days ago</span>
-                        </div>
-                        {/* End .col */}
-                        <div className="col">
-                          <h4>Good, perfect size</h4>
-                          <div className="review-content">
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Ducimus cum dolores assumenda
-                              asperiores facilis porro reprehenderit animi culpa
-                              atque blanditiis commodi perspiciatis doloremque,
-                              possimus, explicabo, autem fugit beatae quae
-                              voluptas!
-                            </p>
-                          </div>
-                          {/* End .review-content */}
-                          <div className="review-action">
-                            <a href="#">
-                              <i className="icon-thumbs-up" />
-                              Helpful (2)
-                            </a>
-                            <a href="#">
-                              <i className="icon-thumbs-down" />
-                              Unhelpful (0)
-                            </a>
-                          </div>
-                          {/* End .review-action */}
-                        </div>
-                        {/* End .col-auto */}
-                      </div>
-                      {/* End .row */}
-                    </div>
-                    {/* End .review */}
-                    <div className="review">
-                      <div className="row no-gutters">
-                        <div className="col-auto">
-                          <h4>
-                            <a href="#">John Doe</a>
-                          </h4>
-                          <div className="ratings-container">
-                            <div className="ratings">
-                              <div
-                                className="ratings-val"
-                                style={{ width: "100%" }}
-                              />
-                              {/* End .ratings-val */}
+                            <div className="col">
+                              <h4>Review</h4>
+                              <div className="review-content">
+                                <p>{review.comment}</p>
+                              </div>
                             </div>
-                            {/* End .ratings */}
                           </div>
-                          {/* End .rating-container */}
-                          <span className="review-date">5 days ago</span>
                         </div>
-                        {/* End .col */}
-                        <div className="col">
-                          <h4>Very good</h4>
-                          <div className="review-content">
-                            <p>
-                              Sed, molestias, tempore? Ex dolor esse iure hic
-                              veniam laborum blanditiis laudantium iste amet.
-                              Cum non voluptate eos enim, ab cumque nam, modi,
-                              quas iure illum repellendus, blanditiis
-                              perspiciatis beatae!
-                            </p>
-                          </div>
-                          {/* End .review-content */}
-                          <div className="review-action">
-                            <a href="#">
-                              <i className="icon-thumbs-up" />
-                              Helpful (0)
-                            </a>
-                            <a href="#">
-                              <i className="icon-thumbs-down" />
-                              Unhelpful (0)
-                            </a>
-                          </div>
-                          {/* End .review-action */}
-                        </div>
-                        {/* End .col-auto */}
-                      </div>
-                      {/* End .row */}
+                      ))}
                     </div>
+
+                    <div className="review-form">
+                      <h4 style={{marginTop: "10px" }}>Write a Review</h4>
+                      <div className="ratings-container">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <span
+                            key={star}
+                            className={`star ${
+                              star <= rating ? "selected" : ""
+                            }`}
+                            onClick={() => setRating(star)}
+                            style={{
+                              cursor: "pointer",
+                              fontSize: "24px",
+                              color: star <= rating ? "#fcb941" : "gray",
+                            }}
+                          >
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                      <textarea
+                        placeholder="Write your review here..."
+                        value={review2}
+                        onChange={(e) => setReview2(e.target.value)}
+                        rows={4}
+                        style={{ width: "100%", marginTop: "10px",padding:"20px" }}
+                      ></textarea>
+                      <button
+                        onClick={handleSubmit}
+                        style={{
+                          marginTop: "10px",
+                          padding: "10px",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Submit Review
+                      </button>
+                    </div>
+
                     {/* End .review */}
                   </div>
                   {/* End .reviews */}
@@ -592,68 +614,105 @@ const ProductCenterd = ({ isLoggedIn }) => {
                       }
                   }'
             > */}
-            {moreProduct?.map((product, index) => {
-              const isOutOfStock = product.stock === 0;
-              return (
-                <div key={index} className="product product-7 text-center">
-                  <figure className="product-media">
-                    <span className="product-label label-new">New</span>
-                    <a href="product.html">
-                      <img
-                        src={product?.mainImage}
-                        alt="Product image"
-                        className="product-image"
-                      />
-                    </a>
-                    <div className="product-action-vertical">
-                      <a className="btn-product-icon btn-wishlist btn-expandable">
-                        <span>add to wishlist</span>
-                      </a>
-                    </div>
-                    <div className="product-action">
-                      <a
-                        className={`btn-product btn-cart ${
-                          isOutOfStock ? "disabled" : ""
-                        }`}
+            <div className="tab-content">
+              <div
+                className="tab-pane p-0 fade show active"
+                id="recent-all-tab"
+                role="tabpanel"
+                aria-labelledby="recent-all-link"
+              >
+                <div className="products">
+                  <div className="row justify-content-center">
+                    {moreProduct?.slice(0, 8).map((product) => (
+                      <div
+                        className="col-6 col-md-4 col-lg-3"
+                        key={product._id}
                       >
-                        <span>
-                          {isOutOfStock ? "Out of Stock" : "add to cart"}
-                        </span>
-                      </a>
-                    </div>
-                  </figure>
-                  <div className="product-body">
-                    <div className="product-cat">
-                      <a>{product.productCategory}</a>
-                    </div>
-                    <h3 className="product-title">
-                      <a href="product.html">{product.productName}</a>
-                    </h3>
-                    <div className="product-price">₹{product.price}</div>
-                    <div className="ratings-container">
-                      <div className="ratings">
-                        <div
-                          className="ratings-val"
-                          style={{
-                            width: `${(product.rating / 5) * 100}%`,
-                          }}
-                        />
+                        <div className="product product-2 text-center">
+                          <figure className="product-media">
+                            {product.onSale && (
+                              <span className="product-label label-sale">
+                                Sale
+                              </span>
+                            )}
+                            <a
+                              href={`/#/ProductCenterd/${generateSlug(
+                                product?.productName,
+                                product?._id
+                              )}`}
+                            >
+                              <img
+                                src={product.mainImage}
+                                alt={product.productName}
+                                className="product-image"
+                              />
+                              {product.subImages.length > 0 && (
+                                <img
+                                  src={product.subImages[0]}
+                                  alt="Product preview"
+                                  className="product-image-hover"
+                                />
+                              )}
+                            </a>
+                            <div
+                              className="product-action-vertical"
+                              onClick={() => handleAddToWish(product?._id)}
+                            >
+                              <a
+                                href="/Wishlist"
+                                className="btn-product-icon btn-wishlist btn-expandable"
+                              >
+                                <span>add to wishlist</span>
+                              </a>
+                            </div>
+                            <div className="product-action ">
+                              <a
+                                href={`/#/ProductCenterd/${generateSlug(
+                                  product?.productName,
+                                  product?._id
+                                )}`}
+                                className="btn-product btn-cart"
+                              >
+                                <span>Buy Now</span>
+                              </a>
+                            </div>
+                          </figure>
+                          <div className="product-body">
+                            <div className="product-cat">
+                              <a href={`/category/${product.productCategory}`}>
+                                {product.productCategory}
+                              </a>
+                            </div>
+                            <h3 className="product-title">
+                              <a
+                                href={`/#/ProductCenterd/${generateSlug(
+                                  product?.productName,
+                                  product?._id
+                                )}`}
+                              >
+                                {product.productName}
+                              </a>
+                            </h3>
+                            <div className="product-price">
+                              <span className="new-price">
+                                Now ₹{product.price}
+                              </span>
+                              <span className="old-price">
+                                Was ₹{product.mrp}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <span className="ratings-text">
-                        ({product.rating} Reviews)
-                      </span>
-                    </div>
-                    <div className="product-nav product-nav-dots">
-                      {product?.colour?.map((color, index) => (
-                        <a key={index} style={{ background: color }}>
-                          <span className="sr-only">{color}</span>
-                        </a>
-                      ))}
-                    </div>
+                    ))}
                   </div>
+                  {/* End .row */}
                 </div>
-              );
-            })}
+                {/* End .products */}
+              </div>
+              {/* .End .tab-pane */}
+            </div>
+            {/* End .container */}
           </div>
           {/* </div> */}
         </div>

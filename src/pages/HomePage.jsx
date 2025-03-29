@@ -211,37 +211,37 @@ useEffect(() => {
         <div className="row">
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
-              <a href="#">
+              <a href="#/shoplist">
                 <img src={saleSection[0]?.image1.path || "assets/images/demos/demo-8/banners/banner-1.jpg"} alt="Banner" />
               </a>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a href="#">Final reduction</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#"><strong>San0dals &amp; <br />Flip Flops</strong> <br />up to 60% off</a></h3>{/* End .banner-title */}
-                <a href="#" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><a >Final reduction</a></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><a href="#/shoplist"><strong>Sandals &amp; <br />Flip Flops</strong> <br />up to 60% off</a></h3>{/* End .banner-title */}
+                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
-              <a href="#">
+              <a href="#/shoplist">
                 <img src={saleSection[0]?.image2.path ||"assets/images/demos/demo-8/banners/banner-2.jpg"} alt="Banner" />
               </a>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a href="#">Limited time only.</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#"><strong>Trainers &amp; <br />Sportwear</strong> <br />40 -70% off</a></h3>{/* End .banner-title */}
-                <a href="#" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><a href="#/shoplist">Limited time only.</a></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><a href="#/shoplist"><strong>Trainers &amp; <br />Sportwear</strong> <br />40 -70% off</a></h3>{/* End .banner-title */}
+                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
           <div className="col-sm-6 col-lg-4 d-none d-lg-block">
             <div className="banner banner-overlay">
-              <a href="#">
+              <a href="#/shoplist">
                 <img src={saleSection[0]?.image3.path||"assets/images/demos/demo-8/banners/banner-3.jpg"}  alt="Banner" />
               </a>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a href="#">This week we love...</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#"><strong>Women's <br />Accessories </strong> <br />from ₹699</a></h3>{/* End .banner-title */}
-                <a href="#" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><a href="#/shoplist">This week we love...</a></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><a href="#/shoplist"><strong>Women's <br />Accessories </strong> <br />from ₹699</a></h3>{/* End .banner-title */}
+                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
@@ -314,6 +314,7 @@ useEffect(() => {
     </ul>
 
     <div className="tab-content tab-content-carousel">
+
     <div className="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
     <div className="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" data-owl-options="{
                           &quot;nav&quot;: false, 
@@ -351,6 +352,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[0]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
 
             </figure>{/* End .product-media */}
             <div className="product-body">
@@ -373,6 +377,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[1]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -395,6 +402,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[2]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -416,6 +426,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[3]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -469,6 +482,10 @@ useEffect(() => {
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
 
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
+
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -490,6 +507,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[1]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -512,6 +532,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[2]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -533,6 +556,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[3]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -585,6 +611,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[0]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
 
             </figure>{/* End .product-media */}
             <div className="product-body">
@@ -607,6 +636,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[1]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -629,6 +661,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[2]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -650,6 +685,9 @@ useEffect(() => {
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[3]?._id)}>
                 <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
               </div>{/* End .product-action */}
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+              </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
@@ -691,7 +729,7 @@ useEffect(() => {
           <img src={arrival[0]?.image1.path || "assets/images/demos/demo-8/banners/banner-5.jpg"} alt="Banner" />
         </Link>
         <div className="banner-content">
-          <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>
+          <h4 className="banner-subtitle d-none d-lg-block"><Link to="/ShopList" state={{ gender: "Women" }}>New Arrivals</Link></h4>
           <h3 className="banner-title"><Link to="/ShopList" state={{ gender: "Women" }}>Women’s</Link></h3>
           <Link to="/ShopList" state={{ gender: "Women" }} className="btn btn-outline-white banner-link">
             Shop Now <i className="icon-long-arrow-right" />
@@ -706,7 +744,7 @@ useEffect(() => {
         <img src={arrival[0]?.image2.path || "assets/images/demos/demo-8/banners/banner-6.jpg"} alt="Banner" />
         </Link>
         <div className="banner-content">
-          <h4 className="banner-subtitle d-none d-lg-block"><a href="#">New Arrivals</a></h4>
+          <h4 className="banner-subtitle d-none d-lg-block"><Link to="/ShopList" state={{ gender: "Men" }}>New Arrivals</Link></h4>
           <h3 className="banner-title"><Link to="/ShopList" state={{ gender: "Men" }}>Men’s</Link></h3>
           <Link to="/ShopList" state={{ gender: "Men" }} className="btn btn-outline-white banner-link">
             Shop Now <i className="icon-long-arrow-right" />
@@ -761,6 +799,7 @@ useEffect(() => {
         </li>
       </ul>
     </div>{/* End .heading */}
+    
     <div className="tab-content">
       <div className="tab-pane p-0 fade show active" id="recent-all-tab" role="tabpanel" aria-labelledby="recent-all-link">
         <div className="products">
@@ -782,6 +821,9 @@ useEffect(() => {
                 <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable">
                   <span>add to wishlist</span>
                 </a>
+              </div>
+              <div className="product-action ">
+                <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
               </div>
             </figure>
             <div className="product-body">
@@ -818,6 +860,7 @@ useEffect(() => {
 </Link>
 </div>{/* End .more-container */}
     </div>{/* End .container */}
+
     <div className="mb-7" />{/* End .mb-5 */}
     <div className="container">
       <div className="row justify-content-center">

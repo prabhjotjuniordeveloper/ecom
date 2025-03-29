@@ -16546,7 +16546,7 @@ button:focus {
     padding-left: 2rem
 }
 
-.nav-dashboard .nav-link.active:before {
+.nav-dashboard .nav-link {
     left: 0;
     opacity: 1
 }

@@ -61,6 +61,8 @@ import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
 import { authService } from './Api/service/authService';
 import { useLocation } from "react-router-dom";
+import Address from './components/newAdd';
+import UpdateAddress from './components/updateAdd';
 
 
 function AppContent() {
@@ -88,6 +90,8 @@ function AppContent() {
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/" element={<HomePage isLoggedIn={isLoggedIn}/>} />
         <Route path="/About" element={<About />} />
+        <Route path="/newAdd" element={<Address isLoggedIn={isLoggedIn} />} />
+        <Route path="/updateAdd" element={<UpdateAddress isLoggedIn={isLoggedIn} />} />
         <Route path="/FullWidth" element={<FullWidth />} />
         {/* <Route path="/Dashboard" element={<Dashboard/>} /> */}
 
@@ -146,7 +150,7 @@ function AppContent() {
         <Route path="/Blog" element={<Blog />} />
 
         <Route path="/shopping-cart" element={<ShoppingCart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout isLoggedIn={isLoggedIn} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Elements" element={<ElementsPage />} />
         <Route path="/ComingSoon" element={<ComingSoon />} />
