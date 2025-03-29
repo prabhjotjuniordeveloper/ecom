@@ -6,7 +6,18 @@ import $ from "jquery";
 import { getAllProducts } from '../Api/product/allProduct.jsx';
 import { Link } from "react-router-dom";
 
+
 const HomePage = ({ isLoggedIn }) => {
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("homePageReloaded")) {
+      sessionStorage.setItem("homePageReloaded", "true");
+      window.location.reload();
+    }
+  }, []);
+
+  const navigate = useNavigate();
+
   const generateSlug = (name, id) => {
     if (!name) {
         return `unknown-${id}`;
@@ -57,53 +68,15 @@ const handleTabClick = (event) => {
     fetchProducts();
   }, [selectedTab]);
 
-
-  const navigate = useNavigate();
   const [heroSection, setHeroSection] = useState("");
   const [saleSection, setSaleSection] = useState([]);
   const [arrival, setArrival] = useState([]);
   const [league, setLeague] = useState("");
-  // const [heroSection, setHeroSection] = useState("");
   const [brands, setBrands] = useState([]);
   const [saleProducts, setOnSaleProducts] = useState({ onSaleSection: [] });
   const [topProducts, setTopProducts] = useState({ topRatedSection: [] });
   const [featureProducts, setFeatureProducts] = useState({ featuredSection: [] });
-  
-//   useEffect(() => {
-//     const fetchHeroSection = async () => {
-//         try {
-//             const response = await axios.get(
-//                 "/companyLogo/getAllCompanyLogo"
-//             );
 
-//             // console.log("API Hero Response:", response.data);
-// // setHeroSection(response.data.AllLogos[0].image);
-
-//         } catch (error) {
-//             console.error("Network Error:", error.response);
-//         }
-//     };
-//     // fetch brand section
-//     const fetchBrandsSection = async () => {
-//       try {
-//           const response = await axios.get(
-//               "https://e-comm-app-fo7i.onrender.com/homePage/brandSection/getBrandSection/67a4a088fcd416d35ffc3ee9"
-//           );
-
-//           if (response.status === 200) {
-//               // console.log("API Brands Response:", response.data);
-//               setBrands(response.data.Brands_section.image);
-//           } else {
-//               console.error("Error Response:", response.data);
-//           }
-//       } catch (error) {
-//           console.error("Network Error:", error.response);
-//       }
-//   };
-
-//   fetchBrandsSection();
-//     fetchHeroSection();
-// }, []);
 
 useEffect(() => {
   const fetchHomeSection = async () => {
@@ -128,6 +101,7 @@ useEffect(() => {
           setSaleSection(response3?.data.All_sale_section)
           setLeague(response4.data.All_NewLeague_Sections)
           setArrival(response5.data.All_NewArrival_section)
+
         
       } catch (error) {
           console.error("Network Error:", error.response);

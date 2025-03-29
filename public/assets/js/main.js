@@ -751,32 +751,46 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    if(document.getElementById('newsletter-popup-form')) {
-        setTimeout(function() {
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if the user has opted out
+        if (localStorage.getItem("hideNewsletterPopup") === "true") {
+            return; // Do not show the popup
+        }
+    
+        // Show the popup after 10 seconds
+        setTimeout(function () {
             var mpInstance = $.magnificPopup.instance;
             if (mpInstance.isOpen) {
                 mpInstance.close();
             }
-
-            setTimeout(function() {
+    
+            setTimeout(function () {
                 $.magnificPopup.open({
-                    items: {
-                        src: '#newsletter-popup-form'
-                    },
+                    items: { src: '#newsletter-popup-form' },
                     type: 'inline',
                     removalDelay: 350,
                     callbacks: {
-                        open: function() {
+                        open: function () {
                             $('body').css('overflow-x', 'visible');
                             $('.sticky-header.fixed').css('padding-right', '1.7rem');
                         },
-                        close: function() {
+                        close: function () {
                             $('body').css('overflow-x', 'hidden');
                             $('.sticky-header.fixed').css('padding-right', '0');
                         }
                     }
                 });
-            }, 500)
-        }, 10000)
-    }
+            }, 500);
+        }, 10000);
+    
+        // Handle the "Don't show this popup again" checkbox
+        document.getElementById("never-show-popup").addEventListener("change", function () {
+            if (this.checked) {
+                localStorage.setItem("hideNewsletterPopup", "true");
+            } else {
+                localStorage.removeItem("hideNewsletterPopup");
+            }
+        });
+    });
+    
 });

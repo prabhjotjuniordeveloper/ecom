@@ -130,7 +130,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
           <div className="container d-flex align-items-center">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="breadcrumb-item">
                 <a href="/ShopList#/ShopList">Products</a>

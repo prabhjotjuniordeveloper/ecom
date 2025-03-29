@@ -20,12 +20,17 @@ import { jwtDecode } from 'jwt-decode';
 
 const TOKEN_KEY = 'AccessToken';
 
+const authEvent = new Event("authChanged");
+
+
 export const authService = {
   login: (token) => {
     localStorage.setItem(TOKEN_KEY, token);
+    window.dispatchEvent(authEvent); 
   },
   logout: () => {
     localStorage.removeItem(TOKEN_KEY);
+    window.dispatchEvent(authEvent); 
   },
   getToken: () => {
     return localStorage.getItem(TOKEN_KEY);

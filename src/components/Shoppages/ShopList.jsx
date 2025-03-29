@@ -219,13 +219,13 @@ const [cat, setCat] = useState([]);
           <div className="container">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="breadcrumb-item">
-                <a href="#">Shop</a>
+                <a href="/#/shoplist">Shop</a>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                Grid 3 Columns
+                Products
               </li>
             </ol>
           </div>
@@ -253,7 +253,7 @@ const [cat, setCat] = useState([]);
                         </svg>
                       </a>
 
-                      <a href="/ShopGrid2" className="btn-layout">
+                      {/* <a href="/ShopGrid2" className="btn-layout">
                         <svg width="10" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="4" height="4" />
@@ -284,7 +284,7 @@ const [cat, setCat] = useState([]);
                           <rect x="12" y="6" width="4" height="4" />
                           <rect x="18" y="6" width="4" height="4" />
                         </svg>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -309,7 +309,7 @@ const [cat, setCat] = useState([]);
                             Out of Stock
                           </span>
                         )}
-                        <a href="/ProductExtend">
+                        <a>
                           <img
                             src={`${product.mainImage}`}
                             alt={product.productName}

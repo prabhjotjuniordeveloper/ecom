@@ -7,6 +7,16 @@ const Wishlist = () => {
   const generateSlug = (name, id) => {
     return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
 };
+const handleRemoveItem = async (id) => {
+  try {
+    const response = await delWish(id);
+    console.log(response);
+    if (response?.status === "Successful") {
+    }
+  } catch (error) {
+    console.error("Error deleting product:", error);
+  }
+};
   useEffect(() => {
     const fetchWish = async () => {
       try {
@@ -19,18 +29,9 @@ const Wishlist = () => {
     };
 
     fetchWish();
-  }, [wish]);
+  }, [handleRemoveItem]);
 
-    const handleRemoveItem = async (id) => {
-      try {
-        const response = await delWish(id);
-        console.log(response);
-        if (response?.status === "Successful") {
-        }
-      } catch (error) {
-        console.error("Error deleting product:", error);
-      }
-    };
+
 
   return (
     <div>
@@ -52,7 +53,7 @@ const Wishlist = () => {
                 <a href="/">Home</a>
               </li>
               <li className="breadcrumb-item">
-                <a href="/shoplist">Shop</a>
+                <a href="/#/shoplist">Shop</a>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Wishlist
@@ -100,9 +101,9 @@ const Wishlist = () => {
                     </td>
                     <td className="action-col">
                       {item.stock > 0 ? (
-                        <button className="btn btn-block btn-outline-primary-2">
+                        <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`} className="btn btn-block btn-outline-primary-2" >
                           <i className="icon-cart-plus"></i>Add to Cart
-                        </button>
+                        </a>
                       ) : (
                         <button className="btn btn-block btn-outline-primary-2 disabled">
                           Out of Stock
