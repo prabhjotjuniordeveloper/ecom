@@ -75,7 +75,7 @@ const Login = ({ setIsLoggedIn }) => {
         e.preventDefault();
         try {
             const response = await axios.post('user/loginUser', { userName: email, password }); // call api for user login with email and password
-
+            // console.log(response.data)
             if (response.data && response.data.token) {  // response according to api's response
                 toast.success(`Login successfull ! `);
                 login(response.data.token);

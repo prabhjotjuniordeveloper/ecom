@@ -42,8 +42,8 @@ const Header = ({ isLoggedIn }) => {
       try {
         const response = await allCart();
         const response2 = await allWish();
-        if (response?.status === "Successful") {
-          setproduct(response.cart.length);
+        if (response?.success === true) {
+          setproduct(response.cart.products.length);
         }
         setWish(response2.wishlist?.products?.length ?? 0);
       } catch (error) {

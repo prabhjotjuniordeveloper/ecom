@@ -4,13 +4,26 @@ import { allCart } from "../Api/product/getCart";
 import { delCart } from "../Api/product/delCart";
 
 const ShoppingCart = () => {
+  const handleDelCart = async (id,color,size) => {
+    try {
+      const data = {color:color,size:size}
+      const response = await delCart(id,data);
+      console.log(response);
+      if (response?.status === "Successful") {
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
   const [product, setproduct] = useState([]);
   useEffect(() => {
     const fetchCart = async () => {
       try {
         const response = await allCart();
-        if (response?.status === "true") {
-          setproduct(response.cart);
+        console.log(response.success)
+        if (response.success === true) {
+          setproduct(response.cart.products);
         }
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -18,9 +31,10 @@ const ShoppingCart = () => {
     };
 
     fetchCart();
-  }, []);
+  }, [handleDelCart]);
+
   const totalPrice = product?.reduce(
-    (acc, product) => acc + product.price * product.quantity,
+    (acc, product) => acc + product.product.price * product.quantity,
     0
   );
   const [shippingCost, setShippingCost] = useState(0);
@@ -33,20 +47,11 @@ const ShoppingCart = () => {
 
   const grandTotal = totalPrice + shippingCost;
 
-  const handleDelCart = async (id) => {
-    try {
-      const response = await delCart(id);
-      console.log(response);
-      if (response?.status === "Successful") {
-      }
-    } catch (error) {
-      console.error("Error deleting product:", error);
-    }
-  };
-
   const generateSlug = (name, id) => {
     return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
 };
+// console.log(shippingCost)
+
 
   return (
     <main className="main">
@@ -86,6 +91,8 @@ const ShoppingCart = () => {
                   <thead>
                     <tr>
                       <th>Product</th>
+                      <th>Name</th>
+                      <th>Color</th>
                       <th>Price</th>
                       <th>Quantity</th>
                       <th>Total</th>
@@ -99,30 +106,32 @@ const ShoppingCart = () => {
                           <div className="product">
                             <figure className="product-media">
                               <Link 
-                            //   to={`/ProductCenterd/${generateSlug(product.productName, product._id)}`}
+                              to={`/ProductCenterd/${generateSlug(product.product.productName, product.product._id)}`}
                               >
 
                                 <img
-                                  src={`${product.productId}.jpg`}
+                                  src={product.product.mainImage}
                                   alt="Product image"
                                 />
                               </Link>
                             </figure>
                           </div>
                         </td>
-                        <td className="price-col">₹{product?.price}</td>
+                        <td className="">{product?.product.productName}</td>
+                        <td className="">{product?.color.toUpperCase()}</td>
+                        <td className="price-col">₹{product?.product.price}</td>
                         <td className="quantity-col">
                           <div className="cart-product-quantity">
                             <p>{product.quantity}</p>
                           </div>
                         </td>
                         <td className="total-col">
-                          ₹{product.price * product.quantity}
+                          ₹{product.product.price * product.quantity}
                         </td>
                         <td className="remove-col">
                           <button
                             className="btn-remove"
-                            onClick={() => handleDelCart(product?.productId)}
+                            onClick={() => handleDelCart(product?.product._id,product?.color,product?.size)}
                           >
                             <i className="icon-close"></i>
                           </button>
@@ -244,7 +253,7 @@ const ShoppingCart = () => {
                       <tr className="summary-shipping-estimate">
                         <td>
                           Estimate for Your Place
-                          <br /> <Link href="/#/checkout">Change address</Link>
+                          <br /> <Link to="/updateAdd">Change address</Link>
                         </td>
                         <td>&nbsp;</td>
                       </tr>
@@ -256,6 +265,7 @@ const ShoppingCart = () => {
                   </table>
                   <Link
                     to="/checkout"
+                    state={{ shippingCost,shippingType }}
                     className="btn btn-outline-primary-2 btn-order btn-block"
                   >
                     PROCEED TO CHECKOUT
