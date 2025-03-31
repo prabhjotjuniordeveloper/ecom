@@ -13,6 +13,7 @@ import { allBrands } from "../Api/product/allBrands.jsx";
 
 
 const Header = ({ isLoggedIn,setSelectedOption }) => {
+  const [activeLink, setActiveLink] = useState("");
   const [cat, setCat] = useState([]);
   const [brand, setBrand] = useState([]);
   const [options, setOptions] = useState([]);
@@ -70,12 +71,15 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
 
   const handleOptionClick = (option) => {
     const formattedOption = option.toLowerCase().replace(/\s+/g, "");
-    console.log("Selected Option:", formattedOption);
-    setSelectedOption(formattedOption)
-    
-    // setQuery("");
-    // setFilteredOptions([]);
+    setSelectedOption(option);
+    navigate("/ShopList");
+  
+    setTimeout(() => {
+      setQuery("");
+      setFilteredOptions([]);
+    }, 500);
   };
+  
   
 
 
@@ -105,6 +109,7 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
+        if (!isLoggedIn) return;
         const response = await allCart();
         const response2 = await allWish();
         if (response?.success === true) {
@@ -145,8 +150,9 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                 <ul className="menu sf-arrows">
                   {/* Home Menu Item */}
                   <li
-                    className="megamenu-container active"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "home" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("home")}
                   >
                     <Link to="/" className="">
                       Home
@@ -155,8 +161,9 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
 
                   {/* Shop Menu Item */}
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "shop" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("shop")}
                   >
                     <Link to="/ShopList" className="">
                       Shop
@@ -267,8 +274,9 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
 
                   {/* Blog Menu Item */}
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                       className={`megamenu-container ${activeLink === "blog" ? "active" : ""}`}
+                       style={{ position: "relative" }}
+                       onClick={() => setActiveLink("blog")}
                   >
                     <Link to="/BlogMASK" className="">
                       Blog
@@ -276,13 +284,10 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                   </li>
 
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "dashboard" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("dashboard")}
                   >
-                    <li
-                      className="megamenu-container"
-                      style={{ position: "relative" }}
-                    >
                       {isLoggedIn ? (
                         <Link to="/dashboard" className="">
                           Dashboard
@@ -292,7 +297,6 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                           LOGIN
                         </Link>
                       )}
-                    </li>
 
                     {/* <Link to="/elements" className="sf-with-ul">Elements</Link> */}
 

@@ -8,9 +8,21 @@ import { getAllProducts } from "../../Api/product/allProduct";
 import { allColors } from "../../Api/product/allColors";
 import { addToWishlist } from "../../Api/product/addWish";
 import { useLocation } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ShopList = ({ onChange, step = 10, isLoggedIn,selectedOption ,setSelectedOption  }) => {
+
+  const showToast = (type, message) => {
+    toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    });
+};
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -183,7 +195,7 @@ const [cat, setCat] = useState([]);
 
       const handleAddToWish = async (id) => {
         if (!isLoggedIn) {
-          alert("Please log in to add products to the cart.");
+          showToast("error", "Please log in to add products to the cart.");
           navigate("/login");
           return;
         }
@@ -204,18 +216,16 @@ const [cat, setCat] = useState([]);
         navigate("/Wishlist#/Wishlist");
       };
 
-      console.log("shop", selectedOption)
 
       useEffect(() => {
-        if (cat.includes(selectedOption)) {
+        const normalizedOption = selectedOption.toLowerCase().trim();
+        
+        if (cat.some(c => c.toLowerCase().trim() === normalizedOption)) {
           setSelectedCategories(selectedOption);
-        } else if (brand.includes(selectedOption)) {
+        } else if (brand.some(b => b.toLowerCase().trim() === normalizedOption)) {
           setSelectedBrands(selectedOption);
         }
-      }, [selectedOption]);
-      
-      
-        console.log(selectedBrands)
+      }, [selectedOption,cat,brand]);
 
   return (
     <div>
@@ -245,6 +255,8 @@ const [cat, setCat] = useState([]);
             </ol>
           </div>
         </nav>
+
+        <ToastContainer />
 
         <div className="page-content">
           <div className="container">

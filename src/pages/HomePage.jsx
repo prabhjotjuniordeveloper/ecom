@@ -5,9 +5,21 @@ import { addToWishlist } from '../Api/product/addWish.jsx';
 import $ from "jquery";
 import { getAllProducts } from '../Api/product/allProduct.jsx';
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const HomePage = ({ isLoggedIn }) => {
+  const showToast = (type, message) => {
+    toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    });
+};
 
   useEffect(() => {
     if (!sessionStorage.getItem("homePageReloaded")) {
@@ -146,7 +158,7 @@ useEffect(() => {
 
   const handleAddToWish = async (id) => {
     if (!isLoggedIn) {
-      alert("Please log in to add products to the cart.");
+      showToast("error", "Please log in to proceed further.");
       navigate("/login");
       return;
     }

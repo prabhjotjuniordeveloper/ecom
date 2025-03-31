@@ -75,7 +75,6 @@ function AppContent() {
   }, [location.pathname]);
 
   const [selectedOption, setSelectedOption] = useState("");
-  console.log("option", selectedOption)
   const [isLoggedIn, setIsLoggedIn] = useState(authService.isAuthenticated());
   return (
   <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
@@ -88,7 +87,7 @@ function AppContent() {
         {/* <Routes> */}
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/account" element={isLoggedIn ? <Account /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} />
         <Route path="/" element={<HomePage isLoggedIn={isLoggedIn}/>} />
         <Route path="/About" element={<About />} />
         <Route path="/newAdd" element={<Address isLoggedIn={isLoggedIn} />} />

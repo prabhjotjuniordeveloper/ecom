@@ -55,10 +55,10 @@ export const AuthProvider = ({ children }) => {
   const login = (token) => {
     authService.login(token);
     refreshAuthState();
-    window.location.reload();
     setTimeout(() => {
+      window.location.reload();
       setIsAuthenticated(authService.isAuthenticated());
-    }, 100);
+    }, 200);
   };
   
   const logout = () => {

@@ -6,8 +6,30 @@ import { getUser } from "../Api/product/account/getUser";
 import { getADD } from "../Api/product/address/getAdd";
 import { getOrder } from "../Api/product/account/getOrder";
 import orderplaced from "../../src/images/orderPlaced.png";
+import { updatePass } from "../Api/product/account/updatePass";
 
-const Dashboard = () => {
+const Dashboard = ({ isLoggedIn }) => {
+  const showToast = (type, message) => {
+    toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    });
+};
+
+  const [formData, setFormData] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const navigate = useNavigate();
 
   const generateSlug = (name, id) => {
@@ -54,7 +76,6 @@ const Dashboard = () => {
           setAdd(response2.addresses);
         }
         if (response3?.success) {
-          
           const formattedProducts = response3.orders.flatMap((order) =>
             order.products?.map((p) => ({
               ...p.product,
@@ -64,7 +85,6 @@ const Dashboard = () => {
               orderId: order._id,
             }))
           );
-          console.log(products.mainImage)
           setProducts(formattedProducts);
         }
       } catch (error) {
@@ -75,6 +95,56 @@ const Dashboard = () => {
     fetchUser();
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.currentPassword ||
+      !formData.newPassword ||
+      !formData.confirmPassword
+    ) {
+      showToast("warning","All fields are required.");
+      return;
+    }
+
+    if (formData.newPassword !== formData.confirmPassword) {
+      showToast("warning","New password and confirm password do not match.");
+      return;
+    }
+
+    const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+  if (!passwordRegex.test(formData.newPassword)) {
+    showToast(
+      "warning",
+      "Password must be at least 6 characters long, include one uppercase letter, one lowercase letter, one number, and one special character."
+    );
+    return;
+  }
+
+    try {
+      const response = await updatePass(formData);
+
+      if (response.success === true) {
+        showToast("success","Password updated successfully.");
+        setFormData({
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: "",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Failed to change password:", error);
+      const capitalizeFirstLetter = (text) => 
+        text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+      
+      showToast("error", capitalizeFirstLetter(error.response?.data?.error));
+    }
+  };
 
   return (
     <main className="main">
@@ -130,11 +200,6 @@ const Dashboard = () => {
                       Orders
                     </a>
                   </li>
-                  {/* <li className="nav-item">
-                                        <a href='#' className={`nav-link ${activeTab === 'downloads' ? 'active' : ''}`} onClick={(e) => handleTabChange(e, 'downloads')}>
-                                            Downloads
-                                        </a>
-                                    </li> */}
                   <li className="nav-item">
                     <a
                       href="#"
@@ -154,12 +219,12 @@ const Dashboard = () => {
                       }`}
                       onClick={(e) => handleTabChange(e, "account")}
                     >
-                      Your Details
+                      Update Your Details
                     </a>
                   </li>
                 </ul>
               </aside>
-
+<ToastContainer/>
               <div className="col-md-8 col-lg-9">
                 <div className="tab-content">
                   {activeTab === "dashboard" && (
@@ -169,21 +234,21 @@ const Dashboard = () => {
                       }`}
                     >
                       <p>
-                        Hello,{" "}
+                        Hello,
                         <span className="font-weight-normal text-dark">
                           {user?.name || "Unknown"}
-                        </span>{" "}
-                        (not{" "}
+                        </span>
+                        (not
                         <span className="font-weight-normal text-dark">
                           You
                         </span>
-                        ?{" "}
+                        ?
                         <a href="#" onClick={handleLogout}>
                           Log out
                         </a>
                         )
                         <br />
-                        From your account dashboard you can view your{" "}
+                        From your account dashboard you can view your
                         <a
                           href="#"
                           className="tab-trigger-link link-underline"
@@ -191,7 +256,7 @@ const Dashboard = () => {
                         >
                           recent orders
                         </a>
-                        , manage your{" "}
+                        , manage your
                         <a
                           href="#"
                           className="tab-trigger-link"
@@ -207,93 +272,124 @@ const Dashboard = () => {
                         >
                           edit your password and account details
                         </a>
-                      
                       </p>
                     </div>
                   )}
                   {activeTab === "orders" && (
-                    <div className={`tab-pane fade ${activeTab === "orders" ? "show active" : ""}`}>
-  {products && products.length > 0 ? (
-    <>
-      <div className="tab-content">
-        <div
-          className="tab-pane p-0 fade show active"
-          id="recent-all-tab"
-          role="tabpanel"
-          aria-labelledby="recent-all-link"
-        >
-          <div className="products">
-            <div className="row justify-content-center">
-              {products?.map((product) => (
-                <div className="col-6 col-md-4 col-lg-3" key={product._id}>
-                  <div className="product product-2 text-center">
-                    <figure className="product-media">
-                      {product.onSale && (
-                        <span className="product-label label-sale">Sale</span>
+                    <div
+                      className={`tab-pane fade ${
+                        activeTab === "orders" ? "show active" : ""
+                      }`}
+                    >
+                      {products && products.length > 0 ? (
+                        <>
+                          <div className="tab-content">
+                            <div
+                              className="tab-pane p-0 fade show active"
+                              id="recent-all-tab"
+                              role="tabpanel"
+                              aria-labelledby="recent-all-link"
+                            >
+                              <div className="products">
+                                <div className="row justify-content-center">
+                                  {products?.map((product) => (
+                                    <div
+                                      className="col-6 col-md-4 col-lg-3"
+                                      key={product._id}
+                                    >
+                                      <div className="product product-2 text-center">
+                                        <figure className="product-media">
+                                          {product.onSale && (
+                                            <span className="product-label label-sale">
+                                              Sale
+                                            </span>
+                                          )}
+                                          <a
+                                            href={`/#/ProductCenterd/${generateSlug(
+                                              product.productName,
+                                              product._id
+                                            )}`}
+                                          >
+                                            <img
+                                              src={product.mainImage}
+                                              alt={product.productName}
+                                              className="product-image"
+                                            />
+                                          </a>
+                                          <div className="product-action">
+                                            <a
+                                              href={`/#/ProductCenterd/${generateSlug(
+                                                product.productName,
+                                                product._id
+                                              )}`}
+                                              className="btn-product btn-cart"
+                                            >
+                                              <span>Order Placed</span>
+                                            </a>
+                                          </div>
+                                        </figure>
+                                        <div className="product-body">
+                                          <h3 className="product-title">
+                                            <a
+                                              href={`/#/ProductCenterd/${generateSlug(
+                                                product.productName,
+                                                product._id
+                                              )}`}
+                                            >
+                                              {product.productName}
+                                            </a>
+                                          </h3>
+                                          <div className="product-price">
+                                            <span className="new-price">
+                                              Now ₹{product.price}
+                                            </span>
+                                            <span className="old-price">
+                                              Was ₹
+                                              {product.mrp ||
+                                                (product.price * 1.2).toFixed(
+                                                  2
+                                                )}
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                                {/* End .row */}
+                              </div>
+                              {/* End .products */}
+                            </div>
+                            {/* .End .tab-pane */}
+                          </div>
+                          {/* End .container */}
+                          {/* Show "Check More Products" when orders exist */}
+                          <div>
+                            <a
+                              href="/#/shoplist"
+                              className="btn btn-outline-primary-2"
+                            >
+                              <span>CHECK MORE PRODUCTS</span>
+                              <i className="icon-long-arrow-right"></i>
+                            </a>
+                          </div>
+                        </>
+                      ) : (
+                        // Show this only when no orders exist
+                        <div>
+                          <p>No order has been made yet.</p>
+                          <a
+                            href="/#/shoplist"
+                            className="btn btn-outline-primary-2"
+                          >
+                            <span>GO SHOP</span>
+                            <i className="icon-long-arrow-right"></i>
+                          </a>
+                        </div>
                       )}
-                      <a href={`/#/ProductCenterd/${generateSlug(product.productName, product._id)}`}>
-                        <img src={product.mainImage} alt={product.productName} className="product-image" />
-                      </a>
-                      <div className="product-action">
-                        <a
-                          href={`/#/ProductCenterd/${generateSlug(product.productName, product._id)}`}
-                          className="btn-product btn-cart"
-                        >
-                          <span>Order Placed</span>
-                        </a>
-                      </div>
-                    </figure>
-                    <div className="product-body">
-                      <h3 className="product-title">
-                        <a href={`/#/ProductCenterd/${generateSlug(product.productName, product._id)}`}>
-                          {product.productName}
-                        </a>
-                      </h3>
-                      <div className="product-price">
-                        <span className="new-price">Now ₹{product.price}</span>
-                        <span className="old-price">
-                          Was ₹{product.mrp || (product.price * 1.2).toFixed(2)}
-                        </span>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div> {/* End .row */}
-          </div> {/* End .products */}
-        </div> {/* .End .tab-pane */}
-      </div> {/* End .container */}
-
-      {/* Show "Check More Products" when orders exist */}
-      <div>
-        <a href="/#/shoplist" className="btn btn-outline-primary-2">
-          <span>CHECK MORE PRODUCTS</span>
-          <i className="icon-long-arrow-right"></i>
-        </a>
-      </div>
-    </>
-  ) : (
-    // Show this only when no orders exist
-    <div>
-      <p>No order has been made yet.</p>
-      <a href="/#/shoplist" className="btn btn-outline-primary-2">
-        <span>GO SHOP</span>
-        <i className="icon-long-arrow-right"></i>
-      </a>
-    </div>
-  )}
-</div>
-
                   )}
 
-                  {/* {activeTab === 'downloads' && (
-                                        <div className={`tab-pane fade ${activeTab === 'downloads' ? 'show active' : ''}`}>
-                                        <p>No downloads available yet.</p>
-                                            <a href="category.html" className="btn btn-outline-primary-2">
-                                                <span>GO SHOP</span><i className="icon-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    )} */}
                   {activeTab === "address" && (
                     <div
                       className={`tab-pane fade ${
@@ -315,7 +411,8 @@ const Dashboard = () => {
                                   <br />
                                   {add[0]?.phone}
                                   <br />
-                                  {add[0]?.streetAddress}, {add[0]?.city}, {add[0]?.state}
+                                  {add[0]?.streetAddress}, {add[0]?.city},{" "}
+                                  {add[0]?.state}
                                   <br />
                                   {add[0]?.country}
                                   <br />
@@ -347,50 +444,92 @@ const Dashboard = () => {
                         activeTab === "account" ? "show active" : ""
                       }`}
                     >
-                      <form action="#">
-                        <div className="row">
-                          <div className="col-sm-6">
-                            <label>First Name *</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              required
-                            />
-                          </div>
-                          <div className="col-sm-6">
-                            <label>Last Name *</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              required
-                            />
-                          </div>
+                      <form action="">
+                        <div>
+                          <label>First Name *</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            required
+                            placeholder={user?.name}
+                            disabled
+                          />
+
+                          <small className="form-text">
+                            This will be how your name will be displayed in the
+                            account section and in reviews
+                          </small>
+
+                          <label>Username *</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            required
+                            placeholder={user?.userName}
+                            disabled
+                          />
+
+                          <label>Email address *</label>
+                          <input
+                            type="email"
+                            className="form-control"
+                            required
+                            placeholder={user?.email}
+                            disabled
+                          />
+
+                          {/* <button
+                            type="submit"
+                            className="btn btn-outline-primary-2"
+                          >
+                            <span>UPDATE DETAILS</span>
+                            <i className="icon-long-arrow-right"></i>
+                          </button> */}
                         </div>
-                        <label>Display Name *</label>
-                        <input type="text" className="form-control" required />
-                        <small className="form-text">
-                          This will be how your name will be displayed in the
-                          account section and in reviews
-                        </small>
-                        <label>Email address *</label>
-                        <input type="email" className="form-control" required />
-                        <label>
-                          Current password (leave blank to leave unchanged)
-                        </label>
-                        <input type="password" className="form-control" />
-                        <label>
-                          New password (leave blank to leave unchanged)
-                        </label>
-                        <input type="password" className="form-control" />
-                        <label>Confirm new password</label>
-                        <input type="password" className="form-control mb-2" />
-                        <button
-                          type="submit"
-                          className="btn btn-outline-primary-2"
-                        >
-                          <span>SAVE CHANGES</span>
-                          <i className="icon-long-arrow-right"></i>
-                        </button>
+
+                        <div>
+                          <form>
+                            <label style={{ marginTop: "20px" }}>
+                              Current password (leave blank to leave unchanged)
+                            </label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              name="currentPassword"
+                              value={formData.currentPassword}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label>
+                              New password (leave blank to leave unchanged)
+                            </label>
+                            <input
+                              type="password"
+                              className="form-control"
+                              name="newPassword"
+                              value={formData.newPassword}
+                              onChange={handleChange}
+                              required
+                            />
+                            <label>Confirm new password</label>
+                            <input
+                              type="password"
+                              className="form-control mb-2"
+                              name="confirmPassword"
+                              value={formData.confirmPassword}
+                              onChange={handleChange}
+                              required
+                            />
+                            <button
+                              type="submit"
+                              className="btn btn-outline-primary-2"
+                              onClick={handleSubmit}
+                            >
+                              <span>CHANGE PASSWORD</span>
+                              <i className="icon-long-arrow-right"></i>
+                            </button>
+                          </form>
+                        </div>
                       </form>
                     </div>
                   )}
