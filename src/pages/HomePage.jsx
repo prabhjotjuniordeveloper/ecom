@@ -96,7 +96,7 @@ useEffect(() => {
           const response5 = await axios.get(
               "/homePage/newArrivalSection/getAllNewArrivalSection"
           );
-          setHeroSection(response.data.All_Hero_Sections[0].image)
+          setHeroSection(response.data)
           setBrands(response2.data)
           setSaleSection(response3?.data.All_sale_section)
           setLeague(response4.data.All_NewLeague_Sections)
@@ -167,44 +167,63 @@ useEffect(() => {
     <div>
   
     <main className="main">
-  <div className="intro-slider-container">
-    <div className="intro-slider owl-carousel owl-theme owl-nav-inside owl-light mb-0" data-toggle="owl" data-owl-options="{
-                  &quot;dots&quot;: true,
-                  &quot;nav&quot;: false, 
-                  &quot;responsive&quot;: {
-                      &quot;1200&quot;: {
-                          &quot;nav&quot;: true,
-                          &quot;dots&quot;: false
-                      }
-                  }
-              }">
-      <div className="intro-slide" style={{backgroundImage: 'url(assets/images/demos/demo-8/slider/slide-1.jpg)'}}>
-        <div className="container intro-content text-left">
-          <h3 className="intro-subtitle">Limited time only *</h3>{/* End .h3 intro-subtitle */}
-          <h1 className="intro-title">Summer<br /><strong>sale</strong></h1>{/* End .intro-title */}
-          <h3 className="intro-subtitle">Up to 50% off</h3>{/* End .h3 intro-subtitle */}
-          <a href="/#/Shoplist" className="btn">
-            <span>SHOP NOW</span>
-            <i className="icon-long-arrow-right" />
-          </a>
-        </div>{/* End .intro-content */}
-        {/* <img className="position-right" src={heroSection} /> */}
-      </div>{/* End .intro-slide */}
-      <div className="intro-slide" style={{backgroundImage: `url(${heroSection})`}}>
-        <div className="container intro-content text-right">
-          <h3 className="intro-subtitle">PREMIUM QUALITY</h3>{/* End .h3 intro-subtitle */}
-          <h1 className="intro-title">coats <span className="highlight">&amp;</span><br />jackets</h1>{/* End .intro-title */}
-          <a href="/#/Shoplist" className="btn">
-            <span>SHOP NOW</span>
-            <i className="icon-long-arrow-right" />
-          </a>
-        </div>{/* End .intro-content */}
-        <img className="position-left" src="assets/images/demos/demo-8/slider/img-2.png" />
-      </div>{/* End .intro-slide */}
-    </div>{/* End .intro-slider owl-carousel owl-simple */}
-    {/* <span className="slider-loader" /> */}
-    {/* End .slider-loader */}
-  </div>{/* End .intro-slider-container */}
+    <div class="intro-slider-container">
+                <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light mb-0" data-toggle="owl" data-owl-options='{
+                        "dots": true,
+                        "nav": false, 
+                        "responsive": {
+                            "1200": {
+                                "nav": true,
+                                "dots": false
+                            }
+                        }
+                    }'>
+                    <div class="intro-slide"  style={{ backgroundImage: 'url(assets/images/demos/demo-8/slider/slide-1.jpg)' }}>
+                        <div class="container intro-content text-left">
+                            <h3 class="intro-subtitle">Limited time only *</h3>
+                            <h1 class="intro-title">Summer<br/><strong>sale</strong></h1>
+                            <h3 class="intro-subtitle">Up to 50% off</h3>
+
+                            <a href="category.html" class="btn">
+                                <span>SHOP NOW</span>
+                                <i class="icon-long-arrow-right"></i>
+                            </a>
+                        </div>
+                        {/* <img class="position-right" src="assets/images/demos/demo-8/slider/img-1.png"/> */}
+                        {/* <img class="position-right" src={heroSection.All_Hero_Sections[0]?.image} style={{width:'768px' , height:'1103px'}}/> */}
+                        {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[0] && heroSection.All_Hero_Sections[0].image && (
+  <img
+    className="position-right"
+    src={heroSection.All_Hero_Sections[0].image}
+    style={{ width: '768px', height: '1103px' }}
+    alt="Hero Section 1"
+  />
+)}
+                    </div>
+                    <div class="intro-slide" style={{backgroundImage: "url(assets/images/demos/demo-8/slider/slide-2.jpg);"}}>
+                        <div class="container intro-content text-right">
+                            <h3 class="intro-subtitle">PREMIUM QUALITY</h3>
+                            <h1 class="intro-title">coats <span class="highlight">&</span><br/>jackets</h1>
+
+                            <a href="category.html" class="btn">
+                                <span>SHOP NOW</span>
+                                <i class="icon-long-arrow-right"></i>
+                            </a>
+                        </div>
+                        {/* <img class="position-left" src="assets/images/demos/demo-8/slider/img-2.png"/> */}
+                        {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[1] && heroSection.All_Hero_Sections[1].image && (
+  <img
+    className="position-left"
+    src={heroSection.All_Hero_Sections[1].image}
+    style={{ width: '819px', height: '2122px' }}
+    alt="Hero Section 2"
+  />
+)}
+                    </div>
+                </div>
+
+                <span class="slider-loader"></span>
+            </div>
   <div className="pt-2 pb-2">
     <div className="container brands">
       <div className="banner-group">
@@ -709,7 +728,7 @@ useEffect(() => {
   <div className="mb-3 mb-xl-2" />
   <div className="trending">
     <a href="#">
-      <img src={league[0]?.image} alt="Banner" />
+      <img src={league[0]?.image} alt="Banner" style={{width:'100%' , height:'454.58px'}} />
     </a>
     <div className="banner banner-big d-md-block">
       <div className="banner-content text-center">
