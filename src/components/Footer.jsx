@@ -59,10 +59,10 @@ const Footer = ({isLoggedIn}) => {
                                 <div className="widget">
                                     <h4 className="widget-title">Information</h4>
                                     <ul className="widget-list">
-                                        <li><a href="/About">About Probo</a></li>
-                                        <li><a href="/Shop">How to shop on Probo</a></li>
-                                        <li><a href="/Faq">FAQ</a></li>
-                                        <li><a href="/Contact">Contact us</a></li>
+                                        <li><a href="/About#/about">About Probo</a></li>
+                                        {/* <li><a href="/Shop#/shop">How to shop on Probo</a></li> */}
+                                        <li><a href="/Faq#/faq">FAQ</a></li>
+                                        <li><a href="/Contact#/contact">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -71,8 +71,6 @@ const Footer = ({isLoggedIn}) => {
                                 <div className="widget">
                                     <h4 className="widget-title">Customer Service</h4>
                                     <ul className="widget-list">
-                                        <li><a href="/404">Payment Methods</a></li>
-                                        <li><a href="/404">Money-back guarantee!</a></li>
                                         <li><a href="/404">Returns</a></li>
                                         <li><a href="/404">Shipping</a></li>
                                         <li><a href="/404">Terms and conditions</a></li>

@@ -10,18 +10,16 @@ import { addToWishlist } from "../../Api/product/addWish";
 import { useLocation } from "react-router-dom";
 
 
-const ShopList = ({ onChange, step = 10, isLoggedIn,selectedOption  }) => {
+const ShopList = ({ onChange, step = 10, isLoggedIn,selectedOption ,setSelectedOption  }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
   const [selectedTab, setselectedTab] = useState("");
   useEffect(() => {
     setselectedTab(location.state?.gender || location.state?.selectedTab || "");
-  }, [location]);
+  }, [selectedOption,location]);
 
-  // const selectedOption = location.state?.selectedOption || "No Option Selected";
 
-  console.log(selectedOption)
 
   const generateSlug = (name, id) => {
     return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
@@ -178,6 +176,7 @@ const [cat, setCat] = useState([]);
     setSelectedSizes([]);
     setSelectedColors([]);
     setselectedTab("");
+    setSelectedOption("");
   }
 
     const [isAddedToWish, setIsAddedToWish] = useState(false);
@@ -205,6 +204,18 @@ const [cat, setCat] = useState([]);
         navigate("/Wishlist#/Wishlist");
       };
 
+      console.log("shop", selectedOption)
+
+      useEffect(() => {
+        if (cat.includes(selectedOption)) {
+          setSelectedCategories(selectedOption);
+        } else if (brand.includes(selectedOption)) {
+          setSelectedBrands(selectedOption);
+        }
+      }, [selectedOption]);
+      
+      
+        console.log(selectedBrands)
 
   return (
     <div>

@@ -71,10 +71,10 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
   const handleOptionClick = (option) => {
     const formattedOption = option.toLowerCase().replace(/\s+/g, "");
     console.log("Selected Option:", formattedOption);
-    // setSelectedOption(formattedOption)
+    setSelectedOption(formattedOption)
     
-    setQuery("");
-    setFilteredOptions([]);
+    // setQuery("");
+    // setFilteredOptions([]);
   };
   
 
@@ -343,14 +343,14 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                       placeholder="Search in..."
                       required
                     />
-                    {/* {filteredOptions.length > 0 && (
+                    {filteredOptions.length > 0 && (
                       <div style={{borderBottomLeftRadius:"20px",borderBottomRightRadius:"20px", paddingBottom:"1.5px"}} >
                         {filteredOptions.map((option, index) => (
                           <Link
                             key={index}
-                            // onMouseDown={() => handleOptionClick(option)}
+                            onMouseDown={() => handleOptionClick(option)}
                             to="/Shoplist" 
-                            onClick={() => setSelectedOption(option.toLowerCase().replace(/\s+/g, ""))}
+                            // onClick={() => setSelectedOption(option.toLowerCase().replace(/\s+/g, ""))}
                             className="p-2 hover:bg-gray-200  border-bottom border-gray-300 cursor-pointer text-black cursor-pointer"
                             style={{ 
                               minHeight: "30px", 
@@ -370,7 +370,7 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                           </Link>
                         ))}
                       </div>
-                    )} */}
+                    )}
                   </div>
                 </form>
               </div>
