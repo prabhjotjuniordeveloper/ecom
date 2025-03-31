@@ -54,18 +54,17 @@ const Dashboard = () => {
           setAdd(response2.addresses);
         }
         if (response3?.success) {
-          // Extract and flatten products directly from orders
+          
           const formattedProducts = response3.orders.flatMap((order) =>
             order.products?.map((p) => ({
-              ...p.product, // Extract product details
-              mainImage: { orderplaced }, // Provide fallback image
-              subImages: p.subImages || [], // Ensure subImages is an array
+              ...p.product,
               quantity: p.quantity,
               color: p.color,
               size: p.size,
-              orderId: order._id, // Include order reference if needed
+              orderId: order._id,
             }))
           );
+          console.log(products.mainImage)
           setProducts(formattedProducts);
         }
       } catch (error) {
@@ -76,7 +75,6 @@ const Dashboard = () => {
     fetchUser();
   }, []);
 
-  // No need for a second useEffect since products are already formatted.
 
   return (
     <main className="main">
@@ -209,7 +207,7 @@ const Dashboard = () => {
                         >
                           edit your password and account details
                         </a>
-                        .
+                      
                       </p>
                     </div>
                   )}
@@ -226,7 +224,7 @@ const Dashboard = () => {
         >
           <div className="products">
             <div className="row justify-content-center">
-              {products.map((product) => (
+              {products?.map((product) => (
                 <div className="col-6 col-md-4 col-lg-3" key={product._id}>
                   <div className="product product-2 text-center">
                     <figure className="product-media">
@@ -234,7 +232,7 @@ const Dashboard = () => {
                         <span className="product-label label-sale">Sale</span>
                       )}
                       <a href={`/#/ProductCenterd/${generateSlug(product.productName, product._id)}`}>
-                        <img src={orderplaced} alt={product.productName} className="product-image" />
+                        <img src={product.mainImage} alt={product.productName} className="product-image" />
                       </a>
                       <div className="product-action">
                         <a

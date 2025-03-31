@@ -7,11 +7,78 @@ import blacklogo from "../images/blacklogo.png";
 import { use } from "react";
 import { allCart } from "../Api/product/getCart.jsx";
 import { allWish } from "../Api/product/getWish.jsx";
+import { useNavigate } from "react-router-dom";
+import { allCat } from "../Api/product/allCategory.jsx";
+import { allBrands } from "../Api/product/allBrands.jsx";
+
 
 const Header = ({ isLoggedIn }) => {
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [showNewsletter, setShowNewsletter] = useState(false);
-  const [logo, setLogo] = useState('');
+  const [cat, setCat] = useState([]);
+  const [brand, setBrand] = useState([]);
+  const [options, setOptions] = useState([]);
+  
+  useEffect(() => {
+    const fetchOptions = async () => {
+      try {
+        const response = await allCat();
+        const response2 = await allBrands();
+  
+        let categories = [];
+        let brands = [];
+  
+        if (response?.success === true) {
+          categories = response.all_categories.map((category) =>
+            category.toUpperCase()
+          );
+        }
+        if (response2?.success === true) {
+          brands = response2.all_Brands.map((brand) => brand.toUpperCase());
+        }
+  
+        setCat(categories);
+        setBrand(brands);
+  
+        // ✅ Merge both arrays into one `options` array
+        setOptions([...categories, ...brands]);
+      } catch (error) {
+        console.error("Error fetching options:", error);
+      }
+    };
+  
+    fetchOptions();
+  }, []);
+  
+
+  const [query, setQuery] = useState("");
+  const [filteredOptions, setFilteredOptions] = useState([]);
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setQuery(searchTerm);
+
+    if (searchTerm.trim() !== "") {
+      const filtered = options.filter((option) =>
+        option.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      setFilteredOptions(filtered);
+    } else {
+      setFilteredOptions([]);
+    }
+  };
+
+  const handleOptionClick = (option) => {
+    const formattedOption = option.toLowerCase().replace(/\s+/g, "");
+    console.log("Selected Option:", formattedOption);
+    
+    setQuery("");
+    setFilteredOptions([]);
+  };
+  
+
+
+  const [logo, setLogo] = useState([]);
 
   useEffect(() => {
     const fetchLogo = async () => {
@@ -264,18 +331,48 @@ const Header = ({ isLoggedIn }) => {
                   <i className="icon-search"></i>
                 </a>
                 <form action="#" method="get">
-                  <div className="header-search-wrapper">
+                  <div className="relative header-search-wrapper flex-col" style={{flexDirection:"column"}}>
                     <label htmlFor="q" className="sr-only">
                       Search
                     </label>
                     <input
-                      type="search"
+                      type="text"
+                      value={query}
+                      onChange={handleSearch}
                       className="form-control"
                       name="q"
                       id="q"
                       placeholder="Search in..."
                       required
                     />
+                    {filteredOptions.length > 0 && (
+                      <div style={{borderBottomLeftRadius:"20px",borderBottomRightRadius:"20px", paddingBottom:"1.5px"}} >
+                        {filteredOptions.map((option, index) => (
+                          <Link
+                            key={index}
+                            // onMouseDown={() => handleOptionClick(option)}
+                            to="/Shoplist" 
+                            state={{ selectedOption: option.toLowerCase().replace(/\s+/g, "") }} 
+                            className="p-2 hover:bg-gray-200  border-bottom border-gray-300 cursor-pointer text-black cursor-pointer"
+                            style={{ 
+                              minHeight: "30px", 
+                              display: "flex", 
+                              alignItems: "center",
+                              color: "black",
+                              fontSize: "12px",
+                              whiteSpace: "nowrap",
+                              overflow: "hidden" ,
+                              marginInline:"10px",
+                              cursor: "pointer",
+                              
+                            }}
+                            tabIndex="0"
+                          >
+                            {option}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </form>
               </div>
