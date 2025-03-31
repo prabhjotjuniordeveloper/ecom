@@ -4,9 +4,9 @@ import { allCart } from "../Api/product/getCart";
 import { delCart } from "../Api/product/delCart";
 
 const ShoppingCart = () => {
-  const handleDelCart = async (id,color,size) => {
+  const handleDelCart = async (id,color,size,quantity) => {
     try {
-      const data = {color:color,size:size}
+      const data = {color:color,size:size,quantity:quantity}
       const response = await delCart(id,data);
       console.log(response);
       if (response?.status === "Successful") {
@@ -131,7 +131,7 @@ const ShoppingCart = () => {
                         <td className="remove-col">
                           <button
                             className="btn-remove"
-                            onClick={() => handleDelCart(product?.product._id,product?.color,product?.size)}
+                            onClick={() => handleDelCart(product?.product._id,product?.color,product?.size,product.product._id)}
                           >
                             <i className="icon-close"></i>
                           </button>

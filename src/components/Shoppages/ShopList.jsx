@@ -16,8 +16,12 @@ const ShopList = ({ onChange, step = 10, isLoggedIn  }) => {
   const location = useLocation();
   const [selectedTab, setselectedTab] = useState("");
   useEffect(() => {
-    setselectedTab(location.state?.gender || location.state?.selectedTab || "");
+    setselectedTab(location.state?.gender || location.state?.selectedTab || location.state?.selectedOption || "");
   }, [location]);
+
+  const selectedOption = location.state?.selectedOption || "No Option Selected";
+
+  console.log(selectedOption)
 
   const generateSlug = (name, id) => {
     return `${name.toLowerCase().replace(/\s+/g, "-")}-${id}`;
