@@ -12,7 +12,7 @@ import { allCat } from "../Api/product/allCategory.jsx";
 import { allBrands } from "../Api/product/allBrands.jsx";
 
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn,setSelectedOption }) => {
   const [cat, setCat] = useState([]);
   const [brand, setBrand] = useState([]);
   const [options, setOptions] = useState([]);
@@ -71,6 +71,7 @@ const Header = ({ isLoggedIn }) => {
   const handleOptionClick = (option) => {
     const formattedOption = option.toLowerCase().replace(/\s+/g, "");
     console.log("Selected Option:", formattedOption);
+    // setSelectedOption(formattedOption)
     
     setQuery("");
     setFilteredOptions([]);
@@ -342,14 +343,14 @@ const Header = ({ isLoggedIn }) => {
                       placeholder="Search in..."
                       required
                     />
-                    {filteredOptions.length > 0 && (
+                    {/* {filteredOptions.length > 0 && (
                       <div style={{borderBottomLeftRadius:"20px",borderBottomRightRadius:"20px", paddingBottom:"1.5px"}} >
                         {filteredOptions.map((option, index) => (
                           <Link
                             key={index}
                             // onMouseDown={() => handleOptionClick(option)}
                             to="/Shoplist" 
-                            state={{ selectedOption: option.toLowerCase().replace(/\s+/g, "") }} 
+                            onClick={() => setSelectedOption(option.toLowerCase().replace(/\s+/g, ""))}
                             className="p-2 hover:bg-gray-200  border-bottom border-gray-300 cursor-pointer text-black cursor-pointer"
                             style={{ 
                               minHeight: "30px", 
@@ -369,7 +370,7 @@ const Header = ({ isLoggedIn }) => {
                           </Link>
                         ))}
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </form>
               </div>

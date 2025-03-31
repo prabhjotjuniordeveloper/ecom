@@ -74,12 +74,13 @@ function AppContent() {
     }
   }, [location.pathname]);
 
+  const [selectedOption, setSelectedOption] = useState("");
 
   const [isLoggedIn, setIsLoggedIn] = useState(authService.isAuthenticated());
   return (
   <AuthProvider value={{ isLoggedIn, setIsLoggedIn }}>
 
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} setSelectedOption={setSelectedOption}/>
       <Routes>
         
 
@@ -127,7 +128,7 @@ function AppContent() {
         <Route path="/BlogPage" element={<BlogPage />} />
         <Route path="/Cart" element={<ShoppingCart />} />
 
-        <Route path="/ShopList" element={<ShopList isLoggedIn={isLoggedIn} />} />
+        <Route path="/ShopList" element={<ShopList isLoggedIn={isLoggedIn} selectedOption={selectedOption} />} />
         <Route path="/ShopGrid2" element={<ShopGrid2 />} />
         <Route path="/ShopGrid2" element={<ShopGrid2 />} />
         <Route path="/BlogGrid" element={<BlogGrid />} />
@@ -155,7 +156,7 @@ function AppContent() {
         <Route path="/Elements" element={<ElementsPage />} />
         <Route path="/ComingSoon" element={<ComingSoon />} />
       </Routes>
-      <Footer />
+      <Footer isLoggedIn={isLoggedIn}/>
       <MobileMenu />
 
   </AuthProvider>

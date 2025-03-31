@@ -10,16 +10,16 @@ import { addToWishlist } from "../../Api/product/addWish";
 import { useLocation } from "react-router-dom";
 
 
-const ShopList = ({ onChange, step = 10, isLoggedIn  }) => {
+const ShopList = ({ onChange, step = 10, isLoggedIn,selectedOption  }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
   const [selectedTab, setselectedTab] = useState("");
   useEffect(() => {
-    setselectedTab(location.state?.gender || location.state?.selectedTab || location.state?.selectedOption || "");
+    setselectedTab(location.state?.gender || location.state?.selectedTab || "");
   }, [location]);
 
-  const selectedOption = location.state?.selectedOption || "No Option Selected";
+  // const selectedOption = location.state?.selectedOption || "No Option Selected";
 
   console.log(selectedOption)
 

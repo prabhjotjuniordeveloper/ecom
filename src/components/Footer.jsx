@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = ({isLoggedIn}) => {
     return (
         <div>
 
@@ -63,7 +63,6 @@ const Footer = () => {
                                         <li><a href="/Shop">How to shop on Probo</a></li>
                                         <li><a href="/Faq">FAQ</a></li>
                                         <li><a href="/Contact">Contact us</a></li>
-                                        <li><a href="/LoginPage">Log in</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -86,11 +85,24 @@ const Footer = () => {
                                 <div className="widget">
                                     <h4 className="widget-title">My Account</h4>
                                     <ul className="widget-list">
-                                        <li><a href="/LoginPage">Sign In</a></li>
-                                        <li><a href="/Cart">View Cart</a></li>
-                                        <li><a href="/Wishlist">My Wishlist</a></li>
-                                        <li><a href="/Checkout">Track My Order</a></li>
-                                        <li><a href="/404">Help</a></li>
+                                        <li>
+                                            {isLoggedIn ? (
+                                            <a href="/dashboard#/dashboard">Dashboard</a>
+                                            ) : (
+                                            <a href="/login#/login">Login</a>
+                                            )}
+                                        </li>
+                                        <li>
+                                            <a href={isLoggedIn ? "/shopping-cart#/shopping-cart" : "/login#/login"}>
+                                            View Cart
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={isLoggedIn ? "/Wishlist#/Wishlist" : "/login#/login"}>My Wishlist</a>
+                                        </li>
+                                        <li>
+                                            <a href="/dashboard#/dashboard">Track My Order</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
