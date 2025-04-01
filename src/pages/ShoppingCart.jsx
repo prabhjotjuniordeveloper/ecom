@@ -253,7 +253,7 @@ const ShoppingCart = () => {
                       <tr className="summary-shipping-estimate">
                         <td>
                           Estimate for Your Place
-                          <br /> <Link to="/updateAdd">Change address</Link>
+                          <br /> <Link to="/dashboard">Change address</Link>
                         </td>
                         <td>&nbsp;</td>
                       </tr>

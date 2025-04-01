@@ -79,6 +79,10 @@ const Checkout = ({isLoggedIn}) => {
           navigate("/login");
           return;
         }
+        if (!add || add.length === 0) {
+          showToast("warning", "Please add an address before continuing.");
+          return;
+        }
       
         try {
           const data = {
@@ -94,8 +98,10 @@ const Checkout = ({isLoggedIn}) => {
           const response = await addNewOrd(data);
       
           if (response.success === true) {
-            showToast("success", "Ordered successfully.");
-            navigate("/dashboard");
+            showToast("success", "Ordered placed successfully.");
+            setTimeout(() => {
+              navigate("/");
+            }, 3000);
           }
         } catch (error) {
           console.error("Failed to place order:", error);

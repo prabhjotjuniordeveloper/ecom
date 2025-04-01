@@ -269,25 +269,40 @@ const ProductCenterd = ({ isLoggedIn }) => {
                       <div className="details-filter-row details-row-size">
                         <label>Color:</label>
                         <div className="product-nav product-nav-dots cursor-pointer">
-                          {product?.colour?.map((color, index) => (
-                            <a
-                              key={index}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleColorSelect(color);
-                              }}
-                              style={{
-                                background: color,
-                                borderWidth: 0.1,
-                                borderColor: "black",
-                                padding: 10,
-                                display: "inline-block",
-                                cursor: "pointer",
-                              }}
-                            >
-                              <span className="sr-only">{color}</span>
-                            </a>
-                          ))}
+                        {product?.colour?.map((color, index) => (
+  <a
+    key={index}
+    onClick={(e) => {
+      e.preventDefault();
+      handleColorSelect(color);
+    }}
+    style={{
+      background: color,
+      borderWidth: 2,
+      borderColor: selectedColor === color ? "white" : "black",
+      padding: 10,
+      display: "inline-block",
+      cursor: "pointer",
+      textAlign: "center",
+    }}
+  >
+        {selectedColor === color && (
+      <span
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          color: selectedColor === "white" ? "black" : "white",
+          fontSize: 10,
+        }}
+      >
+        ✔
+      </span>
+    )}
+    <span className="sr-only">{color}</span>
+  </a>
+))}
+
                         </div>
                       </div>
 

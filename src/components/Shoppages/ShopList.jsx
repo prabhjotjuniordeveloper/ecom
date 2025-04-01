@@ -221,9 +221,9 @@ const [cat, setCat] = useState([]);
         const normalizedOption = selectedOption.toLowerCase().trim();
         
         if (cat.some(c => c.toLowerCase().trim() === normalizedOption)) {
-          setSelectedCategories(selectedOption);
+          handleCategoryChange(selectedOption);
         } else if (brand.some(b => b.toLowerCase().trim() === normalizedOption)) {
-          setSelectedBrands(selectedOption);
+          handleBrandChange(selectedOption);
         }
       }, [selectedOption,cat,brand]);
 
@@ -271,14 +271,14 @@ const [cat, setCat] = useState([]);
 
                   <div className="toolbox-right">
                     <div className="toolbox-layout">
-                      <a href="/ShopList" className="btn-layout active">
+                      {/* <a href="/ShopList" className="btn-layout active">
                         <svg width="16" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="10" height="4" />
                           <rect x="0" y="6" width="4" height="4" />
                           <rect x="6" y="6" width="10" height="4" />
                         </svg>
-                      </a>
+                      </a> */}
 
                       {/* <a href="/ShopGrid2" className="btn-layout">
                         <svg width="10" height="10">
@@ -690,7 +690,7 @@ const [cat, setCat] = useState([]);
             width: 25px;
             background: white;
             border-radius: 50%;
-            border: 2px solid #0a7373;
+            border: 2px solid #eea287;
             cursor: grab;
             display: flex;
             align-items: center;
@@ -699,8 +699,8 @@ const [cat, setCat] = useState([]);
             margin-top: -9px;
           }
           .custom-thumb::after {
-            content: '|||';
-            color: #0a7373;
+            content: '|';
+            color: #eea287;
             font-size: 10px;
             font-weight: bold;
           }
@@ -711,7 +711,7 @@ const [cat, setCat] = useState([]);
             background: #fff;
           }
           .custom-track.selected {
-            background: #0a7373;
+            background: #eea287;
           }
         `}
                             </style>
