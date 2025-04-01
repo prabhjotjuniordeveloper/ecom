@@ -197,7 +197,7 @@ useEffect(() => {
                             <h1 class="intro-title">Summer<br/><strong>sale</strong></h1>
                             <h3 class="intro-subtitle">Up to 50% off</h3>
 
-                            <a href="category.html" class="btn">
+                            <a href="/shoplist#/shoplist" class="btn">
                                 <span>SHOP NOW</span>
                                 <i class="icon-long-arrow-right"></i>
                             </a>
@@ -207,7 +207,7 @@ useEffect(() => {
                         {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[0] && heroSection.All_Hero_Sections[0].image && (
   <img
     className="position-right"
-    src={heroSection?.All_Hero_Sections[0]?.image || image1 }
+    src={heroSection?.All_Hero_Sections[0]?.image || "assets/images/demos/demo-8/slider/img-1.png" }
     style={{ width: '768px', height: '1103px' }}
     alt="Hero Section 1"
   />
@@ -218,7 +218,7 @@ useEffect(() => {
                             <h3 class="intro-subtitle">PREMIUM QUALITY</h3>
                             <h1 class="intro-title">coats <span class="highlight">&</span><br/>jackets</h1>
 
-                            <a href="category.html" class="btn">
+                            <a href="/shoplist#/shoplist" class="btn">
                                 <span>SHOP NOW</span>
                                 <i class="icon-long-arrow-right"></i>
                             </a>
@@ -227,7 +227,7 @@ useEffect(() => {
                         {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[1] && heroSection.All_Hero_Sections[1].image && (
   <img
     className="position-left"
-    src={heroSection.All_Hero_Sections[1].image}
+    src={heroSection.All_Hero_Sections[1].image || "assets/images/demos/demo-8/slider/img-2.png"}
     style={{ width: '819px', height: '2122px' }}
     alt="Hero Section 2"
   />

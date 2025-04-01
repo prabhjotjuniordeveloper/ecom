@@ -134,7 +134,7 @@ const Faq = () => {
                   <p className="cta-desc text-white">Quisque volutpat mattis eros</p>
                 </div>
                 <div className="col-auto">
-                  <a href="contact.html" className="btn btn-outline-white"><span>CONTACT US</span><i className="icon-long-arrow-right"></i></a>
+                  <a href="/contact#/contact" className="btn btn-outline-white"><span>CONTACT US</span><i className="icon-long-arrow-right"></i></a>
                 </div>
               </div>
             </div>
