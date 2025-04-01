@@ -63,6 +63,8 @@ import { authService } from './Api/service/authService';
 import { useLocation } from "react-router-dom";
 import Address from './components/newAdd';
 import UpdateAddress from './components/updateAdd';
+import Terms from './pages/terms';
+import Privacy from './pages/privacy';
 
 
 function AppContent() {
@@ -90,6 +92,8 @@ function AppContent() {
         <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} />
         <Route path="/" element={<HomePage isLoggedIn={isLoggedIn}/>} />
         <Route path="/About" element={<About />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/newAdd" element={<Address isLoggedIn={isLoggedIn} />} />
         <Route path="/updateAdd" element={<UpdateAddress isLoggedIn={isLoggedIn} />} />
         <Route path="/FullWidth" element={<FullWidth />} />

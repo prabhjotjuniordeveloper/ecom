@@ -71,10 +71,10 @@ const Footer = ({isLoggedIn}) => {
                                 <div className="widget">
                                     <h4 className="widget-title">Customer Service</h4>
                                     <ul className="widget-list">
-                                        <li><a href="/404">Returns</a></li>
-                                        <li><a href="/404">Shipping</a></li>
-                                        <li><a href="/404">Terms and conditions</a></li>
-                                        <li><a href="/404">Privacy Policy</a></li>
+                                        <li><a href="/Faq#/faq">Returns</a></li>
+                                        <li><a href="/Faq#/faq">Shipping</a></li>
+                                        <li><a href="/terms#/terms">Terms and conditions</a></li>
+                                        <li><a href="/privacy#/privacy">Privacy Policy</a></li>
                                     </ul>
                                 </div>
                             </div>

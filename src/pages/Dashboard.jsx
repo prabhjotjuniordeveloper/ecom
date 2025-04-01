@@ -7,6 +7,7 @@ import { getADD } from "../Api/product/address/getAdd";
 import { getOrder } from "../Api/product/account/getOrder";
 import orderplaced from "../../src/images/orderPlaced.png";
 import { updatePass } from "../Api/product/account/updatePass";
+import { updateProfile } from "../Api/product/account/updateProfile";
 
 const Dashboard = ({ isLoggedIn }) => {
   const showToast = (type, message) => {
@@ -26,8 +27,12 @@ const Dashboard = ({ isLoggedIn }) => {
     confirmPassword: "",
   });
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleChange2 = (e) => {
+    setFormData2({ ...formData2, [e.target.name]: e.target.value });
   };
 
   const navigate = useNavigate();
@@ -61,6 +66,43 @@ const Dashboard = ({ isLoggedIn }) => {
   const [user, setUser] = useState("dashboard");
   const [add, setAdd] = useState([]);
   const [products, setProducts] = useState([]);
+
+  const [formData2, setFormData2] = useState({
+    userName: user?.userName || "",
+    email: user?.email || "",
+    name: user?.name || "",
+  });
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    if (
+      !formData2.userName ||
+      !formData2.email ||
+      !formData2.name
+    ) {
+      showToast("warning","All fields are required.");
+      return;
+    }
+
+    try {
+      const response = await updateProfile(formData2);
+
+      if (response.success === true) {
+        showToast("success","Details updated successfully.");
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("Failed to update details:", error);
+      const capitalizeFirstLetter = (text) => 
+        text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+      
+      showToast("error", capitalizeFirstLetter(error.response?.data?.error));
+    }
+  };
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -234,9 +276,9 @@ const Dashboard = ({ isLoggedIn }) => {
                       }`}
                     >
                       <p>
-                        Hello,
+                        Hello,{" "}
                         <span className="font-weight-normal text-dark">
-                          {user?.name || "Unknown"}
+                          {user?.name || "Unknown"}{" "}
                         </span>
                         (not
                         <span className="font-weight-normal text-dark">
@@ -445,47 +487,50 @@ const Dashboard = ({ isLoggedIn }) => {
                       }`}
                     >
                       <form action="">
-                        <div>
-                          <label>First Name *</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            required
-                            placeholder={user?.name}
-                            disabled
-                          />
 
-                          <small className="form-text">
-                            This will be how your name will be displayed in the
-                            account section and in reviews
-                          </small>
+                      <div>
+        <label>First Name *</label>
+        <input
+          type="text"
+          className="form-control"
+          name="name"
+          required
+          value={formData2.name}
+          onChange={handleChange2}
+          placeholder={user?.name || "Enter your name"}
+        />
 
-                          <label>Username *</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            required
-                            placeholder={user?.userName}
-                            disabled
-                          />
+        <small className="form-text">
+          This will be how your name is displayed in the account section and reviews.
+        </small>
 
-                          <label>Email address *</label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            required
-                            placeholder={user?.email}
-                            disabled
-                          />
+        <label>Username *</label>
+        <input
+          type="text"
+          className="form-control"
+          name="userName"
+          required
+          value={formData2.userName}
+          onChange={handleChange2}
+          placeholder={user?.userName || "Enter your username"}
+        />
 
-                          {/* <button
-                            type="submit"
-                            className="btn btn-outline-primary-2"
-                          >
-                            <span>UPDATE DETAILS</span>
-                            <i className="icon-long-arrow-right"></i>
-                          </button> */}
-                        </div>
+        <label>Email address *</label>
+        <input
+          type="email"
+          className="form-control"
+          name="email"
+          required
+          value={formData2.email}
+          onChange={handleChange2}
+          placeholder={user?.email || "Enter your email"}
+        />
+
+        <button type="submit" className="btn btn-outline-primary-2" onClick={handleUpdate}>
+          <span>UPDATE DETAILS</span>
+          <i className="icon-long-arrow-right"></i>
+        </button>
+      </div>
 
                         <div>
                           <form>

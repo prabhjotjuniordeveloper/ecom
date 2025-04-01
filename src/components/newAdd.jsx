@@ -76,9 +76,12 @@ const Address = ({ isLoggedIn }) => {
           phone: "",
           email: ""
         });
+
+        showToast("success", "Address added successfully.");
   
-        // Redirect to dashboard
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     } catch (error) {
       console.error("Failed to add Address:", error);
@@ -104,7 +107,7 @@ const Address = ({ isLoggedIn }) => {
               {errors.lastName && <p className="text-danger">{errors.lastName}</p>}
             </div>
           </div>
-
+<ToastContainer/>
           <label>Street address *</label>
           <input type="text" name="streetAddress" className="form-control" placeholder="House number" required onChange={handleChange} value={formData.streetAddress} />
           {errors.streetAddress && <p className="text-danger">{errors.streetAddress}</p>}

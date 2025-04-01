@@ -7,6 +7,7 @@ import { getAllProducts } from '../Api/product/allProduct.jsx';
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import image1 from "../images/img-1.png"
 
 
 const HomePage = ({ isLoggedIn }) => {
@@ -108,7 +109,7 @@ useEffect(() => {
           const response5 = await axios.get(
               "/homePage/newArrivalSection/getAllNewArrivalSection"
           );
-          setHeroSection(response.data)
+          setHeroSection(response?.data)
           setBrands(response2.data)
           setSaleSection(response3?.data.All_sale_section)
           setLeague(response4.data.All_NewLeague_Sections)
@@ -206,11 +207,11 @@ useEffect(() => {
                         {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[0] && heroSection.All_Hero_Sections[0].image && (
   <img
     className="position-right"
-    src={heroSection.All_Hero_Sections[0].image}
+    src={heroSection?.All_Hero_Sections[0]?.image || image1 }
     style={{ width: '768px', height: '1103px' }}
     alt="Hero Section 1"
   />
-)}
+)} 
                     </div>
                     <div class="intro-slide" style={{backgroundImage: "url(assets/images/demos/demo-8/slider/slide-2.jpg);"}}>
                         <div class="container intro-content text-right">

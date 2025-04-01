@@ -276,15 +276,28 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
                     </li> */}
 
                   {/* Blog Menu Item */}
+
+
                   <li
-                       className={`megamenu-container ${activeLink === "blog" ? "active" : ""}`}
+                       className={`megamenu-container ${activeLink === "about" ? "active" : ""}`}
                        style={{ position: "relative" }}
-                       onClick={() => setActiveLink("blog")}
+                       onClick={() => setActiveLink("about")}
                   >
-                    <Link to="/BlogMASK" className="">
-                      Blog
+                    <Link to="/about" className="">
+                      About
                     </Link>
                   </li>
+
+                  <li
+                       className={`megamenu-container ${activeLink === "contact" ? "active" : ""}`}
+                       style={{ position: "relative" }}
+                       onClick={() => setActiveLink("contact")}
+                  >
+                    <Link to="/Contact" className="">
+                      Contact Us
+                    </Link>
+                  </li>
+                  
 
                   <li
                           className={`megamenu-container ${activeLink === "dashboard" ? "active" : ""}`}
