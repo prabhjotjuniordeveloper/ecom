@@ -2,8 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getADD } from "../Api/product/address/getAdd";
 import { updateAdd } from "../Api/product/address/updateAddress";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateAddress = ({ isLoggedIn }) => {
+  const showToast = (type, message) => {
+    toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    });
+};
   const [add, setAdd] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -75,7 +87,7 @@ const UpdateAddress = ({ isLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isLoggedIn) {
-      alert("Please log in to update your address.");
+      showToast("error", "Please log in to proceed further.");
       navigate("/login");
       return;
     }

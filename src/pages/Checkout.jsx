@@ -2,10 +2,22 @@ import { React, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getADD } from "../Api/product/address/getAdd";
 import { allCart } from "../Api/product/getCart";
-import { addNewOrd } from "../Api/product/account/cretaeOrder";
+import { addNewOrd } from "../Api/product/account/createOrder";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = ({isLoggedIn}) => {
+      const showToast = (type, message) => {
+        toast[type](message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+    };
     const navigate = useNavigate();
   const location = useLocation();
   const shippingCost = location.state?.shippingCost || 0;
@@ -58,13 +70,12 @@ const Checkout = ({isLoggedIn}) => {
         size: item.size,
       }));
 
-
-      
+    
 
       const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isLoggedIn) {
-          alert("Please log in to add products to the cart.");
+          showToast("warning", "Please log in to proceed further");
           navigate("/login");
           return;
         }
@@ -83,10 +94,12 @@ const Checkout = ({isLoggedIn}) => {
           const response = await addNewOrd(data);
       
           if (response.success === true) {
+            showToast("success", "Ordered successfully.");
             navigate("/dashboard");
           }
         } catch (error) {
           console.error("Failed to place order:", error);
+          showToast("error", "Failed to place order.");
         }
       };
 
@@ -118,7 +131,7 @@ const Checkout = ({isLoggedIn}) => {
           </ol>
         </div>
       </nav>
-
+<ToastContainer/>
       <div className="page-content">
         <div className="checkout">
           <div className="container">

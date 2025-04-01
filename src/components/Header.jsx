@@ -12,7 +12,8 @@ import { allCat } from "../Api/product/allCategory.jsx";
 import { allBrands } from "../Api/product/allBrands.jsx";
 
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn,setSelectedOption }) => {
+  const [activeLink, setActiveLink] = useState("");
   const [cat, setCat] = useState([]);
   const [brand, setBrand] = useState([]);
   const [options, setOptions] = useState([]);
@@ -70,11 +71,15 @@ const Header = ({ isLoggedIn }) => {
 
   const handleOptionClick = (option) => {
     const formattedOption = option.toLowerCase().replace(/\s+/g, "");
-    console.log("Selected Option:", formattedOption);
-    
-    setQuery("");
-    setFilteredOptions([]);
+    setSelectedOption(option);
+    navigate("/ShopList");
+  
+    setTimeout(() => {
+      setQuery("");
+      setFilteredOptions([]);
+    }, 500);
   };
+  
   
 
 
@@ -107,6 +112,7 @@ const Header = ({ isLoggedIn }) => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
+        if (!isLoggedIn) return;
         const response = await allCart();
         const response2 = await allWish();
         if (response?.success === true) {
@@ -147,8 +153,9 @@ const Header = ({ isLoggedIn }) => {
                 <ul className="menu sf-arrows">
                   {/* Home Menu Item */}
                   <li
-                    className="megamenu-container active"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "home" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("home")}
                   >
                     <Link to="/" className="">
                       Home
@@ -157,8 +164,9 @@ const Header = ({ isLoggedIn }) => {
 
                   {/* Shop Menu Item */}
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "shop" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("shop")}
                   >
                     <Link to="/ShopList" className="">
                       Shop
@@ -269,8 +277,9 @@ const Header = ({ isLoggedIn }) => {
 
                   {/* Blog Menu Item */}
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                       className={`megamenu-container ${activeLink === "blog" ? "active" : ""}`}
+                       style={{ position: "relative" }}
+                       onClick={() => setActiveLink("blog")}
                   >
                     <Link to="/BlogMASK" className="">
                       Blog
@@ -278,13 +287,10 @@ const Header = ({ isLoggedIn }) => {
                   </li>
 
                   <li
-                    className="megamenu-container"
-                    style={{ position: "relative" }}
+                          className={`megamenu-container ${activeLink === "dashboard" ? "active" : ""}`}
+                          style={{ position: "relative" }}
+                          onClick={() => setActiveLink("dashboard")}
                   >
-                    <li
-                      className="megamenu-container"
-                      style={{ position: "relative" }}
-                    >
                       {isLoggedIn ? (
                         <Link to="/dashboard" className="">
                           Dashboard
@@ -294,7 +300,6 @@ const Header = ({ isLoggedIn }) => {
                           LOGIN
                         </Link>
                       )}
-                    </li>
 
                     {/* <Link to="/elements" className="sf-with-ul">Elements</Link> */}
 
@@ -350,9 +355,9 @@ const Header = ({ isLoggedIn }) => {
                         {filteredOptions.map((option, index) => (
                           <Link
                             key={index}
-                            // onMouseDown={() => handleOptionClick(option)}
+                            onMouseDown={() => handleOptionClick(option)}
                             to="/Shoplist" 
-                            state={{ selectedOption: option.toLowerCase().replace(/\s+/g, "") }} 
+                            // onClick={() => setSelectedOption(option.toLowerCase().replace(/\s+/g, ""))}
                             className="p-2 hover:bg-gray-200  border-bottom border-gray-300 cursor-pointer text-black cursor-pointer"
                             style={{ 
                               minHeight: "30px", 

@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addNewAdd } from "../Api/product/address/createAdd";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Address = ({ isLoggedIn }) => {
+  const showToast = (type, message) => {
+    toast[type](message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+    });
+};
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -41,7 +53,7 @@ const Address = ({ isLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isLoggedIn) {
-      alert("Please log in to add products to the cart.");
+      showToast("error", "Please log in to proceed further.");
       navigate("/login");
       return;
     }

@@ -7,8 +7,20 @@ import { addProductToCart } from "../../Api/product/addCart";
 import { addToWishlist } from "../../Api/product/addWish";
 import { getReview } from "../../Api/product/getReview";
 import { addReview } from "../../Api/product/addReview";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductCenterd = ({ isLoggedIn }) => {
+    const showToast = (type, message) => {
+      toast[type](message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+      });
+  };
   const navigate = useNavigate();
   const generateSlug = (name, id) => {
     if (!name) {
@@ -44,44 +56,51 @@ const ProductCenterd = ({ isLoggedIn }) => {
 
   const handleAddToCart = async () => {
     if (!isLoggedIn) {
-      alert("Please log in to add products to the cart.");
+      showToast("error", "Please log in to add products to the cart.");
       navigate("/login");
       return;
     }
+  
     if (!selectedColor) {
-      alert("Color selection is required.");
+      showToast("warning", "Color selection is required.");
       return;
     }
+  
     if (!selectedSize) {
-      alert("Size selection is required.");
+      showToast("warning", "Size selection is required.");
       return;
     }
+  
     if (!quantity || quantity <= 0) {
-      alert("Valid quantity is required.");
+      showToast("warning", "Valid quantity is required.");
       return;
     }
+  
     if (quantity > 10) {
-      alert("Max quantity is 10.");
+      showToast("warning", "Max quantity is 10.");
       return;
     }
-
+  
     try {
       const data = { color: selectedColor, size: selectedSize, quantity };
       const response = await addProductToCart(id, data);
-
+  
       if (response.Message === "Cart has been updated") {
         setIsAddedToCart(true);
+        showToast("success", "Product added to the cart successfully.");
         handleColorSelect(null);
         handleSizeChange({ target: { value: "" } });
         handleQuantityChange({ target: { value: 1 } });
       }
     } catch (error) {
+      showToast("error", "Failed to add product to cart.");
       console.error("Failed to add product to cart:", error);
     }
   };
+
   const handleAddToWish = async () => {
     if (!isLoggedIn) {
-      alert("Please log in to add products to the cart.");
+      showToast("error","Please log in to add products to the wishlist.");
       navigate("/login");
       return;
     }
@@ -90,11 +109,12 @@ const ProductCenterd = ({ isLoggedIn }) => {
       const response = await addToWishlist(id);
 
       if (response.Message === "Wish list has been updated") {
-        console.log(response);
+        showToast("success", "Product added to the wishlist successfully.");
         setIsAddedToWish(true);
       }
     } catch (error) {
       console.error("Failed to add product to wishlist:", error);
+      showToast("error", "Failed to add product to wishlist.");
     }
   };
 
@@ -139,16 +159,16 @@ const ProductCenterd = ({ isLoggedIn }) => {
 
   const handleSubmit = async(e) => {
     if (!isLoggedIn) {
-      alert("Please log in to post review.");
+      showToast("error", "Please log in to post review.");
       navigate("/login");
       return;
     }
     if (!rating) {
-      alert("Rating is required.");
+      showToast("warning", "Rating is required.");
       return;
     }
     if (!review2) {
-      alert("Enter a review.");
+      showToast("warning", "Enter a review.");
       return;
     }
 
@@ -157,15 +177,14 @@ const ProductCenterd = ({ isLoggedIn }) => {
       const response = await addReview(data);
 
       if (response.message === "Review has been saved") {
+        showToast("success", "Review posted successfully.");
         setReview2("")
         setRating(0)
       }
     } catch (error) {
       console.error("Failed to add review", error);
+      showToast("error", "Failed to add review.");
     }
-
-    console.log("Selected Rating:", rating);
-    console.log("Review Comment:", review2);
   };
 
   return (
@@ -186,6 +205,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
             </ol>
           </div>
         </nav>
+        <ToastContainer/>
         <div className="page-content">
           <div className="container">
             <div className="product-details-top mb-2">
@@ -657,10 +677,12 @@ const ProductCenterd = ({ isLoggedIn }) => {
                             <div
                               className="product-action-vertical"
                               onClick={() => handleAddToWish(product?._id)}
+                              
                             >
                               <a
                                 href="/Wishlist"
                                 className="btn-product-icon btn-wishlist btn-expandable"
+                                style={{cursor:"pointer"}}
                               >
                                 <span>add to wishlist</span>
                               </a>

@@ -11,6 +11,16 @@ import { useSearchParams } from "react-router-dom";
 // import axios from 'axios';
 
 const Login = ({ setIsLoggedIn }) => {
+    const showToast = (type, message) => {
+        toast[type](message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+    };
     const { login } = useAuth();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -41,7 +51,7 @@ const Login = ({ setIsLoggedIn }) => {
 
         // Check if formData has required fields before sending
         if (!formData.name || !formData.username || !formData.email || !formData.password) {
-            alert.error('Please fill out all fields!');
+            showToast("error", "Please fill out all fields!");
             return;
         }
 
@@ -143,7 +153,6 @@ const Login = ({ setIsLoggedIn }) => {
                 <div className="container">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li className="breadcrumb-item"><a href="#">Pages</a></li>
                         <li className="breadcrumb-item active" aria-current="page">Login</li>
                     </ol>
                 </div>
@@ -158,15 +167,15 @@ const Login = ({ setIsLoggedIn }) => {
                         <div className="form-tab">
                             <ul className="nav nav-pills nav-fill" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</a>
+                                    <a className="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
+                                    <a className="nav-link" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
                                 </li>
                             </ul>
                             <div className="tab-content">
                                 {/* Sign In Tab */}
-                                <div className="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
+                                <div className="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
                                     <form onSubmit={handleLoginSubmit}>
                                         <div className="form-group">
                                             <label htmlFor="signin-email-2">Email address *</label>
@@ -212,7 +221,7 @@ const Login = ({ setIsLoggedIn }) => {
                                 </div>
 
                                 {/* Register Tab */}
-                                <div className="tab-pane fade show active" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
+                                <div className="tab-pane fade" id="register-2" role="tabpanel" aria-labelledby="register-tab-2">
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <label htmlFor="register-name-2">Name *</label>
