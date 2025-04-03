@@ -244,10 +244,10 @@ const [cat, setCat] = useState([]);
           <div className="container">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">
-                <a href="/#/shoplist">Shop</a>
+                <Link to="/shoplist">Shop</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Products
@@ -271,25 +271,25 @@ const [cat, setCat] = useState([]);
 
                   <div className="toolbox-right">
                     <div className="toolbox-layout">
-                      {/* <a href="/ShopList" className="btn-layout active">
+                      {/* <Link to="/ShopList" className="btn-layout active">
                         <svg width="16" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="10" height="4" />
                           <rect x="0" y="6" width="4" height="4" />
                           <rect x="6" y="6" width="10" height="4" />
                         </svg>
-                      </a> */}
+                      </Link> */}
 
-                      {/* <a href="/ShopGrid2" className="btn-layout">
+                      {/* <Link to="/ShopGrid2" className="btn-layout">
                         <svg width="10" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="4" height="4" />
                           <rect x="0" y="6" width="4" height="4" />
                           <rect x="6" y="6" width="4" height="4" />
                         </svg>
-                      </a>
+                      </Link>
 
-                      <a href="/Shop" className="btn-layout">
+                      <Link to="/Shop" className="btn-layout">
                         <svg width="16" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="4" height="4" />
@@ -298,9 +298,9 @@ const [cat, setCat] = useState([]);
                           <rect x="6" y="6" width="4" height="4" />
                           <rect x="12" y="6" width="4" height="4" />
                         </svg>
-                      </a>
+                      </Link>
 
-                      <a href="/ShopGrid4" className="btn-layout">
+                      <Link to="/ShopGrid4" className="btn-layout">
                         <svg width="22" height="10">
                           <rect x="0" y="0" width="4" height="4" />
                           <rect x="6" y="0" width="4" height="4" />
@@ -311,7 +311,7 @@ const [cat, setCat] = useState([]);
                           <rect x="12" y="6" width="4" height="4" />
                           <rect x="18" y="6" width="4" height="4" />
                         </svg>
-                      </a> */}
+                      </Link> */}
                     </div>
                   </div>
                 </div>
@@ -336,13 +336,13 @@ const [cat, setCat] = useState([]);
                             Out of Stock
                           </span>
                         )}
-                        <a>
+                        <Link>
                           <img
                             src={`${product.mainImage}`}
                             alt={product.productName}
                             className="product-image"
                           />
-                        </a>
+                        </Link>
                       </figure>
                     </div>
 
@@ -379,14 +379,14 @@ const [cat, setCat] = useState([]);
                     {/* Product Info */}
                     <div className="col-lg-6">
                       <div className="product-body product-action-inner">
-                      <a 
+                      <Link 
                         onClick={() => handleAddToWish(product._id)} 
                         className="btn-product btn-wishlist" 
                         title="Add to wishlist"
                         style={{ display: isLoggedIn ? "inline-block" : "none" }}
                       >
                         <span>{isAddedToWish ? "Added to wishlist" : "Add to wishlist"}</span>
-                      </a>
+                      </Link>
 
 
                         <div className="product-cat">
@@ -420,7 +420,7 @@ const [cat, setCat] = useState([]);
                   <ul className="pagination">
                   {currentProducts.length > 0 && currentProducts[0]._id !== products[0]._id && (
                     <li className="page-item">
-                      <a
+                      <Link
                         className="page-link page-link-prev"
                         onClick={prevPage}
                         aria-label="Previous"
@@ -429,13 +429,13 @@ const [cat, setCat] = useState([]);
                           <i className="icon-long-arrow-left"></i>
                         </span>
                         Prev
-                      </a>
+                      </Link>
                     </li>
                   )}
 
                     {currentProducts.length > 0 && currentProducts[currentProducts.length - 1]._id !== products[products.length - 1]._id && (
                       <li className="page-item">
-                        <a
+                        <Link
                           className="page-link page-link-next"
                           onClick={nextPage}
                           aria-label="Next"
@@ -444,7 +444,7 @@ const [cat, setCat] = useState([]);
                           <span aria-hidden="true">
                             <i className="icon-long-arrow-right"></i>
                           </span>
-                        </a>
+                        </Link>
                       </li>
                     )}
 
@@ -457,7 +457,7 @@ const [cat, setCat] = useState([]);
                 <div className="sidebar sidebar-shop">
                   <div className="widget widget-clean curson-pointer ">
                     <label>Filters:</label>
-                    <a 
+                    <Link 
                       href="#" 
                       onClick={(e) => {
                         e.preventDefault();
@@ -466,14 +466,14 @@ const [cat, setCat] = useState([]);
                       className="sidebar-filter-clear cursor-pointer"
                     >
                       Clear All
-                    </a>
+                    </Link>
 
                   </div>
                 </div>
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
                       href="#widget-1"
                       role="button"
@@ -481,7 +481,7 @@ const [cat, setCat] = useState([]);
                       aria-controls="widget-1"
                     >
                       Category
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-1">
@@ -511,7 +511,7 @@ const [cat, setCat] = useState([]);
 
                 <div className="widget widget-collapsible">
                   <h3 className="widget-title">
-                    <a
+                    <Link
                       data-toggle="collapse"
                       href="#widget-2"
                       role="button"
@@ -519,7 +519,7 @@ const [cat, setCat] = useState([]);
                       aria-controls="widget-2"
                     >
                       Size
-                    </a>
+                    </Link>
                   </h3>
 
                   <div className="collapse show" id="widget-2">
@@ -566,7 +566,7 @@ const [cat, setCat] = useState([]);
 
                   <div className="widget widget-collapsible">
                     <h3 className="widget-title">
-                      <a
+                      <Link
                         data-toggle="collapse"
                         href="#widget-3"
                         role="button"
@@ -574,14 +574,14 @@ const [cat, setCat] = useState([]);
                         aria-controls="widget-3"
                       >
                         Colour
-                      </a>
+                      </Link>
                     </h3>
 
                     <div className="collapse show" id="widget-3">
                       <div className="widget-body">
                         <div className="filter-colors">
                         {color.map((color, index) => (
-  <a
+  <Link
     key={index}
     style={{ background: color,cursor: "pointer",}}
     className={selectedColor.includes(color) ? "selected" : ""}
@@ -589,7 +589,7 @@ const [cat, setCat] = useState([]);
     onClick={() => toggleColorSelection(color)}
   >
     <span className="sr-only">Color Name</span>
-  </a>
+  </Link>
 ))}
 
                           
@@ -600,7 +600,7 @@ const [cat, setCat] = useState([]);
 
                   <div className="widget widget-collapsible">
                     <h3 className="widget-title">
-                      <a
+                      <Link
                         data-toggle="collapse"
                         href="#widget-4"
                         role="button"
@@ -608,7 +608,7 @@ const [cat, setCat] = useState([]);
                         aria-controls="widget-4"
                       >
                         Brand
-                      </a>
+                      </Link>
                     </h3>
 
                     <div className="collapse show" id="widget-4">
@@ -637,7 +637,7 @@ const [cat, setCat] = useState([]);
 
                   <div className="widget widget-collapsible">
                     <h3 className="widget-title">
-                      <a
+                      <Link
                         data-toggle="collapse"
                         href="#widget-5"
                         role="button"
@@ -645,7 +645,7 @@ const [cat, setCat] = useState([]);
                         aria-controls="widget-5"
                       >
                         Price
-                      </a>
+                      </Link>
                     </h3>
 
                     <div className="collapse show" id="widget-5">

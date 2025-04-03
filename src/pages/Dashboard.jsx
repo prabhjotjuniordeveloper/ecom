@@ -8,7 +8,7 @@ import { getOrder } from "../Api/product/account/getOrder";
 import orderplaced from "../../src/images/orderPlaced.png";
 import { updatePass } from "../Api/product/account/updatePass";
 import { updateProfile } from "../Api/product/account/updateProfile";
-
+import { Link } from "react-router-dom";
 const Dashboard = ({ isLoggedIn }) => {
   const showToast = (type, message) => {
     toast[type](message, {
@@ -202,10 +202,10 @@ const Dashboard = ({ isLoggedIn }) => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#/shoplist">Shop</a>
+              <Link to="/shoplist">Shop</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               My Account
@@ -221,48 +221,48 @@ const Dashboard = ({ isLoggedIn }) => {
               <aside className="col-md-4 col-lg-3">
                 <ul className="nav nav-dashboard flex-column mb-3 mb-md-0">
                   <li className="nav-item">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className={`nav-link ${
                         activeTab === "dashboard" ? "active" : ""
                       }`}
                       onClick={(e) => handleTabChange(e, "dashboard")}
                     >
                       Dashboard
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className={`nav-link ${
                         activeTab === "orders" ? "active" : ""
                       }`}
                       onClick={(e) => handleTabChange(e, "orders")}
                     >
                       Orders
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className={`nav-link ${
                         activeTab === "address" ? "active" : ""
                       }`}
                       onClick={(e) => handleTabChange(e, "address")}
                     >
                       Addresses
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className={`nav-link ${
                         activeTab === "account" ? "active" : ""
                       }`}
                       onClick={(e) => handleTabChange(e, "account")}
                     >
                       Update Your Details
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </aside>
@@ -285,35 +285,35 @@ const Dashboard = ({ isLoggedIn }) => {
                           You
                         </span>
                         ?
-                        <a href="#" onClick={handleLogout}>
+                        <Link to="#" onClick={handleLogout}>
                           Log out
-                        </a>
+                        </Link>
                         )
                         <br />
                         From your account dashboard you can view your
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="tab-trigger-link link-underline"
                           onClick={(e) => handleTabChange(e, "orders")}
                         >
                           recent orders
-                        </a>
+                        </Link>
                         , manage your
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="tab-trigger-link"
                           onClick={(e) => handleTabChange(e, "address")}
                         >
                           shipping and billing addresses
-                        </a>
+                        </Link>
                         , and
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="tab-trigger-link"
                           onClick={(e) => handleTabChange(e, "account")}
                         >
                           edit your password and account details
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   )}
@@ -346,8 +346,8 @@ const Dashboard = ({ isLoggedIn }) => {
                                               Sale
                                             </span>
                                           )}
-                                          <a
-                                            href={`/#/ProductCenterd/${generateSlug(
+                                          <Link
+                                            to={`/ProductCenterd/${generateSlug(
                                               product.productName,
                                               product._id
                                             )}`}
@@ -357,29 +357,29 @@ const Dashboard = ({ isLoggedIn }) => {
                                               alt={product.productName}
                                               className="product-image"
                                             />
-                                          </a>
+                                          </Link>
                                           <div className="product-action">
-                                            <a
-                                              href={`/#/ProductCenterd/${generateSlug(
+                                            <Link
+                                              to={`/ProductCenterd/${generateSlug(
                                                 product.productName,
                                                 product._id
                                               )}`}
                                               className="btn-product btn-cart"
                                             >
                                               <span>Order Placed</span>
-                                            </a>
+                                            </Link>
                                           </div>
                                         </figure>
                                         <div className="product-body">
                                           <h3 className="product-title">
-                                            <a
-                                              href={`/#/ProductCenterd/${generateSlug(
+                                            <Link
+                                              to={`/ProductCenterd/${generateSlug(
                                                 product.productName,
                                                 product._id
                                               )}`}
                                             >
                                               {product.productName}
-                                            </a>
+                                            </Link>
                                           </h3>
                                           <div className="product-price">
                                             <span className="new-price">
@@ -407,26 +407,26 @@ const Dashboard = ({ isLoggedIn }) => {
                           {/* End .container */}
                           {/* Show "Check More Products" when orders exist */}
                           <div>
-                            <a
-                              href="/#/shoplist"
+                            <Link
+                              to="/shoplist"
                               className="btn btn-outline-primary-2"
                             >
                               <span>CHECK MORE PRODUCTS</span>
                               <i className="icon-long-arrow-right"></i>
-                            </a>
+                            </Link>
                           </div>
                         </>
                       ) : (
                         // Show this only when no orders exist
                         <div>
                           <p>No order has been made yet.</p>
-                          <a
-                            href="/#/shoplist"
+                          <Link
+                            to="/shoplist"
                             className="btn btn-outline-primary-2"
                           >
                             <span>GO SHOP</span>
                             <i className="icon-long-arrow-right"></i>
-                          </a>
+                          </Link>
                         </div>
                       )}
                     </div>
@@ -458,22 +458,22 @@ const Dashboard = ({ isLoggedIn }) => {
                                   <br />
                                   {add[0]?.country}
                                   <br />
-                                  <a href="#/updateAdd">
+                                  <Link to="/updateAdd">
                                     Edit <i className="icon-edit"></i>
-                                  </a>
+                                  </Link>
                                 </p>
                               </div>
                             </div>
                           ) : (
                             <div className="tab-pane">
                               <p>No addresses yet...</p>
-                              <a
-                                href="/#/newAdd"
+                              <Link
+                                to="/newAdd"
                                 className="btn btn-outline-primary-2"
                               >
                                 <span>ADD ONE</span>
                                 <i className="icon-long-arrow-right"></i>
-                              </a>
+                              </Link>
                             </div>
                           )}
                         </div>

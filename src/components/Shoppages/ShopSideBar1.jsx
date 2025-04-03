@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from "react-router-dom";
 const ShopSideBar1 = () => {
     const [openWidgets, setOpenWidgets] = useState({
         category: true,
@@ -35,9 +35,9 @@ const ShopSideBar1 = () => {
                     <nav aria-label="breadcrumb" className="breadcrumb-nav mb-2">
                         <div className="container">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li className="breadcrumb-item"><a href="#">Shop</a></li>
-                                <li className="breadcrumb-item"><a href="#">No Sidebar</a></li>
+                                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                                <li className="breadcrumb-item"><Link to="#">Shop</Link></li>
+                                <li className="breadcrumb-item"><Link to="#">No Sidebar</Link></li>
                                 <li className="breadcrumb-item active" aria-current="page">Boxed</li>
                             </ol>
                         </div>
@@ -49,9 +49,9 @@ const ShopSideBar1 = () => {
 
                             <div className="toolbox">
                                 <div className="toolbox-left">
-                                    <a href="#" className="sidebar-toggler">
+                                    <Link to="#" className="sidebar-toggler">
                                         <i className="icon-bars"></i> Filters
-                                    </a>
+                                    </Link>
                                 </div>
                                 {/* End .toolbox-left */}
 
@@ -71,35 +71,35 @@ const ShopSideBar1 = () => {
                                         <div className="product">
                                             <figure className="product-media">
                                                 <span className="product-label label-new">New</span>
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-1.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Women</a>
+                                                    <Link to="#">Women</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Nunc dignissim risus</a>
+                                                    <Link to="product.html">Nunc dignissim risus</Link>
                                                 </h3>
                                                 <div className="product-price">$50.00</div>
                                                 <div className="ratings-container">
@@ -109,12 +109,12 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 0 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-dots">
-                                                    <a href="#" style={{ background: '#cc9966' }}>
+                                                    <Link to="#" style={{ background: '#cc9966' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" className="active" style={{ background: '#ebebeb' }}>
+                                                    </Link>
+                                                    <Link to="#" className="active" style={{ background: '#ebebeb' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,35 +124,35 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-2.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Accessories</a>
+                                                    <Link to="#">Accessories</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Cras ornare tristique</a>
+                                                    <Link to="product.html">Cras ornare tristique</Link>
                                                 </h3>
                                                 <div className="product-price">$32.00</div>
                                                 <div className="ratings-container">
@@ -170,35 +170,35 @@ const ShopSideBar1 = () => {
                                         <div className="product">
                                             <figure className="product-media">
                                                 <span className="product-label label-sale">30% off</span>
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-3.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Women</a>
+                                                    <Link to="#">Women</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Aliquam tincidunt mauris</a>
+                                                    <Link to="product.html">Aliquam tincidunt mauris</Link>
                                                 </h3>
                                                 <div className="product-price">
                                                     <span className="new-price">$50.00</span>
@@ -211,15 +211,15 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 4 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-dots">
-                                                    <a href="#" className="active" style={{ background: '#cc9966' }}>
+                                                    <Link to="#" className="active" style={{ background: '#cc9966' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" style={{ background: '#7fc5ed' }}>
+                                                    </Link>
+                                                    <Link to="#" style={{ background: '#7fc5ed' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" style={{ background: '#e8c97a' }}>
+                                                    </Link>
+                                                    <Link to="#" style={{ background: '#e8c97a' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,35 +229,35 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-4.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Dresses</a>
+                                                    <Link to="#">Dresses</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Brown paperbag waist pencil skirt</a>
+                                                    <Link to="product.html">Brown paperbag waist pencil skirt</Link>
                                                 </h3>
                                                 <div className="product-price">$60.00</div>
                                                 <div className="ratings-container">
@@ -267,15 +267,15 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 2 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-dots">
-                                                    <a href="#" className="active" style={{ background: '#cc9966' }}>
+                                                    <Link to="#" className="active" style={{ background: '#cc9966' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" style={{ background: '#333333' }}>
+                                                    </Link>
+                                                    <Link to="#" style={{ background: '#333333' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" style={{ background: '#7b5d36' }}>
+                                                    </Link>
+                                                    <Link to="#" style={{ background: '#7b5d36' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -285,35 +285,35 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-5.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Dresses</a>
+                                                    <Link to="#">Dresses</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Dark yellow lace cut out swing dress</a>
+                                                    <Link to="product.html">Dark yellow lace cut out swing dress</Link>
                                                 </h3>
                                                 <div className="product-price">$84.00</div>
                                                 <div className="ratings-container">
@@ -323,12 +323,12 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 0 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-dots">
-                                                    <a href="#" style={{ background: '#ebebeb' }}>
+                                                    <Link to="#" style={{ background: '#ebebeb' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
-                                                    <a href="#" className="active" style={{ background: '#eabc4e' }}>
+                                                    </Link>
+                                                    <Link to="#" className="active" style={{ background: '#eabc4e' }}>
                                                         <span className="sr-only">Color name</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,35 +339,35 @@ const ShopSideBar1 = () => {
                                         <div className="product">
                                             <figure className="product-media">
                                                 <span className="product-label label-out">Out of stock</span>
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-6.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Jackets</a>
+                                                    <Link to="#">Jackets</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Khaki utility boiler jumpsuit</a>
+                                                    <Link to="product.html">Khaki utility boiler jumpsuit</Link>
                                                 </h3>
                                                 <div className="product-price">
                                                     <span className="out-price">$120.00</span>
@@ -386,35 +386,35 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-7.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Shirts</a>
+                                                    <Link to="#">Shirts</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Blue denim shirt</a>
+                                                    <Link to="product.html">Blue denim shirt</Link>
                                                 </h3>
                                                 <div className="product-price">$45.00</div>
                                                 <div className="ratings-container">
@@ -431,35 +431,35 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-8.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
 
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable">
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable">
                                                         <span>add to wishlist</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart">
+                                                    <Link to="#" className="btn-product btn-cart">
                                                         <span>add to cart</span>
-                                                    </a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
+                                                    </Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view">
                                                         <span>quick view</span>
-                                                    </a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare">
+                                                    </Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare">
                                                         <span>compare</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </figure>
 
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Shoes</a>
+                                                    <Link to="#">Shoes</Link>
                                                 </div>
                                                 <h3 className="product-title">
-                                                    <a href="product.html">Red high heels</a>
+                                                    <Link to="product.html">Red high heels</Link>
                                                 </h3>
                                                 <div className="product-price">$75.00</div>
                                                 <div className="ratings-container">
@@ -475,23 +475,23 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3 mt-3">
                                         <div className="product">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-9.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
                                                 </div>
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare"><span>compare</span></a>
+                                                    <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view"><span>quick view</span></Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare"><span>compare</span></Link>
                                                 </div>
                                             </figure>
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Bags</a>
+                                                    <Link to="#">Bags</Link>
                                                 </div>
-                                                <h3 className="product-title"><a href="product.html">Orange saddle lock front chain cross body bag</a></h3>
+                                                <h3 className="product-title"><Link to="product.html">Orange saddle lock front chain cross body bag</Link></h3>
                                                 <div className="product-price">$52.00</div>
                                                 <div className="ratings-container">
                                                     <div className="ratings">
@@ -500,9 +500,9 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 1 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-dots">
-                                                    <a href="#" className="active" style={{ background: '#e07a3d' }}><span className="sr-only">Color name</span></a>
-                                                    <a href="#" style={{ background: '#7b5d36' }}><span className="sr-only">Color name</span></a>
-                                                    <a href="#" style={{ background: '#dac1a7' }}><span className="sr-only">Color name</span></a>
+                                                    <Link to="#" className="active" style={{ background: '#e07a3d' }}><span className="sr-only">Color name</span></Link>
+                                                    <Link to="#" style={{ background: '#7b5d36' }}><span className="sr-only">Color name</span></Link>
+                                                    <Link to="#" style={{ background: '#dac1a7' }}><span className="sr-only">Color name</span></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -512,23 +512,23 @@ const ShopSideBar1 = () => {
                                         <div className="product">
                                             <figure className="product-media">
                                                 <span className="product-label label-new">New</span>
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-10.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
                                                 </div>
                                                 <div className="product-action action-icon-top">
-                                                    <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
-                                                    <a href="popup/quickView.html" className="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                                    <a href="#" className="btn-product btn-compare" title="Compare"><span>compare</span></a>
+                                                    <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
+                                                    <Link to="popup/quickView.html" className="btn-product btn-quickview" title="Quick view"><span>quick view</span></Link>
+                                                    <Link to="#" className="btn-product btn-compare" title="Compare"><span>compare</span></Link>
                                                 </div>
                                             </figure>
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Jumpers</a>
+                                                    <Link to="#">Jumpers</Link>
                                                 </div>
-                                                <h3 className="product-title"><a href="product.html">Yellow button front tea top</a></h3>
+                                                <h3 className="product-title"><Link to="product.html">Yellow button front tea top</Link></h3>
                                                 <div className="product-price">$56.00</div>
                                                 <div className="ratings-container">
                                                     <div className="ratings">
@@ -543,23 +543,23 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product product-7 text-center">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-14.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                                    <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                                    <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                                                 </div>
                                                 <div className="product-action">
-                                                    <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                                                 </div>
                                             </figure>
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Dresses</a>
+                                                    <Link to="#">Dresses</Link>
                                                 </div>
-                                                <h3 className="product-title"><a href="product.html">Brown zebra print dungaree dress</a></h3>
+                                                <h3 className="product-title"><Link to="product.html">Brown zebra print dungaree dress</Link></h3>
                                                 <div className="product-price">$80.00</div>
                                                 <div className="ratings-container">
                                                     <div className="ratings">
@@ -568,15 +568,15 @@ const ShopSideBar1 = () => {
                                                     <span className="ratings-text">( 0 Reviews )</span>
                                                 </div>
                                                 <div className="product-nav product-nav-thumbs">
-                                                    <a href="#" className="active">
+                                                    <Link to="#" className="active">
                                                         <img src="assets/images/products/product-14-thumb.jpg" alt="product desc" />
-                                                    </a>
-                                                    <a href="#">
+                                                    </Link>
+                                                    <Link to="#">
                                                         <img src="assets/images/products/product-14-2-thumb.jpg" alt="product desc" />
-                                                    </a>
-                                                    <a href="#">
+                                                    </Link>
+                                                    <Link to="#">
                                                         <img src="assets/images/products/product-14-3-thumb.jpg" alt="product desc" />
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -585,23 +585,23 @@ const ShopSideBar1 = () => {
                                     <div className="col-6 col-md-4 col-lg-4 col-xl-3">
                                         <div className="product product-7 text-center">
                                             <figure className="product-media">
-                                                <a href="product.html">
+                                                <Link to="product.html">
                                                     <img src="assets/images/products/product-15.jpg" alt="Product image" className="product-image" />
-                                                </a>
+                                                </Link>
                                                 <div className="product-action-vertical">
-                                                    <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                                    <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                                    <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                                    <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                                                 </div>
                                                 <div className="product-action">
-                                                    <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                                    <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                                                 </div>
                                             </figure>
                                             <div className="product-body">
                                                 <div className="product-cat">
-                                                    <a href="#">Bags</a>
+                                                    <Link to="#">Bags</Link>
                                                 </div>
-                                                <h3 className="product-title"><a href="product.html">Beige ring handle circle cross body bag</a></h3>
+                                                <h3 className="product-title"><Link to="product.html">Beige ring handle circle cross body bag</Link></h3>
                                                 <div className="product-price">$56.00</div>
                                                 <div className="ratings-container">
                                                     <div className="ratings">
@@ -619,12 +619,12 @@ const ShopSideBar1 = () => {
                                     <div className="sidebar-filter-wrapper">
                                         <div className="widget widget-clean">
                                             <label><i className="icon-close"></i>Filters</label>
-                                            <a href="#" className="sidebar-filter-clear">Clean All</a>
+                                            <Link to="#" className="sidebar-filter-clear">Clean All</Link>
                                         </div>
 
                                         <div className="widget widget-collapsible">
                                             <h3 className="widget-title">
-                                                <a
+                                                <Link
                                                     data-toggle="collapse"
                                                     href="#widget-1"
                                                     role="button"
@@ -633,7 +633,7 @@ const ShopSideBar1 = () => {
                                                     onClick={() => toggleWidget('category')}
                                                 >
                                                     Category
-                                                </a>
+                                                </Link>
                                             </h3>
 
                                             <div className={`collapse ${openWidgets.category ? 'show' : ''}`} id="widget-1">
@@ -664,7 +664,7 @@ const ShopSideBar1 = () => {
 
                                         <div className="widget widget-collapsible">
                                             <h3 className="widget-title">
-                                                <a
+                                                <Link
                                                     data-toggle="collapse"
                                                     href="#widget-2"
                                                     role="button"
@@ -673,7 +673,7 @@ const ShopSideBar1 = () => {
                                                     onClick={() => toggleWidget('size')}
                                                 >
                                                     Size
-                                                </a>
+                                                </Link>
                                             </h3>
 
                                             <div className={`collapse ${openWidgets.size ? 'show' : ''}`} id="widget-2">
@@ -699,7 +699,7 @@ const ShopSideBar1 = () => {
 
                                         <div className="widget widget-collapsible">
                                             <h3 className="widget-title">
-                                                <a
+                                                <Link
                                                     data-toggle="collapse"
                                                     href="#widget-3"
                                                     role="button"
@@ -708,7 +708,7 @@ const ShopSideBar1 = () => {
                                                     onClick={() => toggleWidget('color')}
                                                 >
                                                     Colour
-                                                </a>
+                                                </Link>
                                             </h3>
 
                                             <div className={`collapse ${openWidgets.color ? 'show' : ''}`} id="widget-3">
@@ -724,9 +724,9 @@ const ShopSideBar1 = () => {
                                                             '#f2719c',
                                                             '#ebebeb',
                                                         ].map((color, index) => (
-                                                            <a href="#" key={index} style={{ background: color }}>
+                                                            <Link to="#" key={index} style={{ background: color }}>
                                                                 <span className="sr-only">Color Name</span>
-                                                            </a>
+                                                            </Link>
                                                         ))}
                                                     </div>
                                                 </div>
@@ -735,7 +735,7 @@ const ShopSideBar1 = () => {
 
                                         <div className="widget widget-collapsible">
                                             <h3 className="widget-title">
-                                                <a
+                                                <Link
                                                     data-toggle="collapse"
                                                     href="#widget-4"
                                                     role="button"
@@ -744,7 +744,7 @@ const ShopSideBar1 = () => {
                                                     onClick={() => toggleWidget('brand')}
                                                 >
                                                     Brand
-                                                </a>
+                                                </Link>
                                             </h3>
 
                                             <div className={`collapse ${openWidgets.brand ? 'show' : ''}`} id="widget-4">
@@ -773,7 +773,7 @@ const ShopSideBar1 = () => {
 
                                         <div className="widget widget-collapsible">
                                             <h3 className="widget-title">
-                                                <a
+                                                <Link
                                                     data-toggle="collapse"
                                                     href="#widget-5"
                                                     role="button"
@@ -782,7 +782,7 @@ const ShopSideBar1 = () => {
                                                     onClick={() => toggleWidget('price')}
                                                 >
                                                     Price
-                                                </a>
+                                                </Link>
                                             </h3>
 
                                             <div className={`collapse ${openWidgets.price ? 'show' : ''}`} id="widget-5">

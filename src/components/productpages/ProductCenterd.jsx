@@ -9,7 +9,7 @@ import { getReview } from "../../Api/product/getReview";
 import { addReview } from "../../Api/product/addReview";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 const ProductCenterd = ({ isLoggedIn }) => {
     const showToast = (type, message) => {
       toast[type](message, {
@@ -187,6 +187,13 @@ const ProductCenterd = ({ isLoggedIn }) => {
     }
   };
 
+  const handleRefresh = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+  
+
   return (
     <div>
       <main className="main">
@@ -194,10 +201,10 @@ const ProductCenterd = ({ isLoggedIn }) => {
           <div className="container d-flex align-items-center">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">
-                <a href="/ShopList#/ShopList">Products</a>
+                <Link to="/ShopList#/ShopList">Products</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {product?.productName}
@@ -223,18 +230,18 @@ const ProductCenterd = ({ isLoggedIn }) => {
                       </figure>
                       {/* End .product-main-image */}
                       {/* <div id="product-zoom-gallery" className="product-image-gallery">
-                  <a className="product-gallery-item active" href="#" data-image="assets/images/products/single/centered/1.jpg" data-zoom-image="assets/images/products/single/centered/1-big.jpg">
+                  <Link className="product-gallery-item active" to="#" data-image="assets/images/products/single/centered/1.jpg" data-zoom-image="assets/images/products/single/centered/1-big.jpg">
                     <img src="assets/images/products/single/centered/1-small.jpg" alt="product side" />
-                  </a>
-                  <a className="product-gallery-item" href="#" data-image="assets/images/products/single/centered/2.jpg" data-zoom-image="assets/images/products/single/centered/2-big.jpg">
+                  </Link>
+                  <Link className="product-gallery-item" to="#" data-image="assets/images/products/single/centered/2.jpg" data-zoom-image="assets/images/products/single/centered/2-big.jpg">
                     <img src="assets/images/products/single/centered/2-small.jpg" alt="product cross" />
-                  </a>
-                  <a className="product-gallery-item" href="#" data-image="assets/images/products/single/centered/3.jpg" data-zoom-image="assets/images/products/single/centered/3-big.jpg">
+                  </Link>
+                  <Link className="product-gallery-item" to="#" data-image="assets/images/products/single/centered/3.jpg" data-zoom-image="assets/images/products/single/centered/3-big.jpg">
                     <img src="assets/images/products/single/centered/3-small.jpg" alt="product with model" />
-                  </a>
-                  <a className="product-gallery-item" href="#" data-image="assets/images/products/single/centered/4.jpg" data-zoom-image="assets/images/products/single/centered/4-big.jpg">
+                  </Link>
+                  <Link className="product-gallery-item" to="#" data-image="assets/images/products/single/centered/4.jpg" data-zoom-image="assets/images/products/single/centered/4-big.jpg">
                     <img src="assets/images/products/single/centered/4-small.jpg" alt="product back" />
-                  </a>
+                  </Link>
                 </div> */}
                     </div>
                     {/* End .row */}
@@ -252,13 +259,13 @@ const ProductCenterd = ({ isLoggedIn }) => {
                           style={{ width: `${(product?.rating / 5) * 100}%` }}
                         />
                       </div>
-                      <a
+                      <Link
                         className="ratings-text"
-                        href="#product-review-link"
+                        to="#product-review-link"
                         id="review-link"
                       >
                         ( {product?.rating} Reviews )
-                      </a>
+                      </Link>
                     </div>
                     <div className="product-price">₹{product?.price}</div>
                     <div className="product-content">
@@ -270,7 +277,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
                         <label>Color:</label>
                         <div className="product-nav product-nav-dots cursor-pointer">
                         {product?.colour?.map((color, index) => (
-  <a
+  <Link
     key={index}
     onClick={(e) => {
       e.preventDefault();
@@ -300,7 +307,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
       </span>
     )}
     <span className="sr-only">{color}</span>
-  </a>
+  </Link>
 ))}
 
                         </div>
@@ -350,14 +357,14 @@ const ProductCenterd = ({ isLoggedIn }) => {
                         className="details-action-col "
                         onClick={isAddedToCart ? goToCart : handleAddToCart}
                       >
-                        <a className="btn-product btn-cart cursor-pointer">
+                        <Link className="btn-product btn-cart cursor-pointer">
                           <span>
                             {isAddedToCart ? "Go to Cart" : "Add to Cart"}
                           </span>
-                        </a>
+                        </Link>
                       </div>
                       <div className="details-action-wrapper">
-                        <a
+                        <Link
                           onClick={
                             isAddedToWish ? handleGoToWishlist : handleAddToWish
                           }
@@ -369,48 +376,48 @@ const ProductCenterd = ({ isLoggedIn }) => {
                               ? "Go to Wishlist"
                               : "Add to Wishlist"}
                           </span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="product-details-footer">
                       <div className="product-cat">
                         <span>Category:</span>
-                        <a href="#">{product?.productCategory}</a>
+                        <Link to="#">{product?.productCategory}</Link>
                       </div>
                       <div className="social-icons social-icons-sm">
                         <span className="social-label">Share:</span>
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="social-icon"
                           title="Facebook"
                           target="_blank"
                         >
                           <i className="icon-facebook-f" />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="social-icon"
                           title="Twitter"
                           target="_blank"
                         >
                           <i className="icon-twitter" />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="social-icon"
                           title="Instagram"
                           target="_blank"
                         >
                           <i className="icon-instagram" />
-                        </a>
-                        <a
-                          href="#"
+                        </Link>
+                        <Link
+                          to="#"
                           className="social-icon"
                           title="Pinterest"
                           target="_blank"
                         >
                           <i className="icon-pinterest" />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -513,12 +520,12 @@ const ProductCenterd = ({ isLoggedIn }) => {
                     <p>
                       We deliver to over 100 countries around the world. For
                       full details of the delivery options we offer, please view
-                      our <a href="#">Delivery information</a>
+                      our <Link to="#">Delivery information</Link>
                       <br />
                       We hope you’ll love every purchase, but if you ever need
                       to return an item you can do so within a month of receipt.
                       For full details of how to make a return, please view our{" "}
-                      <a href="#">Returns information</a>
+                      <Link to="#">Returns information</Link>
                     </p>
                   </div>
                   {/* End .product-desc-content */}
@@ -539,7 +546,7 @@ const ProductCenterd = ({ isLoggedIn }) => {
                           <div className="row no-gutters">
                             <div className="col-auto">
                               <h4>
-                                <a href="#">{review.userId.name}</a>
+                                <Link to="#">{review.userId.name}</Link>
                               </h4>
                               <div className="ratings-container">
                                 <div className="ratings">
@@ -670,11 +677,12 @@ const ProductCenterd = ({ isLoggedIn }) => {
                                 Sale
                               </span>
                             )}
-                            <a
-                              href={`/#/ProductCenterd/${generateSlug(
+                            <Link
+                              to={`/ProductCenterd/${generateSlug(
                                 product?.productName,
                                 product?._id
                               )}`}
+                              onClick={handleRefresh}
                             >
                               <img
                                 src={product.mainImage}
@@ -688,47 +696,47 @@ const ProductCenterd = ({ isLoggedIn }) => {
                                   className="product-image-hover"
                                 />
                               )}
-                            </a>
+                            </Link>
                             <div
                               className="product-action-vertical"
                               onClick={() => handleAddToWish(product?._id)}
                               
                             >
-                              <a
-                                href="/Wishlist"
+                              <Link
+                                to="/Wishlist"
                                 className="btn-product-icon btn-wishlist btn-expandable"
                                 style={{cursor:"pointer"}}
                               >
                                 <span>add to wishlist</span>
-                              </a>
+                              </Link>
                             </div>
                             <div className="product-action ">
-                              <a
-                                href={`/#/ProductCenterd/${generateSlug(
+                              <Link
+                                to={`/ProductCenterd/${generateSlug(
                                   product?.productName,
                                   product?._id
                                 )}`}
+                                onClick={handleRefresh}
                                 className="btn-product btn-cart"
                               >
                                 <span>Buy Now</span>
-                              </a>
+                              </Link>
                             </div>
                           </figure>
                           <div className="product-body">
                             <div className="product-cat">
-                              <a href={`/category/${product.productCategory}`}>
                                 {product.productCategory}
-                              </a>
                             </div>
                             <h3 className="product-title">
-                              <a
-                                href={`/#/ProductCenterd/${generateSlug(
+                              <Link
+                                to={`/ProductCenterd/${generateSlug(
                                   product?.productName,
                                   product?._id
                                 )}`}
+                                onClick={handleRefresh}
                               >
                                 {product.productName}
-                              </a>
+                              </Link>
                             </h3>
                             <div className="product-price">
                               <span className="new-price">

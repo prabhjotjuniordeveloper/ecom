@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { allWish } from "../../Api/product/getWish";
 import { delWish } from "../../Api/product/delWish";
-
+import { Link } from "react-router-dom";
 const Wishlist = () => {
   const [wish, setWish] = useState([]);
   const generateSlug = (name, id) => {
@@ -50,10 +50,10 @@ const handleRemoveItem = async (id) => {
           <div className="container">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">
-                <a href="/#/shoplist">Shop</a>
+                <Link to="/shoplist">Shop</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 Wishlist
@@ -81,13 +81,13 @@ const handleRemoveItem = async (id) => {
                     <td className="product-col">
                       <div className="product">
                         <figure className="product-media">
-                          <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`}>
+                          <Link to={`/ProductCenterd/${generateSlug(item.productName, item._id)}`}>
                             <img src={item.mainImage} alt="Product image" />
-                          </a>
+                          </Link>
                         </figure>
 
                         <h3 className="product-title">
-                          <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`}>{item.productName}</a>
+                          <Link to={`/ProductCenterd/${generateSlug(item.productName, item._id)}`}>{item.productName}</Link>
                         </h3>
                       </div>
                     </td>
@@ -101,9 +101,9 @@ const handleRemoveItem = async (id) => {
                     </td>
                     <td className="action-col">
                       {item.stock > 0 ? (
-                        <a href={`/#/ProductCenterd/${generateSlug(item.productName, item._id)}`} className="btn btn-block btn-outline-primary-2" >
+                        <Link to={`/ProductCenterd/${generateSlug(item.productName, item._id)}`} className="btn btn-block btn-outline-primary-2" >
                           <i className="icon-cart-plus"></i>Add to Cart
-                        </a>
+                        </Link>
                       ) : (
                         <button className="btn btn-block btn-outline-primary-2 disabled">
                           Out of Stock

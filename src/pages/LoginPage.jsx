@@ -167,10 +167,10 @@ const Login = ({ setIsLoggedIn }) => {
                         <div className="form-tab">
                             <ul className="nav nav-pills nav-fill" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</a>
+                                    <Link className="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="false">Sign In</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</a>
+                                    <Link className="nav-link" id="register-tab-2" data-toggle="tab" href="#register-2" role="tab" aria-controls="register-2" aria-selected="true">Register</Link>
                                 </li>
                             </ul>
                             <div className="tab-content">
@@ -210,7 +210,7 @@ const Login = ({ setIsLoggedIn }) => {
                                                 <input type="checkbox" className="custom-control-input" id="signin-remember-2" />
                                                 <label className="custom-control-label" htmlFor="signin-remember-2">Remember Me</label>
                                             </div>
-                                            <a href="#" className="forgot-link">Forgot Your Password?</a>
+                                            <Link to="#" className="forgot-link">Forgot Your Password?</Link>
                                         </div>
                                         <div style={{ textAlign: "center", marginTop: "20px" }}>
                                         <button className="btn btn-danger" onClick={googleLogin}>
@@ -279,7 +279,7 @@ const Login = ({ setIsLoggedIn }) => {
                                             <div className="custom-control custom-checkbox">
                                                 <input type="checkbox" className="custom-control-input" id="register-policy-2" required />
                                                 <label className="custom-control-label" htmlFor="register-policy-2">
-                                                    I agree to the <a href="#">privacy policy</a> *
+                                                    I agree to the <Link to="#">privacy policy</Link> *
                                                 </label>
                                             </div>
                                         </div>
@@ -316,7 +316,7 @@ const Login = ({ setIsLoggedIn }) => {
         //                     <Link to="/">Home</Link>
         //                 </li>
         //                 <li className="breadcrumb-item">
-        //                     <a href="#">Pages</a>
+        //                     <Link to="#">Pages</Link>
         //                 </li>
         //                 <li className="breadcrumb-item active" aria-current="page">
         //                     Login
@@ -344,7 +344,7 @@ const Login = ({ setIsLoggedIn }) => {
         //                                 aria-selected="false"
         //                             >
         //                                 Sign In
-        //                             </a>
+        //                             </Link>
         //                         </li>
         //                         <li className="nav-item">
         //                             <a
@@ -357,7 +357,7 @@ const Login = ({ setIsLoggedIn }) => {
         //                                 aria-selected="true"
         //                             >
         //                                 Register
-        //                             </a>
+        //                             </Link>
         //                         </li>
         //                     </ul>
 
@@ -378,9 +378,9 @@ const Login = ({ setIsLoggedIn }) => {
         //                                         <span>LOG IN</span>
         //                                         <i className="icon-long-arrow-right"></i>
         //                                     </button>
-        //                                     <a href="#" className="forgot-link">
+        //                                     <Link to="#" className="forgot-link">
         //                                         Forgot Your Password?
-        //                                     </a>
+        //                                     </Link>
         //                                 </div>
         //                             </form>
         //                         </div>

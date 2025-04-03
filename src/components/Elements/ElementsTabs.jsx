@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const ElementsTabs = () => {
   return (
     <div>
@@ -14,8 +14,8 @@ const ElementsTabs = () => {
   <nav aria-label="breadcrumb" className="breadcrumb-nav">
     <div className="container">
       <ol className="breadcrumb">
-        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li className="breadcrumb-item"><a href="elements-list.html">Elements</a></li>
+        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+        <li className="breadcrumb-item"><Link to="elements-list.html">Elements</Link></li>
         <li className="breadcrumb-item active" aria-current="page">Tabs</li>
       </ol>
     </div>{/* End .container */}
@@ -29,16 +29,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-tabs nav-tabs-bg" id="tabs-1" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-4-tab" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-4-tab" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content tab-content-border" id="tab-content-1">
@@ -59,16 +59,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-tabs" id="tabs-2" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-5-tab" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-5-tab" data-toggle="tab" href="#tab-5" role="tab" aria-controls="tab-5" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-6-tab" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-6-tab" data-toggle="tab" href="#tab-6" role="tab" aria-controls="tab-6" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-7-tab" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-7-tab" data-toggle="tab" href="#tab-7" role="tab" aria-controls="tab-7" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-8-tab" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-8-tab" data-toggle="tab" href="#tab-8" role="tab" aria-controls="tab-8" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content tab-content-border" id="tab-content-2">
@@ -95,16 +95,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-tabs nav-tabs-bg justify-content-center" id="tabs-3" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-9-tab" data-toggle="tab" href="#tab-9" role="tab" aria-controls="tab-9" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-9-tab" data-toggle="tab" href="#tab-9" role="tab" aria-controls="tab-9" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-10-tab" data-toggle="tab" href="#tab-10" role="tab" aria-controls="tab-10" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-10-tab" data-toggle="tab" href="#tab-10" role="tab" aria-controls="tab-10" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-11-tab" data-toggle="tab" href="#tab-11" role="tab" aria-controls="tab-11" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-11-tab" data-toggle="tab" href="#tab-11" role="tab" aria-controls="tab-11" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-12-tab" data-toggle="tab" href="#tab-12" role="tab" aria-controls="tab-12" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-12-tab" data-toggle="tab" href="#tab-12" role="tab" aria-controls="tab-12" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content tab-content-border" id="tab-content-3">
@@ -125,16 +125,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-tabs justify-content-center" id="tabs-4" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-13-tab" data-toggle="tab" href="#tab-13" role="tab" aria-controls="tab-13" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-13-tab" data-toggle="tab" href="#tab-13" role="tab" aria-controls="tab-13" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-14-tab" data-toggle="tab" href="#tab-14" role="tab" aria-controls="tab-14" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-14-tab" data-toggle="tab" href="#tab-14" role="tab" aria-controls="tab-14" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-15-tab" data-toggle="tab" href="#tab-15" role="tab" aria-controls="tab-15" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-15-tab" data-toggle="tab" href="#tab-15" role="tab" aria-controls="tab-15" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-16-tab" data-toggle="tab" href="#tab-16" role="tab" aria-controls="tab-16" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-16-tab" data-toggle="tab" href="#tab-16" role="tab" aria-controls="tab-16" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content tab-content-border" id="tab-content-4">
@@ -161,16 +161,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-pills" id="tabs-5" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-17-tab" data-toggle="tab" href="#tab-17" role="tab" aria-controls="tab-17" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-17-tab" data-toggle="tab" href="#tab-17" role="tab" aria-controls="tab-17" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-18-tab" data-toggle="tab" href="#tab-18" role="tab" aria-controls="tab-18" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-18-tab" data-toggle="tab" href="#tab-18" role="tab" aria-controls="tab-18" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-19-tab" data-toggle="tab" href="#tab-19" role="tab" aria-controls="tab-19" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-19-tab" data-toggle="tab" href="#tab-19" role="tab" aria-controls="tab-19" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-20-tab" data-toggle="tab" href="#tab-20" role="tab" aria-controls="tab-20" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-20-tab" data-toggle="tab" href="#tab-20" role="tab" aria-controls="tab-20" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content" id="tab-content-5">
@@ -191,16 +191,16 @@ const ElementsTabs = () => {
         <div className="col-md-6">
           <ul className="nav nav-pills justify-content-center" id="tabs-6" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" id="tab-21-tab" data-toggle="tab" href="#tab-21" role="tab" aria-controls="tab-21" aria-selected="true">Tab 1</a>
+              <Link className="nav-link active" id="tab-21-tab" data-toggle="tab" href="#tab-21" role="tab" aria-controls="tab-21" aria-selected="true">Tab 1</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-22-tab" data-toggle="tab" href="#tab-22" role="tab" aria-controls="tab-22" aria-selected="false">Tab 2</a>
+              <Link className="nav-link" id="tab-22-tab" data-toggle="tab" href="#tab-22" role="tab" aria-controls="tab-22" aria-selected="false">Tab 2</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-23-tab" data-toggle="tab" href="#tab-23" role="tab" aria-controls="tab-23" aria-selected="false">Tab 3</a>
+              <Link className="nav-link" id="tab-23-tab" data-toggle="tab" href="#tab-23" role="tab" aria-controls="tab-23" aria-selected="false">Tab 3</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" id="tab-24-tab" data-toggle="tab" href="#tab-24" role="tab" aria-controls="tab-24" aria-selected="false">Tab 4</a>
+              <Link className="nav-link" id="tab-24-tab" data-toggle="tab" href="#tab-24" role="tab" aria-controls="tab-24" aria-selected="false">Tab 4</Link>
             </li>
           </ul>
           <div className="tab-content" id="tab-content-6">
@@ -228,16 +228,16 @@ const ElementsTabs = () => {
           <div className="tabs-vertical">
             <ul className="nav nav-tabs nav-tabs-bg flex-column" id="tabs-7" role="tablist">
               <li className="nav-item">
-                <a className="nav-link active" id="tab-25-tab" data-toggle="tab" href="#tab-25" role="tab" aria-controls="tab-25" aria-selected="true">Tab 1</a>
+                <Link className="nav-link active" id="tab-25-tab" data-toggle="tab" href="#tab-25" role="tab" aria-controls="tab-25" aria-selected="true">Tab 1</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-26-tab" data-toggle="tab" href="#tab-26" role="tab" aria-controls="tab-26" aria-selected="false">Tab 2</a>
+                <Link className="nav-link" id="tab-26-tab" data-toggle="tab" href="#tab-26" role="tab" aria-controls="tab-26" aria-selected="false">Tab 2</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-27-tab" data-toggle="tab" href="#tab-27" role="tab" aria-controls="tab-27" aria-selected="false">Tab 3</a>
+                <Link className="nav-link" id="tab-27-tab" data-toggle="tab" href="#tab-27" role="tab" aria-controls="tab-27" aria-selected="false">Tab 3</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-28-tab" data-toggle="tab" href="#tab-28" role="tab" aria-controls="tab-28" aria-selected="false">Tab 4</a>
+                <Link className="nav-link" id="tab-28-tab" data-toggle="tab" href="#tab-28" role="tab" aria-controls="tab-28" aria-selected="false">Tab 4</Link>
               </li>
             </ul>
             <div className="tab-content tab-content-border" id="tab-content-7">
@@ -260,16 +260,16 @@ const ElementsTabs = () => {
           <div className="tabs-vertical">
             <ul className="nav nav-tabs flex-column" id="tabs-8" role="tablist">
               <li className="nav-item">
-                <a className="nav-link active" id="tab-29-tab" data-toggle="tab" href="#tab-29" role="tab" aria-controls="tab-29" aria-selected="true">Tab 1</a>
+                <Link className="nav-link active" id="tab-29-tab" data-toggle="tab" href="#tab-29" role="tab" aria-controls="tab-29" aria-selected="true">Tab 1</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-30-tab" data-toggle="tab" href="#tab-30" role="tab" aria-controls="tab-30" aria-selected="false">Tab 2</a>
+                <Link className="nav-link" id="tab-30-tab" data-toggle="tab" href="#tab-30" role="tab" aria-controls="tab-30" aria-selected="false">Tab 2</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-31-tab" data-toggle="tab" href="#tab-31" role="tab" aria-controls="tab-31" aria-selected="false">Tab 3</a>
+                <Link className="nav-link" id="tab-31-tab" data-toggle="tab" href="#tab-31" role="tab" aria-controls="tab-31" aria-selected="false">Tab 3</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" id="tab-32-tab" data-toggle="tab" href="#tab-32" role="tab" aria-controls="tab-32" aria-selected="false">Tab 4</a>
+                <Link className="nav-link" id="tab-32-tab" data-toggle="tab" href="#tab-32" role="tab" aria-controls="tab-32" aria-selected="false">Tab 4</Link>
               </li>
             </ul>
             <div className="tab-content tab-content-border" id="tab-content-8">
@@ -295,130 +295,130 @@ const ElementsTabs = () => {
   <div className="container mb-5">
     <div className="row elements">
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-accordions.html" className="element-type">
+        <Link to="elements-accordions.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>accordions</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-banners.html" className="element-type">
+        <Link to="elements-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>banners</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-blog-posts.html" className="element-type">
+        <Link to="elements-blog-posts.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>blog posts</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-buttons.html" className="element-type">
+        <Link to="elements-buttons.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>buttons</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-cta.html" className="element-type">
+        <Link to="elements-cta.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>call to action</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-icon-boxes.html" className="element-type">
+        <Link to="elements-icon-boxes.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>icon boxes</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-portfolio.html" className="element-type">
+        <Link to="elements-portfolio.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>portfolio</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-product-category.html" className="element-type">
+        <Link to="elements-product-category.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>product catigories</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-products.html" className="element-type">
+        <Link to="elements-products.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>products</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-tabs.html" className="element-type">
+        <Link to="elements-tabs.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>tabs</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-testimonials.html" className="element-type">
+        <Link to="elements-testimonials.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>testimonials</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-titles.html" className="element-type">
+        <Link to="elements-titles.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>titles</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-typography.html" className="element-type">
+        <Link to="elements-typography.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>typography</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-video-banners.html" className="element-type">
+        <Link to="elements-video-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>video</p>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   </div>{/* End Elements list */}

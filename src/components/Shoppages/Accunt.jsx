@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import { Navigate, useNavigate } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 const Account = () => {
     const [activeTab, setActiveTab] = useState('dashboard');
     const navigate = useNavigate();
@@ -34,8 +34,8 @@ const Account = () => {
             <nav aria-label="breadcrumb" className="breadcrumb-nav mb-3">
                 <div className="container">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                        <li className="breadcrumb-item"><Link to="#">Shop</Link></li>
                         <li className="breadcrumb-item active" aria-current="page">My Account</li>
                     </ol>
                 </div>
@@ -48,29 +48,29 @@ const Account = () => {
                             <aside className="col-md-4 col-lg-3">
                                 <ul className="nav nav-dashboard flex-column mb-3 mb-md-0">
                                     <li className="nav-item">
-                                        <a className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => handleTabChange('dashboard')}>
+                                        <Link className={`nav-link ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => handleTabChange('dashboard')}>
                                             Dashboard
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>
+                                        <Link className={`nav-link ${activeTab === 'orders' ? 'active' : ''}`} onClick={() => handleTabChange('orders')}>
                                             Orders
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${activeTab === 'downloads' ? 'active' : ''}`} onClick={() => handleTabChange('downloads')}>
+                                        <Link className={`nav-link ${activeTab === 'downloads' ? 'active' : ''}`} onClick={() => handleTabChange('downloads')}>
                                             Downloads
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${activeTab === 'address' ? 'active' : ''}`} onClick={() => handleTabChange('address')}>
+                                        <Link className={`nav-link ${activeTab === 'address' ? 'active' : ''}`} onClick={() => handleTabChange('address')}>
                                             Addresses
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${activeTab === 'account' ? 'active' : ''}`} onClick={() => handleTabChange('account')}>
+                                        <Link className={`nav-link ${activeTab === 'account' ? 'active' : ''}`} onClick={() => handleTabChange('account')}>
                                             Account Details
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
                                         <button className="nav-link" onClick={handleLogin}>Sign Out</button>
@@ -82,25 +82,25 @@ const Account = () => {
                                 <div className="tab-content">
                                     {activeTab === 'dashboard' && (
                                         <div className="tab-pane fade show active">
-                                            <p>Hello <span className="font-weight-normal text-dark">User</span> (not <span className="font-weight-normal text-dark">User</span>? <a href="#">Log out</a>) 
+                                            <p>Hello <span className="font-weight-normal text-dark">User</span> (not <span className="font-weight-normal text-dark">User</span>? <Link to="#">Log out</Link>) 
                                             <br />
-                                            From your account dashboard you can view your <a href="#" className="tab-trigger-link link-underline">recent orders</a>, manage your <a href="#" className="tab-trigger-link">shipping and billing addresses</a>, and <a href="#" className="tab-trigger-link">edit your password and account details</a>.</p>
+                                            From your account dashboard you can view your <Link to="#" className="tab-trigger-link link-underline">recent orders</Link>, manage your <Link to="#" className="tab-trigger-link">shipping and billing addresses</Link>, and <Link to="#" className="tab-trigger-link">edit your password and account details</Link>.</p>
                                         </div>
                                     )}
                                     {activeTab === 'orders' && (
                                         <div className="tab-pane fade">
                                             <p>No order has been made yet.</p>
-                                            <a href="category.html" className="btn btn-outline-primary-2">
+                                            <Link to="category.html" className="btn btn-outline-primary-2">
                                                 <span>GO SHOP</span><i className="icon-long-arrow-right"></i>
-                                            </a>
+                                            </Link>
                                         </div>
                                     )}
                                     {activeTab === 'downloads' && (
                                         <div className="tab-pane fade">
                                             <p>No downloads available yet.</p>
-                                            <a href="category.html" className="btn btn-outline-primary-2">
+                                            <Link to="category.html" className="btn btn-outline-primary-2">
                                                 <span>GO SHOP</span><i className="icon-long-arrow-right"></i>
-                                            </a>
+                                            </Link>
                                         </div>
                                     )}
                                     {activeTab === 'address' && (
@@ -118,7 +118,7 @@ const Account = () => {
                                                                 New York, NY 10001<br />
                                                                 1-234-987-6543<br />
                                                                 yourmail@mail.com<br />
-                                                                <a href="#">Edit <i className="icon-edit"></i></a>
+                                                                <Link to="#">Edit <i className="icon-edit"></i></Link>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -129,7 +129,7 @@ const Account = () => {
                                                             <h3 className="card-title">Shipping Address</h3>
                                                             <p>
                                                                 You have not set up this type of address yet.<br />
-                                                                <a href="#">Edit <i className="icon-edit"></i></a>
+                                                                <Link to="#">Edit <i className="icon-edit"></i></Link>
                                                             </p>
                                                         </div>
                                                     </div>

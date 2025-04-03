@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const NoWidth = () => {
   return (
     <div>
@@ -7,8 +7,8 @@ const NoWidth = () => {
         <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
           <div className="container">
             <ol className="breadcrumb">
-              <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li className="breadcrumb-item"><a href="#">Blog</a></li>
+              <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+              <li className="breadcrumb-item"><Link to="#">Blog</Link></li>
               <li className="breadcrumb-item active" aria-current="page">Fullwidth</li>
             </ol>
           </div>
@@ -29,12 +29,12 @@ const NoWidth = () => {
                     {/* Article Meta Data */}
                     <div className="entry-meta">
                       <span className="entry-author">
-                        by <a href="#">John Doe</a>
+                        by <Link to="#">John Doe</Link>
                       </span>
                       <span className="meta-separator">|</span>
-                      <a href="#">Nov 22, 2018</a>
+                      <Link to="#">Nov 22, 2018</Link>
                       <span className="meta-separator">|</span>
-                      <a href="#">2 Comments</a>
+                      <Link to="#">2 Comments</Link>
                     </div>
 
                     <h2 className="entry-title entry-title-big">
@@ -42,7 +42,7 @@ const NoWidth = () => {
                     </h2>
 
                     <div className="entry-cats">
-                      in <a href="#">Travel</a>
+                      in <Link to="#">Travel</Link>
                     </div>
 
                     <div className="entry-content editor-content">
@@ -58,7 +58,7 @@ const NoWidth = () => {
                     <div className="entry-footer row no-gutters">
                       <div className="col">
                         <div className="entry-tags">
-                          <span>Tags:</span> <a href="#">photography</a> <a href="#">style</a>
+                          <span>Tags:</span> <Link to="#">photography</Link> <Link to="#">style</Link>
                         </div>
                       </div>
                     </div>
@@ -70,10 +70,10 @@ const NoWidth = () => {
                   <div className="sticky-content">
                     <div className="social-icons social-icons-colored social-icons-vertical">
                       <span className="social-label">SHARE:</span>
-                      <a href="#" className="social-icon social-facebook" title="Facebook"><i className="icon-facebook-f"></i></a>
-                      <a href="#" className="social-icon social-twitter" title="Twitter"><i className="icon-twitter"></i></a>
-                      <a href="#" className="social-icon social-pinterest" title="Pinterest"><i className="icon-pinterest"></i></a>
-                      <a href="#" className="social-icon social-linkedin" title="Linkedin"><i className="icon-linkedin"></i></a>
+                      <Link to="#" className="social-icon social-facebook" title="Facebook"><i className="icon-facebook-f"></i></Link>
+                      <Link to="#" className="social-icon social-twitter" title="Twitter"><i className="icon-twitter"></i></Link>
+                      <Link to="#" className="social-icon social-pinterest" title="Pinterest"><i className="icon-pinterest"></i></Link>
+                      <Link to="#" className="social-icon social-linkedin" title="Linkedin"><i className="icon-linkedin"></i></Link>
                     </div>
                   </div>
                 </div>
@@ -82,12 +82,12 @@ const NoWidth = () => {
               {/* Author Section */}
               <div className="entry-author-details">
                 <figure className="author-media">
-                  <a href="#">
+                  <Link to="#">
                     <img src="assets/images/blog/single/author.jpg" alt="User name" />
-                  </a>
+                  </Link>
                 </figure>
                 <div className="author-body">
-                  <h4><a href="#">John Doe</a></h4>
+                  <h4><Link to="#">John Doe</Link></h4>
                   <p>Praesent dapibus, neque id cursus faucibus...</p>
                 </div>
               </div>
@@ -95,12 +95,12 @@ const NoWidth = () => {
 
             {/* Navigation and Related Posts */}
             <nav className="pager-nav" aria-label="Page navigation">
-              <a className="pager-link pager-link-prev" href="#" aria-label="Previous">
+              <Link className="pager-link pager-link-prev" href="#" aria-label="Previous">
                 Previous Post <span className="pager-link-title">Cras iaculis ultricies nulla</span>
-              </a>
-              <a className="pager-link pager-link-next" href="#" aria-label="Next">
+              </Link>
+              <Link className="pager-link pager-link-next" href="#" aria-label="Next">
                 Next Post <span className="pager-link-title">Praesent placerat risus</span>
-              </a>
+              </Link>
             </nav>
             
             {/* Related Posts */}

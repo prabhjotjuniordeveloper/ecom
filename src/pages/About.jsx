@@ -1,12 +1,12 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <main className="main">
       <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
         <div className="container">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item"><a href="/">Home</a></li>
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
             <li className="breadcrumb-item active" aria-current="page">About us</li>
           </ol>
         </div>
@@ -42,10 +42,10 @@ const About = () => {
                 <p className="lead text-primary mb-3">Pellentesque odio nisi, euismod pharetra a ultricies <br />in diam. Sed arcu. Cras consequat</p>
                 <p className="mb-2">Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, luctus metus libero eu augue.</p>
 
-                <a href="blog.html" className="btn btn-sm btn-minwidth btn-outline-primary-2">
+                <Link to="blog.html" className="btn btn-sm btn-minwidth btn-outline-primary-2">
                   <span>VIEW OUR NEWS</span>
                   <i className="icon-long-arrow-right"></i>
-                </a>
+                </Link>
               </div>
 
               <div className="col-lg-6 offset-lg-1">
@@ -71,9 +71,9 @@ const About = () => {
                 <div className="row justify-content-center">
                   {[...Array(9)].map((_, index) => (
                     <div className="col-6 col-sm-4" key={index}>
-                      <a href="#" className="brand">
+                      <Link to="#" className="brand">
                         <img src={`assets/images/brands/${index + 1}.png`} alt={`Brand ${index + 1}`} />
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -100,9 +100,9 @@ const About = () => {
                         <h3 className="member-title">{member.name}<span>{member.position}</span></h3>
                         <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p>
                         <div className="social-icons social-icons-simple">
-                          <a href="#" className="social-icon" title="Facebook" target="_blank"><i className="icon-facebook-f"></i></a>
-                          <a href="#" className="social-icon" title="Twitter" target="_blank"><i className="icon-twitter"></i></a>
-                          <a href="#" className="social-icon" title="Instagram" target="_blank"><i className="icon-instagram"></i></a>
+                          <Link to="#" className="social-icon" title="Facebook" target="_blank"><i className="icon-facebook-f"></i></Link>
+                          <Link to="#" className="social-icon" title="Twitter" target="_blank"><i className="icon-twitter"></i></Link>
+                          <Link to="#" className="social-icon" title="Instagram" target="_blank"><i className="icon-instagram"></i></Link>
                         </div>
                       </div>
                     </figcaption>

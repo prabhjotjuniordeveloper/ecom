@@ -197,10 +197,10 @@ useEffect(() => {
                             <h1 class="intro-title">Summer<br/><strong>sale</strong></h1>
                             <h3 class="intro-subtitle">Up to 50% off</h3>
 
-                            <a href="category.html" class="btn">
+                            <Link to="/shoplist" class="btn">
                                 <span>SHOP NOW</span>
                                 <i class="icon-long-arrow-right"></i>
-                            </a>
+                            </Link>
                         </div>
                         {/* <img class="position-right" src="assets/images/demos/demo-8/slider/img-1.png"/> */}
                         {/* <img class="position-right" src={heroSection.All_Hero_Sections[0]?.image} style={{width:'768px' , height:'1103px'}}/> */}
@@ -218,10 +218,10 @@ useEffect(() => {
                             <h3 class="intro-subtitle">PREMIUM QUALITY</h3>
                             <h1 class="intro-title">coats <span class="highlight">&</span><br/>jackets</h1>
 
-                            <a href="category.html" class="btn">
+                            <Link to="/shoplist" class="btn">
                                 <span>SHOP NOW</span>
                                 <i class="icon-long-arrow-right"></i>
-                            </a>
+                            </Link>
                         </div>
                         {/* <img class="position-left" src="assets/images/demos/demo-8/slider/img-2.png"/> */}
                         {heroSection.All_Hero_Sections && heroSection.All_Hero_Sections[1] && heroSection.All_Hero_Sections[1].image && (
@@ -243,37 +243,37 @@ useEffect(() => {
         <div className="row">
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
-              <a href="#/shoplist">
+              <Link to="/shoplist">
                 <img src={saleSection[0]?.image1.path || "assets/images/demos/demo-8/banners/banner-1.jpg"} alt="Banner" />
-              </a>
+              </Link>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a >Final reduction</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#/shoplist"><strong>Sandals &amp; <br />Flip Flops</strong> <br />up to 60% off</a></h3>{/* End .banner-title */}
-                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><Link >Final reduction</Link></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><Link to="/shoplist"><strong>Sandals &amp; <br />Flip Flops</strong> <br />up to 60% off</Link></h3>{/* End .banner-title */}
+                <Link to="/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></Link>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
           <div className="col-sm-6 col-lg-4">
             <div className="banner banner-overlay">
-              <a href="#/shoplist">
+              <Link to="/shoplist">
                 <img src={saleSection[0]?.image2.path ||"assets/images/demos/demo-8/banners/banner-2.jpg"} alt="Banner" />
-              </a>
+              </Link>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a href="#/shoplist">Limited time only.</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#/shoplist"><strong>Trainers &amp; <br />Sportwear</strong> <br />40 -70% off</a></h3>{/* End .banner-title */}
-                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><Link to="/shoplist">Limited time only.</Link></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><Link to="/shoplist"><strong>Trainers &amp; <br />Sportwear</strong> <br />40 -70% off</Link></h3>{/* End .banner-title */}
+                <Link to="/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></Link>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
           <div className="col-sm-6 col-lg-4 d-none d-lg-block">
             <div className="banner banner-overlay">
-              <a href="#/shoplist">
+              <Link to="/shoplist">
                 <img src={saleSection[0]?.image3.path||"assets/images/demos/demo-8/banners/banner-3.jpg"}  alt="Banner" />
-              </a>
+              </Link>
               <div className="banner-content">
-                <h4 className="banner-subtitle"><a href="#/shoplist">This week we love...</a></h4>{/* End .banner-subtitle */}
-                <h3 className="banner-title"><a href="#/shoplist"><strong>Women's <br />Accessories </strong> <br />from ₹699</a></h3>{/* End .banner-title */}
-                <a href="#/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></a>
+                <h4 className="banner-subtitle"><Link to="/shoplist">This week we love...</Link></h4>{/* End .banner-subtitle */}
+                <h3 className="banner-title"><Link to="/shoplist"><strong>Women's <br />Accessories </strong> <br />from ₹699</Link></h3>{/* End .banner-title */}
+                <Link to="/shoplist" className="btn btn-outline-white banner-link">Shop Now <i className="icon-long-arrow-right" /></Link>
               </div>{/* End .banner-content */}
             </div>{/* End .banner */}
           </div>{/* End .col-lg-4 */}
@@ -303,31 +303,31 @@ useEffect(() => {
                       }
                   }">
                     {brands?.All_Brands_section?.map((brand) => (
-    <a href="#" className="brand me-3" key={brand.id}>
+    <Link to="#" className="brand me-3" key={brand.id}>
         <img src={`${brand.image}`} alt={brand.name || "Brand"} className='me-6' />
-    </a>
+    </Link>
 ))}
-        {/* <a href="#" className="brand">
+        {/* <Link to="#" className="brand">
           <img src="assets/images/brands/1.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/2.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/3.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/4.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/5.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/6.png" alt="Brand Name" />
-        </a>
-        <a href="#" className="brand">
+        </Link>
+        <Link to="#" className="brand">
           <img src="assets/images/brands/7.png" alt="Brand Name" />
-        </a> */}
+        </Link> */}
       </div>{/* End .owl-carousel */}
     </div>{/* End .container */}
   </div>{/* End .bg-lighter */}
@@ -376,24 +376,24 @@ useEffect(() => {
                         
           <div className="product product-2">
             <figure className="product-media">
-              <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`}>
                 <img src={featureProducts?.featuredSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
                 <img src={featureProducts?.featuredSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
 
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[0]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[0]?.productName, featureProducts?.featuredSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
 
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a>{featureProducts?.featuredSection[0]?.productCategory}</a>
+                <Link>{featureProducts?.featuredSection[0]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a>{featureProducts?.featuredSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link>{featureProducts?.featuredSection[0]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{featureProducts?.featuredSection[0]?.price}
               </div>{/* End .product-price */}
@@ -402,22 +402,22 @@ useEffect(() => {
           
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`}>
             <img src={featureProducts?.featuredSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={featureProducts?.featuredSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[1]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[1]?.productName, featureProducts?.featuredSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{featureProducts?.featuredSection[1]?.productCategory}</a>
+                <Link to="#">{featureProducts?.featuredSection[1]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a>{featureProducts?.featuredSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link>{featureProducts?.featuredSection[1]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{featureProducts?.featuredSection[1]?.price}
               </div>{/* End .product-price */}
@@ -427,22 +427,22 @@ useEffect(() => {
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`}>
               <img src={featureProducts?.featuredSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={featureProducts?.featuredSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[2]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[2]?.productName, featureProducts?.featuredSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{featureProducts?.featuredSection[2]?.productCategory}</a>
+                <Link to="#">{featureProducts?.featuredSection[2]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a>{featureProducts?.featuredSection[2]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link>{featureProducts?.featuredSection[2]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{featureProducts?.featuredSection[2]?.price}
               </div>{/* End .product-price */}
@@ -451,22 +451,22 @@ useEffect(() => {
 
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`}>
             <img src={featureProducts?.featuredSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={featureProducts?.featuredSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(featureProducts?.featuredSection[3]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(featureProducts?.featuredSection[3]?.productName, featureProducts?.featuredSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{featureProducts?.featuredSection[3]?.productCategory}</a>
+                <Link to="#">{featureProducts?.featuredSection[3]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a>{featureProducts?.featuredSection[3]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link>{featureProducts?.featuredSection[3]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{featureProducts?.featuredSection[3]?.price}
               </div>{/* End .product-price */}
@@ -505,25 +505,25 @@ useEffect(() => {
                         
           <div className="product product-2">
             <figure className="product-media">
-              <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`}>
                 <img src={saleProducts?.onSaleSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
                 <img src={saleProducts?.onSaleSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
 
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[0]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
 
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[0]?.productName, saleProducts?.onSaleSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
 
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a>{saleProducts?.onSaleSection[0]?.productCategory}</a>
+                <Link>{saleProducts?.onSaleSection[0]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{saleProducts?.onSaleSection[0]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{saleProducts?.onSaleSection[0]?.price}
               </div>{/* End .product-price */}
@@ -532,22 +532,22 @@ useEffect(() => {
           
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`}>
             <img src={saleProducts?.onSaleSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={saleProducts?.onSaleSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[1]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[1]?.productName, saleProducts?.onSaleSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{saleProducts?.onSaleSection[1]?.productCategory}</a>
+                <Link to="#">{saleProducts?.onSaleSection[1]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{saleProducts?.onSaleSection[1]?.price}
               </div>{/* End .product-price */}
@@ -557,22 +557,22 @@ useEffect(() => {
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`}>
               <img src={saleProducts?.onSaleSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={saleProducts?.onSaleSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[2]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[2]?.productName, saleProducts?.onSaleSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{saleProducts?.onSaleSection[2]?.productCategory}</a>
+                <Link to="#">{saleProducts?.onSaleSection[2]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[2]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{saleProducts?.onSaleSection[2]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{saleProducts?.onSaleSection[1]?.price}
               </div>{/* End .product-price */}
@@ -581,22 +581,22 @@ useEffect(() => {
 
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`}>
             <img src={saleProducts?.onSaleSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={saleProducts?.onSaleSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(saleProducts?.onSaleSection[3]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(saleProducts?.onSaleSection[3]?.productName, saleProducts?.onSaleSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{saleProducts?.onSaleSection[3]?.productCategory}</a>
+                <Link to="#">{saleProducts?.onSaleSection[3]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{saleProducts?.onSaleSection[1]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{saleProducts?.onSaleSection[3]?.price}
               </div>{/* End .product-price */}
@@ -635,24 +635,24 @@ useEffect(() => {
                         
           <div className="product product-2">
             <figure className="product-media">
-              <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`}>
                 <img src={topProducts?.topRatedSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
                 <img src={topProducts?.topRatedSection[0]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
 
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[0]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[0]?.productName, topProducts?.topRatedSection[0]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
 
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a>{topProducts?.topRatedSection[0]?.productCategory}</a>
+                <Link>{topProducts?.topRatedSection[0]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[0]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{topProducts?.topRatedSection[0]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{topProducts?.topRatedSection[0]?.price}
               </div>{/* End .product-price */}
@@ -661,22 +661,22 @@ useEffect(() => {
           
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`}>
             <img src={topProducts?.topRatedSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={topProducts?.topRatedSection[1]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[1]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[1]?.productName, topProducts?.topRatedSection[1]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{topProducts?.topRatedSection[1]?.productCategory}</a>
+                <Link to="#">{topProducts?.topRatedSection[1]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{topProducts?.topRatedSection[1]?.price}
               </div>{/* End .product-price */}
@@ -686,22 +686,22 @@ useEffect(() => {
           <div className="product product-2">
             <figure className="product-media">
               <span className="product-label label-sale">sale</span>
-              <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`}>
               <img src={topProducts?.topRatedSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={topProducts?.topRatedSection[2]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[2]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[2]?.productName, topProducts?.topRatedSection[2]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{topProducts?.topRatedSection[2]?.productCategory}</a>
+                <Link to="#">{topProducts?.topRatedSection[2]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[2]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{topProducts?.topRatedSection[2]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{topProducts?.topRatedSection[1]?.price}
               </div>{/* End .product-price */}
@@ -710,22 +710,22 @@ useEffect(() => {
 
           <div className="product product-2">
             <figure className="product-media">
-            <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`}>
+            <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`}>
             <img src={topProducts?.topRatedSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-1.jpg"} alt="Product image" className="product-image" />
               <img src={topProducts?.topRatedSection[3]?.mainImage ||"assets/images/demos/demo-8/products/product-1-2.jpg"} alt="Product image" className="product-image-hover" />
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(topProducts?.topRatedSection[3]?._id)}>
-                <a className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></a>
+                <Link className="btn-product-icon btn-wishlist btn-expandable" title="Add to wishlist"><span>add to wishlist</span></Link>
               </div>{/* End .product-action */}
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(topProducts?.topRatedSection[3]?.productName, topProducts?.topRatedSection[3]?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>{/* End .product-media */}
             <div className="product-body">
               <div className="product-cat">
-                <a href="#">{topProducts?.topRatedSection[3]?.productCategory}</a>
+                <Link to="#">{topProducts?.topRatedSection[3]?.productCategory}</Link>
               </div>{/* End .product-cat */}
-              <h3 className="product-title"><a href="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</a></h3>{/* End .product-title */}
+              <h3 className="product-title"><Link to="/ProductExtend">{topProducts?.topRatedSection[1]?.productName}</Link></h3>{/* End .product-title */}
               <div className="product-price">
               ₹{topProducts?.topRatedSection[3]?.price}
               </div>{/* End .product-price */}
@@ -740,15 +740,15 @@ useEffect(() => {
 
   <div className="mb-3 mb-xl-2" />
   <div className="trending">
-    <a href="#">
+    <Link to="#">
       <img src={league[0]?.image} alt="Banner" style={{width:'100%' , height:'454.58px'}} />
-    </a>
+    </Link>
     <div className="banner banner-big d-md-block">
       <div className="banner-content text-center">
         <h4 className="banner-subtitle text-white">Trending</h4>{/* End .banner-subtitle */}
         <h3 className="banner-title text-white">New League</h3>{/* End .banner-title */}
         <p className="d-none d-lg-block text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<br />Donec odio. Quisque volutpat mattis eros. </p> 
-        <a href="/#/shoplist" className="btn btn-primary-white"><span>Shop Now</span><i className="icon-long-arrow-right" /></a>
+        <Link to="//shoplist" className="btn btn-primary-white"><span>Shop Now</span><i className="icon-long-arrow-right" /></Link>
       </div>{/* End .banner-content */}
     </div>{/* End .banner */} 
   </div>
@@ -794,40 +794,40 @@ useEffect(() => {
       <h2 className="title title-lg">Recent Arrivals</h2>{/* End .title */}
       <ul className="nav nav-pills nav-border-anim justify-content-center" role="tablist">
         <li className="nav-item">
-          <a
+          <Link
             className={`nav-link ${selectedTab === "all" ? "active" : ""}`}
-            href="#"
+            to="#"
             onClick={handleTabClick}
           >
             All
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a
+          <Link
             className={`nav-link ${selectedTab === "women" ? "active" : ""}`}
-            href="#"
+            to="#"
             onClick={handleTabClick}
           >
             Women
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a
+          <Link
             className={`nav-link ${selectedTab === "men" ? "active" : ""}`}
-            href="#"
+            to="#"
             onClick={handleTabClick}
           >
             Men
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a
+          <Link
             className={`nav-link ${selectedTab === "shoes & boots" ? "active" : ""}`}
-            href="#"
+            to="#"
             onClick={handleTabClick}
           >
             Shoes &amp; Boots
-          </a>
+          </Link>
         </li>
       </ul>
     </div>{/* End .heading */}
@@ -842,28 +842,28 @@ useEffect(() => {
           <div className="product product-2 text-center">
             <figure className="product-media">
               {product.onSale && <span className="product-label label-sale">Sale</span>}
-              <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>
+              <Link to={`/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>
 
                 <img src={product.mainImage} alt={product.productName} className="product-image" />
                 {product.subImages.length > 0 && (
                   <img src={product.subImages[0]} alt="Product preview" className="product-image-hover" />
                 )}
-              </a>
+              </Link>
               <div className="product-action-vertical" onClick={()=>handleAddToWish(product?._id)}>
-                <a href="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable">
+                <Link to="/Wishlist" className="btn-product-icon btn-wishlist btn-expandable">
                   <span>add to wishlist</span>
-                </a>
+                </Link>
               </div>
               <div className="product-action ">
-                <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></a>
+                <Link to={`/ProductCenterd/${generateSlug(product?.productName, product?._id)}`} className="btn-product btn-cart"><span>Buy Now</span></Link>
               </div>
             </figure>
             <div className="product-body">
               <div className="product-cat">
-                <a href={`/category/${product.productCategory}`}>{product.productCategory}</a>
+                <Link to={`/category/${product.productCategory}`}>{product.productCategory}</Link>
               </div>
               <h3 className="product-title">
-              <a href={`/#/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>{product.productName}</a>
+              <Link to={`/ProductCenterd/${generateSlug(product?.productName, product?._id)}`}>{product.productName}</Link>
               </h3>
               <div className="product-price">
                 <span className="new-price">Now ₹{product.price}</span>
@@ -967,43 +967,43 @@ useEffect(() => {
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/1.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />466</a>
-          <a href="#"><i className="icon-comments" />65</a>
+          <Link to="#"><i className="icon-heart-o" />466</Link>
+          <Link to="#"><i className="icon-comments" />65</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/2.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />39</a>
-          <a href="#"><i className="icon-comments" />78</a>
+          <Link to="#"><i className="icon-heart-o" />39</Link>
+          <Link to="#"><i className="icon-comments" />78</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/3.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />691</a>
-          <a href="#"><i className="icon-comments" />87</a>
+          <Link to="#"><i className="icon-heart-o" />691</Link>
+          <Link to="#"><i className="icon-comments" />87</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/4.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />508</a>
-          <a href="#"><i className="icon-comments" />124</a>
+          <Link to="#"><i className="icon-heart-o" />508</Link>
+          <Link to="#"><i className="icon-comments" />124</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/5.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />433</a>
-          <a href="#"><i className="icon-comments" />27</a>
+          <Link to="#"><i className="icon-heart-o" />433</Link>
+          <Link to="#"><i className="icon-comments" />27</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
       <div className="instagram-feed">
         <img src="assets/images/demos/demo-8/instagram/6.jpg" alt="img" />
         <div className="instagram-feed-content">
-          <a href="#"><i className="icon-heart-o" />122</a>
-          <a href="#"><i className="icon-comments" />55</a>
+          <Link to="#"><i className="icon-heart-o" />122</Link>
+          <Link to="#"><i className="icon-comments" />55</Link>
         </div>{/* End .instagram-feed-content */}
       </div>{/* End .instagram-feed */}
     </div>{/* End .owl-carousel */}

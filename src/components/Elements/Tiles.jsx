@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const Tiles = () => {
   return (
     <div>
@@ -13,8 +13,8 @@ const Tiles = () => {
   <nav aria-label="breadcrumb" className="breadcrumb-nav">
     <div className="container">
       <ol className="breadcrumb">
-        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li className="breadcrumb-item"><a href="elements-list.html">Elements</a></li>
+        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+        <li className="breadcrumb-item"><Link to="elements-list.html">Elements</Link></li>
         <li className="breadcrumb-item active" aria-current="page">Titles</li>
       </ol>
     </div>{/* End .container */}
@@ -37,16 +37,16 @@ const Tiles = () => {
         <div className="heading-right">
           <ul className="nav nav-pills justify-content-center" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</a>
+              <Link className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</Link>
             </li>
           </ul>
         </div>{/* End .heading-right */}
@@ -61,16 +61,16 @@ const Tiles = () => {
         <div className="heading-right">
           <ul className="nav nav-pills justify-content-center" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</a>
+              <Link className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</Link>
             </li>
           </ul>
         </div>{/* End .heading-right */}
@@ -82,7 +82,7 @@ const Tiles = () => {
           <h2 className="title">Simple title <span className="title-separator">/</span> Link</h2>{/* End .title */}
         </div>{/* End .heading-left */}
         <div className="heading-right">
-          <a href="#" className="title-link">Click here to view <i className="icon-long-arrow-right" /></a>
+          <Link to="#" className="title-link">Click here to view <i className="icon-long-arrow-right" /></Link>
         </div>{/* End .heading-right */}
       </div>{/* End .heading */}
       <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
@@ -93,7 +93,7 @@ const Tiles = () => {
           <p className="title-desc">Donec consectetuer ligula vulputate sem tristique cursus. </p>{/* End .title-desc */}
         </div>{/* End .heading-left */}
         <div className="heading-right">
-          <a href="#" className="title-link link-underline">Click here to view <i className="icon-long-arrow-right" /></a>
+          <Link to="#" className="title-link link-underline">Click here to view <i className="icon-long-arrow-right" /></Link>
         </div>{/* End .heading-right */}
       </div>{/* End .heading */}
       <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
@@ -110,16 +110,16 @@ const Tiles = () => {
         <div className="heading-right">
           <ul className="nav nav-pills justify-content-center" role="tablist">
             <li className="nav-item">
-              <a className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</a>
+              <Link className="nav-link active" href="#" data-toggle="tab" role="tab" aria-selected="true">All Products</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Women</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Men</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</a>
+              <Link className="nav-link" href="#" data-toggle="tab" role="tab" aria-selected="false">Accessories</Link>
             </li>
           </ul>
         </div>{/* End .heading-right */}
@@ -151,130 +151,130 @@ const Tiles = () => {
   <div className="container mb-5">
     <div className="row elements">
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-accordions.html" className="element-type">
+        <Link to="elements-accordions.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>accordions</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-banners.html" className="element-type">
+        <Link to="elements-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>banners</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-blog-posts.html" className="element-type">
+        <Link to="elements-blog-posts.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>blog posts</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-buttons.html" className="element-type">
+        <Link to="elements-buttons.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>buttons</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-cta.html" className="element-type">
+        <Link to="elements-cta.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>call to action</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-icon-boxes.html" className="element-type">
+        <Link to="elements-icon-boxes.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>icon boxes</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-portfolio.html" className="element-type">
+        <Link to="elements-portfolio.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>portfolio</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-product-category.html" className="element-type">
+        <Link to="elements-product-category.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>product catigories</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-products.html" className="element-type">
+        <Link to="elements-products.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>products</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-tabs.html" className="element-type">
+        <Link to="elements-tabs.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>tabs</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-testimonials.html" className="element-type">
+        <Link to="elements-testimonials.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>testimonials</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-titles.html" className="element-type">
+        <Link to="elements-titles.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>titles</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-typography.html" className="element-type">
+        <Link to="elements-typography.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>typography</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-video-banners.html" className="element-type">
+        <Link to="elements-video-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>video</p>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   </div>{/* End Elements list */}

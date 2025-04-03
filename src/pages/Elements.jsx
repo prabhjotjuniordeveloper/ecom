@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const ElementsPage = () => {
   const elementsData = [
     { href: "elements-accordions.html", label: "accordions" },
@@ -35,7 +35,7 @@ const ElementsPage = () => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item active">Elements</li>
           </ol>
@@ -47,13 +47,13 @@ const ElementsPage = () => {
           <div className="row elements">
             {elementsData.map((element, index) => (
               <div key={index} className="col-xl-5col col-lg-4 col-md-3 col-6">
-                <a href={element.href} className="element-type">
+                <Link to={element.href} className="element-type">
                   <div className="element">
                     <i className="element-img"></i>
                     <i className="element-hover-img"></i>
                     <p>{element.label}</p>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

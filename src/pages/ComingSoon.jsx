@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const ComingSoon = () => {
     return (
         <div className="soon">
@@ -38,21 +38,21 @@ const ComingSoon = () => {
                                     </div>
                                 </form>
                                 <div className="social-icons justify-content-center mb-0">
-                                    <a href="#" className="social-icon" target="_blank" rel="noreferrer" title="Facebook">
+                                    <Link to="#" className="social-icon" target="_blank" rel="noreferrer" title="Facebook">
                                         <i className="icon-facebook-f"></i>
-                                    </a>
-                                    <a href="#" className="social-icon" target="_blank" rel="noreferrer" title="Twitter">
+                                    </Link>
+                                    <Link to="#" className="social-icon" target="_blank" rel="noreferrer" title="Twitter">
                                         <i className="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" className="social-icon" target="_blank" rel="noreferrer" title="Instagram">
+                                    </Link>
+                                    <Link to="#" className="social-icon" target="_blank" rel="noreferrer" title="Instagram">
                                         <i className="icon-instagram"></i>
-                                    </a>
-                                    <a href="#" className="social-icon" target="_blank" rel="noreferrer" title="Youtube">
+                                    </Link>
+                                    <Link to="#" className="social-icon" target="_blank" rel="noreferrer" title="Youtube">
                                         <i className="icon-youtube"></i>
-                                    </a>
-                                    <a href="#" className="social-icon" target="_blank" rel="noreferrer" title="Pinterest">
+                                    </Link>
+                                    <Link to="#" className="social-icon" target="_blank" rel="noreferrer" title="Pinterest">
                                         <i className="icon-pinterest"></i>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

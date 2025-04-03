@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from "react-router-dom";
 const ShopGrid2= () => {
         const [sortBy, setSortBy] = useState('popularity');
         const [layout, setLayout] = useState('2cols');
@@ -26,8 +26,8 @@ const ShopGrid2= () => {
         <nav aria-label="breadcrumb" className="breadcrumb-nav mb-2">
           <div className="container">
             <ol className="breadcrumb">
-              <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li className="breadcrumb-item"><a href="#">Shop</a></li>
+              <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+              <li className="breadcrumb-item"><Link to="#">Shop</Link></li>
               <li className="breadcrumb-item active" aria-current="page">Grid 3 Columns</li>
             </ol>
           </div>
@@ -65,25 +65,25 @@ const ShopGrid2= () => {
         </div>
 
         <div className="toolbox-layout">
-          <a href="/ShopList" className="btn-layout">
+          <Link to="/ShopList" className="btn-layout">
             <svg width="16" height="10">
               <rect x="0" y="0" width="4" height="4" />
               <rect x="6" y="0" width="10" height="4" />
               <rect x="0" y="6" width="4" height="4" />
               <rect x="6" y="6" width="10" height="4" />
             </svg>
-          </a>
+          </Link>
 
-          <a href="/ShopGrid2" className="btn-layout active">
+          <Link to="/ShopGrid2" className="btn-layout active">
             <svg width="10" height="10">
               <rect x="0" y="0" width="4" height="4" />
               <rect x="6" y="0" width="4" height="4" />
               <rect x="0" y="6" width="4" height="4" />
               <rect x="6" y="6" width="4" height="4" />
             </svg>
-          </a>
+          </Link>
 
-          <a href="/Shop" className="btn-layout">
+          <Link to="/Shop" className="btn-layout">
             <svg width="16" height="10">
               <rect x="0" y="0" width="4" height="4" />
               <rect x="6" y="0" width="4" height="4" />
@@ -92,9 +92,9 @@ const ShopGrid2= () => {
               <rect x="6" y="6" width="4" height="4" />
               <rect x="12" y="6" width="4" height="4" />
             </svg>
-          </a>
+          </Link>
 
-          <a href="/ShopGrid4" className="btn-layout">
+          <Link to="/ShopGrid4" className="btn-layout">
             <svg width="22" height="10">
               <rect x="0" y="0" width="4" height="4" />
               <rect x="6" y="0" width="4" height="4" />
@@ -105,7 +105,7 @@ const ShopGrid2= () => {
               <rect x="12" y="6" width="4" height="4" />
               <rect x="18" y="6" width="4" height="4" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -116,23 +116,23 @@ const ShopGrid2= () => {
                     <div className="product product-7 text-center">
                         <figure className="product-media">
                             <span className="product-label label-new">New</span>
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-4.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Women</a>
+                                <Link to="#">Women</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">Brown paperbag waist pencil skirt</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">Brown paperbag waist pencil skirt</Link></h3>
                             <div className="product-price">$60.00</div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -141,15 +141,15 @@ const ShopGrid2= () => {
                                 <span className="ratings-text">( 2 Reviews )</span>
                             </div>
                             <div className="product-nav product-nav-thumbs">
-                                <a href="#" className="active">
+                                <Link to="#" className="active">
                                     <img src="assets/images/products/product-4-thumb.jpg" alt="product desc" />
-                                </a>
-                                <a href="#">
+                                </Link>
+                                <Link to="#">
                                     <img src="assets/images/products/product-4-2-thumb.jpg" alt="product desc" />
-                                </a>
-                                <a href="#">
+                                </Link>
+                                <Link to="#">
                                     <img src="assets/images/products/product-4-3-thumb.jpg" alt="product desc" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -158,23 +158,23 @@ const ShopGrid2= () => {
                 <div className="col-6">
                     <div className="product product-7 text-center">
                         <figure className="product-media">
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-5.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Dresses</a>
+                                <Link to="#">Dresses</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">Dark yellow lace cut out swing dress</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">Dark yellow lace cut out swing dress</Link></h3>
                             <div className="product-price">$84.00</div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -183,12 +183,12 @@ const ShopGrid2= () => {
                                 <span className="ratings-text">( 0 Reviews )</span>
                             </div>
                             <div className="product-nav product-nav-thumbs">
-                                <a href="#" className="active">
+                                <Link to="#" className="active">
                                     <img src="assets/images/products/product-5-thumb.jpg" alt="product desc" />
-                                </a>
-                                <a href="#">
+                                </Link>
+                                <Link to="#">
                                     <img src="assets/images/products/product-5-2-thumb.jpg" alt="product desc" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -198,23 +198,23 @@ const ShopGrid2= () => {
                     <div className="product product-7 text-center">
                         <figure className="product-media">
                             <span className="product-label label-out">Out of Stock</span>
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-6.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Jackets</a>
+                                <Link to="#">Jackets</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">Khaki utility boiler jumpsuit</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">Khaki utility boiler jumpsuit</Link></h3>
                             <div className="product-price"><span className="out-price">$120.00</span></div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -229,23 +229,23 @@ const ShopGrid2= () => {
                 <div className="col-6">
                     <div className="product product-7 text-center">
                         <figure className="product-media">
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-7.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Jeans</a>
+                                <Link to="#">Jeans</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">Blue utility pinafore denim dress</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">Blue utility pinafore denim dress</Link></h3>
                             <div className="product-price">$76.00</div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -261,23 +261,23 @@ const ShopGrid2= () => {
                     <div className="product product-7 text-center">
                         <figure className="product-media">
                             <span className="product-label label-new">New</span>
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-8.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Shoes</a>
+                                <Link to="#">Shoes</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">White crochet flatform sandals</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">White crochet flatform sandals</Link></h3>
                             <div className="product-price">$40.00</div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -293,23 +293,23 @@ const ShopGrid2= () => {
                     <div className="product product-7 text-center">
                         <figure className="product-media">
                             <span className="product-label label-out">Out of Stock</span>
-                            <a href="/ProductExtend">
+                            <Link to="/ProductExtend">
                                 <img src="assets/images/products/product-9.jpg" alt="Product image" className="product-image" />
-                            </a>
+                            </Link>
                             <div className="product-action-vertical">
-                                <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+                                <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+                                <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+                                <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
                             </div>
                             <div className="product-action">
-                                <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+                                <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
                             </div>
                         </figure>
                         <div className="product-body">
                             <div className="product-cat">
-                                <a href="#">Accessories</a>
+                                <Link to="#">Accessories</Link>
                             </div>
-                            <h3 className="product-title"><a href="/ProductExtend">Black belted nylon backpack</a></h3>
+                            <h3 className="product-title"><Link to="/ProductExtend">Black belted nylon backpack</Link></h3>
                             <div className="product-price"><span className="out-price">$70.00</span></div>
                             <div className="ratings-container">
                                 <div className="ratings">
@@ -332,16 +332,16 @@ const ShopGrid2= () => {
                     <div className="sidebar sidebar-shop">
                       <div className="widget widget-clean">
                         <label>Filters:</label>
-                        <a href="#" className="sidebar-filter-clear">Clean All</a>
+                        <Link to="#" className="sidebar-filter-clear">Clean All</Link>
                       </div>
 
                     </div>
 
                     <div className="widget widget-collapsible">
                       <h3 className="widget-title">
-                        <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
+                        <Link data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
                           Category
-                        </a>
+                        </Link>
                       </h3>
 
                       <div className="collapse show" id="widget-1">
@@ -416,9 +416,9 @@ const ShopGrid2= () => {
 
                     <div className="widget widget-collapsible">
                       <h3 className="widget-title">
-                        <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
+                        <Link data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
                           Size
-                        </a>
+                        </Link>
                       </h3>
                       <div className="collapse show" id="widget-2">
                         <div className="widget-body">
@@ -470,22 +470,22 @@ const ShopGrid2= () => {
 
                       <div className="widget widget-collapsible">
                         <h3 className="widget-title">
-                          <a data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
+                          <Link data-toggle="collapse" href="#widget-3" role="button" aria-expanded="true" aria-controls="widget-3">
                             Colour
-                          </a>
+                          </Link>
                         </h3>
 
                         <div className="collapse show" id="widget-3">
                           <div className="widget-body">
                             <div className="filter-colors">
-                              <a href="#" style={{ background: '#b87145' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#f0c04a' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#333333' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" className="selected" style={{ background: '#cc3333' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#3399cc' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#669933' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#f2719c' }}><span className="sr-only">Color Name</span></a>
-                              <a href="#" style={{ background: '#ebebeb' }}><span className="sr-only">Color Name</span></a>
+                              <Link to="#" style={{ background: '#b87145' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#f0c04a' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#333333' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" className="selected" style={{ background: '#cc3333' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#3399cc' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#669933' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#f2719c' }}><span className="sr-only">Color Name</span></Link>
+                              <Link to="#" style={{ background: '#ebebeb' }}><span className="sr-only">Color Name</span></Link>
                             </div>
                           </div>
                         </div>
@@ -493,9 +493,9 @@ const ShopGrid2= () => {
 
                       <div className="widget widget-collapsible">
                         <h3 className="widget-title">
-                          <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
+                          <Link data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
                             Brand
-                          </a>
+                          </Link>
                         </h3>
 
                         <div className="collapse show" id="widget-4">
@@ -556,9 +556,9 @@ const ShopGrid2= () => {
 
                       <div className="widget widget-collapsible">
                         <h3 className="widget-title">
-                          <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
+                          <Link data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
                             Price
-                          </a>
+                          </Link>
                         </h3>
 
                         <div className="collapse show" id="widget-5">

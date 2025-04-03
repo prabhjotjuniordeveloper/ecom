@@ -1,32 +1,32 @@
 // Blog.js
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const BlogEntry = ({ imageSrc, author, date, comments, title, categories, content, link }) => (
   <article className="entry">
     <figure className="entry-media">
-      <a href={link}>
+      <Link to={link}>
         <img src={imageSrc} alt="Blog entry" />
-      </a>
+      </Link>
     </figure>
     <div className="entry-body">
       <div className="entry-meta">
-        <span className="entry-author">by <a href="#">{author}</a></span>
+        <span className="entry-author">by <Link to="#">{author}</Link></span>
         <span className="meta-separator">|</span>
-        <a href="#">{date}</a>
+        <Link to="#">{date}</Link>
         <span className="meta-separator">|</span>
-        <a href="#">{comments} Comments</a>
+        <Link to="#">{comments} Comments</Link>
       </div>
-      <h2 className="entry-title"><a href={link}>{title}</a></h2>
+      <h2 className="entry-title"><Link to={link}>{title}</Link></h2>
       <div className="entry-cats">
         in {categories.map((category, index) => (
           <React.Fragment key={index}>
-            <a href="#">{category}</a>{index < categories.length - 1 && ", "}
+            <Link to="#">{category}</Link>{index < categories.length - 1 && ", "}
           </React.Fragment>
         ))}
       </div>
       <div className="entry-content">
         <p>{content}</p>
-        <a href={link} className="read-more">Continue Reading</a>
+        <Link to={link} className="read-more">Continue Reading</Link>
       </div>
     </div>
   </article>
@@ -49,7 +49,7 @@ const Sidebar = () => (
         <h3 className="widget-title">Categories</h3>
         <ul>
           {["Lifestyle", "Shopping", "Fashion", "Travel", "Hobbies"].map((category, index) => (
-            <li key={index}><a href="#">{category}<span>3</span></a></li>
+            <li key={index}><Link to="#">{category}<span>3</span></Link></li>
           ))}
         </ul>
       </div>
@@ -66,9 +66,9 @@ const Sidebar = () => (
       <div className="widget widget-banner-sidebar">
         <div className="banner-sidebar-title">ad box 280 x 280</div>
         <div className="banner-sidebar banner-overlay">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/blog/sidebar/banner.jpg" alt="banner" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -86,8 +86,8 @@ const Blog = () => (
     <nav aria-label="breadcrumb" className="breadcrumb-nav mb-3">
       <div className="container">
         <ol className="breadcrumb">
-          <li className="breadcrumb-item"><a href="/">Home</a></li>
-          <li className="breadcrumb-item"><a href="#">Blog</a></li>
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item"><Link to="#">Blog</Link></li>
           <li className="breadcrumb-item active" aria-current="page">Default With Sidebar</li>
         </ol>
       </div>
@@ -113,10 +113,10 @@ const Blog = () => (
             {/* Pagination */}
             <nav aria-label="Page navigation">
               <ul className="pagination">
-                <li className="page-item disabled"><a className="page-link" href="#">Prev</a></li>
-                <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                <li className="page-item disabled"><Link className="page-link" href="#">Prev</Link></li>
+                <li className="page-item active"><Link className="page-link" href="#">1</Link></li>
+                <li className="page-item"><Link className="page-link" href="#">2</Link></li>
+                <li className="page-item"><Link className="page-link" href="#">Next</Link></li>
               </ul>
             </nav>
           </div>

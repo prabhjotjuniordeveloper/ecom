@@ -1,5 +1,6 @@
 // src/components/MobileMenu.js
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 const MobileMenu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,26 +29,26 @@ const MobileMenu = () => {
                         <ul className="mobile-menu">
                             {/* Add your menu items here */}
                             <li className="active">
-                                <a href="/">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a href="/#/shoplist">Shop</a>
+                                <Link to="/shoplist">Shop</Link>
                             </li>
                             <li>
-                                <a href="/#/blogmask">Blog</a>
+                                <Link to="/blogmask">Blog</Link>
                             </li>
                             <li>
-                                <a href="/#/dashboard">Dashboard</a>
+                                <Link to="/dashboard">Dashboard</Link>
                             </li>
                         </ul>
 
                     </nav>
 
                     <div className="social-icons">
-                        <a href="#" className="social-icon" target="_blank" title="Facebook"><i className="icon-facebook-f"></i></a>
-                        <a href="#" className="social-icon" target="_blank" title="Twitter"><i className="icon-twitter"></i></a>
-                        <a href="#" className="social-icon" target="_blank" title="Instagram"><i className="icon-instagram"></i></a>
-                        <a href="#" className="social-icon" target="_blank" title="Youtube"><i className="icon-youtube"></i></a>
+                        <Link to="#" className="social-icon" target="_blank" title="Facebook"><i className="icon-facebook-f"></i></Link>
+                        <Link to="#" className="social-icon" target="_blank" title="Twitter"><i className="icon-twitter"></i></Link>
+                        <Link to="#" className="social-icon" target="_blank" title="Instagram"><i className="icon-instagram"></i></Link>
+                        <Link to="#" className="social-icon" target="_blank" title="Youtube"><i className="icon-youtube"></i></Link>
                     </div>
                 </div>
             </div>
@@ -65,10 +66,10 @@ const MobileMenu = () => {
                                 <div className="form-tab">
                                     <ul className="nav nav-pills nav-fill nav-border-anim" role="tablist">
                                         <li className="nav-item">
-                                            <a className="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                            <Link className="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <a className="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                            <Link className="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</Link>
                                         </li>
                                     </ul>
                                     <div className="tab-content" id="tab-content-5">
@@ -91,7 +92,7 @@ const MobileMenu = () => {
                                                         <input type="checkbox" className="custom-control-input" id="signin-remember" />
                                                         <label className="custom-control-label" htmlFor="signin-remember">Remember Me</label>
                                                     </div>
-                                                    <a href="#" className="forgot-link">Forgot Your Password?</a>
+                                                    <Link to="#" className="forgot-link">Forgot Your Password?</Link>
                                                 </div>
                                             </form>
                                             {/* Google and Facebook login options */}
@@ -99,16 +100,16 @@ const MobileMenu = () => {
                                                 <p className="text-center">or sign in with</p>
                                                 <div className="row">
                                                     <div className="col-sm-6">
-                                                        <a href="#" className="btn btn-login btn-g">
+                                                        <Link to="#" className="btn btn-login btn-g">
                                                             <i className="icon-google-plus-g"></i>
                                                             Login With Google
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <a href="#" className="btn btn-login btn-f">
+                                                        <Link to="#" className="btn btn-login btn-f">
                                                             <i className="icon-facebook-f"></i>
                                                             Login With Facebook
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +131,7 @@ const MobileMenu = () => {
                                                     </button>
                                                     <div className="custom-control custom-checkbox">
                                                         <input type="checkbox" className="custom-control-input" id="register-policy" required />
-                                                        <label className="custom-control-label" htmlFor="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                                        <label className="custom-control-label" htmlFor="register-policy">I agree to the <Link to="#">privacy policy</Link> *</label>
                                                     </div>
                                                 </div>
                                             </form>
@@ -139,16 +140,16 @@ const MobileMenu = () => {
                                                 <p className="text-center">or sign in with</p>
                                                 <div className="row">
                                                     <div className="col-sm-6">
-                                                        <a href="#" className="btn btn-login btn-g">
+                                                        <Link to="#" className="btn btn-login btn-g">
                                                             <i className="icon-google-plus-g"></i>
                                                             Login With Google
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <a href="#" className="btn btn-login btn-f">
+                                                        <Link to="#" className="btn btn-login btn-f">
                                                             <i className="icon-facebook-f"></i>
                                                             Login With Facebook
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

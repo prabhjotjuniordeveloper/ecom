@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const ProductCategory = () => {
   return (
     <div>
@@ -13,8 +13,8 @@ const ProductCategory = () => {
   <nav aria-label="breadcrumb" className="breadcrumb-nav">
     <div className="container">
       <ol className="breadcrumb">
-        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li className="breadcrumb-item"><a href="elements-list.html">Elements</a></li>
+        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+        <li className="breadcrumb-item"><Link to="elements-list.html">Elements</Link></li>
         <li className="breadcrumb-item active" aria-current="page">Banners</li>
       </ol>
     </div>{/* End .container */}
@@ -25,25 +25,25 @@ const ProductCategory = () => {
       <div className="row">
         <div className="col-md-6">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/banner-1.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content">
               <h3 className="banner-title">Women</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/banner-2.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content">
               <h3 className="banner-title">Men</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
@@ -53,37 +53,37 @@ const ProductCategory = () => {
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/3cols/banner-1.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content banner-content-overlay text-center">
               <h3 className="banner-title">Women</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/3cols/banner-2.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content banner-content-overlay text-center">
               <h3 className="banner-title">Men</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/3cols/banner-3.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content banner-content-overlay text-center">
               <h3 className="banner-title">Accessories</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">8 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
@@ -116,53 +116,53 @@ const ProductCategory = () => {
                       }
                   }">
         <div className="banner banner-cat">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/category/4cols/banner-1.jpg" alt="Banner" />
-          </a>
+          </Link>
           <div className="banner-content banner-content-static text-center">
             <h3 className="banner-title">Women</h3>{/* End .banner-title */}
             <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-            <a href="#" className="banner-link">Shop Now</a>
+            <Link to="#" className="banner-link">Shop Now</Link>
           </div>{/* End .banner-content */}
         </div>{/* End .banner */}
         <div className="banner banner-cat">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/category/4cols/banner-2.jpg" alt="Banner" />
-          </a>
+          </Link>
           <div className="banner-content banner-content-static text-center">
             <h3 className="banner-title">Men</h3>{/* End .banner-title */}
             <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-            <a href="#" className="banner-link">Shop Now</a>
+            <Link to="#" className="banner-link">Shop Now</Link>
           </div>{/* End .banner-content */}
         </div>{/* End .banner */}
         <div className="banner banner-cat">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/category/4cols/banner-3.jpg" alt="Banner" />
-          </a>
+          </Link>
           <div className="banner-content banner-content-static text-center">
             <h3 className="banner-title">Shoes &amp; Boots</h3>{/* End .banner-title */}
             <h4 className="banner-subtitle">15 Products</h4>{/* End .banner-subtitle */}
-            <a href="#" className="banner-link">Shop Now</a>
+            <Link to="#" className="banner-link">Shop Now</Link>
           </div>{/* End .banner-content */}
         </div>{/* End .banner */}
         <div className="banner banner-cat">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/category/4cols/banner-4.jpg" alt="Banner" />
-          </a>
+          </Link>
           <div className="banner-content banner-content-static text-center">
             <h3 className="banner-title">Accessories</h3>{/* End .banner-title */}
             <h4 className="banner-subtitle">8 Products</h4>{/* End .banner-subtitle */}
-            <a href="#" className="banner-link">Shop Now</a>
+            <Link to="#" className="banner-link">Shop Now</Link>
           </div>{/* End .banner-content */}
         </div>{/* End .banner */}
         <div className="banner banner-cat">
-          <a href="#">
+          <Link to="#">
             <img src="assets/images/category/4cols/banner-1.jpg" alt="Banner" />
-          </a>
+          </Link>
           <div className="banner-content banner-content-static text-center">
             <h3 className="banner-title">Women</h3>{/* End .banner-title */}
             <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-            <a href="#" className="banner-link">Shop Now</a>
+            <Link to="#" className="banner-link">Shop Now</Link>
           </div>{/* End .banner-content */}
         </div>{/* End .banner */}
       </div>{/* End .banners-carousel owl-carousel owl-simple */}
@@ -173,37 +173,37 @@ const ProductCategory = () => {
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/fullwidth/banner-1.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content">
               <h3 className="banner-title">Women</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/fullwidth/banner-2.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content">
               <h3 className="banner-title">Men</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6 col-lg-4">
           <div className="banner banner-cat">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/fullwidth/banner-3.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content">
               <h3 className="banner-title">Accessories</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
@@ -215,25 +215,25 @@ const ProductCategory = () => {
       <div className="row justify-content-center">
         <div className="col-sm-6 col-lg-3">
           <div className="banner banner-cat banner-link-anim">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/grid/banner-1.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content banner-content-bottom">
               <h3 className="banner-title">Accessories</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">8 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-sm-6 col-lg-3 order-lg-last">
           <div className="banner banner-cat banner-link-anim">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/grid/banner-4.jpg" alt="Banner" />
-            </a>
+            </Link>
             <div className="banner-content banner-content-top">
               <h3 className="banner-title">Shoes &amp; Boots</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">15 Products</h4>{/* End .banner-subtitle */}
-              <a href="#" className="banner-link">Shop Now</a>
+              <Link to="#" className="banner-link">Shop Now</Link>
             </div>{/* End .banner-content */}
           </div>{/* End .banner */}
         </div>{/* End .col-sm-6 */}
@@ -241,25 +241,25 @@ const ProductCategory = () => {
           <div className="row">
             <div className="col-sm-6 col-lg-12">
               <div className="banner banner-cat banner-link-anim">
-                <a href="#">
+                <Link to="#">
                   <img src="assets/images/category/grid/banner-2.jpg" alt="Banner" />
-                </a>
+                </Link>
                 <div className="banner-content">
                   <h3 className="banner-title">Women</h3>{/* End .banner-title */}
                   <h4 className="banner-subtitle">18 Products</h4>{/* End .banner-subtitle */}
-                  <a href="#" className="banner-link">Shop Now</a>
+                  <Link to="#" className="banner-link">Shop Now</Link>
                 </div>{/* End .banner-content */}
               </div>{/* End .banner */}
             </div>{/* End .col-sm-6 col-lg-12 */}
             <div className="col-sm-6 col-lg-12">
               <div className="banner banner-cat banner-link-anim">
-                <a href="#">
+                <Link to="#">
                   <img src="assets/images/category/grid/banner-3.jpg" alt="Banner" />
-                </a>
+                </Link>
                 <div className="banner-content">
                   <h3 className="banner-title">Men</h3>{/* End .banner-title */}
                   <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
-                  <a href="#" className="banner-link">Shop Now</a>
+                  <Link to="#" className="banner-link">Shop Now</Link>
                 </div>{/* End .banner-content */}
               </div>{/* End .banner */}
             </div>{/* End .col-sm-6 col-lg-12 */}
@@ -271,36 +271,36 @@ const ProductCategory = () => {
       <div className="row ">
         <div className="col-md-6">
           <div className="banner banner-cat banner-badge">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/grid2/banner-1.jpg" alt="Banner" />
-            </a>
-            <a className="banner-link" href="#">
+            </Link>
+            <Link className="banner-link" href="#">
               <h3 className="banner-title">Accessories</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">8 Products</h4>{/* End .banner-subtitle */}
               <span className="banner-link-text">Shop Now</span>
-            </a>{/* End .banner-link */}
+            </Link>{/* End .banner-link */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
         <div className="col-md-6">
           <div className="banner banner-cat banner-badge">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/grid2/banner-2.jpg" alt="Banner" />
-            </a>
-            <a className="banner-link" href="#">
+            </Link>
+            <Link className="banner-link" href="#">
               <h3 className="banner-title">Women</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">15 Products</h4>{/* End .banner-subtitle */}
               <span className="banner-link-text">Shop Now</span>
-            </a>{/* End .banner-link */}
+            </Link>{/* End .banner-link */}
           </div>{/* End .banner */}
           <div className="banner banner-cat banner-badge">
-            <a href="#">
+            <Link to="#">
               <img src="assets/images/category/grid2/banner-3.jpg" alt="Banner" />
-            </a>
-            <a className="banner-link" href="#">
+            </Link>
+            <Link className="banner-link" href="#">
               <h3 className="banner-title">Men</h3>{/* End .banner-title */}
               <h4 className="banner-subtitle">12 Products</h4>{/* End .banner-subtitle */}
               <span className="banner-link-text">Shop Now</span>
-            </a>{/* End .banner-link */}
+            </Link>{/* End .banner-link */}
           </div>{/* End .banner */}
         </div>{/* End .col-md-6 */}
       </div>{/* End .row */}
@@ -310,130 +310,130 @@ const ProductCategory = () => {
   <div className="container mb-5">
     <div className="row elements">
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-accordions.html" className="element-type">
+        <Link to="elements-accordions.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>accordions</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-banners.html" className="element-type">
+        <Link to="elements-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>banners</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-blog-posts.html" className="element-type">
+        <Link to="elements-blog-posts.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>blog posts</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-buttons.html" className="element-type">
+        <Link to="elements-buttons.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>buttons</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-cta.html" className="element-type">
+        <Link to="elements-cta.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>call to action</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-icon-boxes.html" className="element-type">
+        <Link to="elements-icon-boxes.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>icon boxes</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-portfolio.html" className="element-type">
+        <Link to="elements-portfolio.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>portfolio</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-product-category.html" className="element-type">
+        <Link to="elements-product-category.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>product catigories</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-products.html" className="element-type">
+        <Link to="elements-products.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>products</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-tabs.html" className="element-type">
+        <Link to="elements-tabs.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>tabs</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-testimonials.html" className="element-type">
+        <Link to="elements-testimonials.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>testimonials</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-titles.html" className="element-type">
+        <Link to="elements-titles.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>titles</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-typography.html" className="element-type">
+        <Link to="elements-typography.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>typography</p>
           </div>
-        </a>
+        </Link>
       </div>
       <div className="col-xl-5col col-lg-4 col-md-3 col-6">
-        <a href="elements-video-banners.html" className="element-type">
+        <Link to="elements-video-banners.html" className="element-type">
           <div className="element">
             <i className="element-img" />
             <i className="element-hover-img" />
             <p>video</p>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   </div>{/* End Elements list */}

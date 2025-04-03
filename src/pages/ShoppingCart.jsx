@@ -70,10 +70,10 @@ const ShoppingCart = () => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
-            <a href="/#/shoplist">Shop</a>
+            <Link to="/shoplist">Shop</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Shopping Cart
@@ -263,13 +263,23 @@ const ShoppingCart = () => {
                       </tr>
                     </tbody>
                   </table>
-                  <Link
-                    to="/checkout"
-                    state={{ shippingCost,shippingType }}
-                    className="btn btn-outline-primary-2 btn-order btn-block"
-                  >
-                    PROCEED TO CHECKOUT
-                  </Link>
+                  {product.length > 0 ? (
+  <Link
+    to="/checkout"
+    state={{ shippingCost, shippingType }}
+    className="btn btn-outline-primary-2 btn-order btn-block"
+  >
+    PROCEED TO CHECKOUT
+  </Link>
+) : (
+  <button
+    className="btn btn-outline-primary-2 btn-order btn-block disabled"
+    disabled
+  >
+    PROCEED TO CHECKOUT
+  </button>
+)}
+
                 </div>
                 <Link
                   to="/shoplist"

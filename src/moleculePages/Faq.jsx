@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const Faq = () => {
   return (
     <main className="main">
@@ -12,7 +12,7 @@ const Faq = () => {
       <nav aria-label="breadcrumb" className="breadcrumb-nav">
         <div className="container">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item"><a href="/">Home</a></li>
+            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
             <li className="breadcrumb-item active" aria-current="page">FAQ</li>
           </ol>
         </div>
@@ -134,7 +134,7 @@ const Faq = () => {
                   <p className="cta-desc text-white">Quisque volutpat mattis eros</p>
                 </div>
                 <div className="col-auto">
-                  <a href="contact.html" className="btn btn-outline-white"><span>CONTACT US</span><i className="icon-long-arrow-right"></i></a>
+                  <Link to="/contact" className="btn btn-outline-white"><span>CONTACT US</span><i className="icon-long-arrow-right"></i></Link>
                 </div>
               </div>
             </div>

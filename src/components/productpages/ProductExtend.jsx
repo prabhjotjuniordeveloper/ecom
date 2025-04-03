@@ -1,7 +1,7 @@
 import {React,useState,useEffect} from 'react'
 import { useParams } from "react-router-dom";
 import { getProduct } from '../../Api/product/product';
-
+import { Link } from "react-router-dom";
 const ProductExtend = () => {
   const { id } = useParams();
     const [product, setproduct] = useState([]);
@@ -28,8 +28,8 @@ const ProductExtend = () => {
   <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
     <div className="container d-flex align-items-center">
       <ol className="breadcrumb">
-        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li className="breadcrumb-item"><a href="#">Products</a></li>
+        <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+        <li className="breadcrumb-item"><Link to="#">Products</Link></li>
         <li className="breadcrumb-item active" aria-current="page">Product Details</li>
       </ol>
     </div>{/* End .container */}
@@ -47,24 +47,24 @@ const ProductExtend = () => {
     data-zoom-image={`${product.mainImage}`}
     alt="product image"
   />
-  <a href="#" id="btn-product-gallery" className="btn-product-gallery">
+  <Link to="#" id="btn-product-gallery" className="btn-product-gallery">
     <i className="icon-arrows" />
-  </a>
+  </Link>
 </figure>
 
               {/* <div id="product-zoom-gallery" className="product-image-gallery">
-                <a className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/1.jpg" data-zoom-image="assets/images/products/single/extended/1-big.jpg">
+                <Link className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/1.jpg" data-zoom-image="assets/images/products/single/extended/1-big.jpg">
                   <img src="assets/images/products/single/extended/1-small.jpg" alt="product side" />
-                </a>
-                <a className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/2.jpg" data-zoom-image="assets/images/products/single/extended/2-big.jpg">
+                </Link>
+                <Link className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/2.jpg" data-zoom-image="assets/images/products/single/extended/2-big.jpg">
                   <img src="assets/images/products/single/extended/2-small.jpg" alt="product cross" />
-                </a>
-                <a className="product-gallery-item active" href="#" data-image="assets/images/products/single/extended/3.jpg" data-zoom-image="assets/images/products/single/extended/3-big.jpg">
+                </Link>
+                <Link className="product-gallery-item active" href="#" data-image="assets/images/products/single/extended/3.jpg" data-zoom-image="assets/images/products/single/extended/3-big.jpg">
                   <img src="assets/images/products/single/extended/3-small.jpg" alt="product with model" />
-                </a>
-                <a className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/4.jpg" data-zoom-image="assets/images/products/single/extended/4-big.jpg">
+                </Link>
+                <Link className="product-gallery-item" href="#" data-image="assets/images/products/single/extended/4.jpg" data-zoom-image="assets/images/products/single/extended/4-big.jpg">
                   <img src="assets/images/products/single/extended/4-small.jpg" alt="product back" />
-                </a>
+                </Link>
               </div> */}
             </div>{/* End .product-gallery */}
           </div>{/* End .col-md-6 */}
@@ -80,9 +80,9 @@ const ProductExtend = () => {
       {/* End .ratings-val */}
     </div>
     {/* End .ratings */}
-    <a className="ratings-text" href="#product-review-link" id="review-link">
+    <Link className="ratings-text" href="#product-review-link" id="review-link">
       ( {product?.rating} Reviews )
-    </a>
+    </Link>
   </div>
   {/* End .rating-container */}
 
@@ -98,9 +98,9 @@ const ProductExtend = () => {
     <label>Color:</label>
     <div className="product-nav product-nav-dots">
       {product?.colour?.map((color, index) => (
-        <a key={index} href="#" style={{ background: color }}>
+        <Link key={index} href="#" style={{ background: color }}>
           <span className="sr-only">{color}</span>
-        </a>
+        </Link>
       ))}
     </div>
     {/* End .product-nav */}
@@ -131,9 +131,9 @@ const ProductExtend = () => {
   {/* End .details-filter-row */}
 
   <div className="product-details-action">
-    <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+    <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
     <div className="details-action-wrapper">
-      <a href="#" className="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
+      <Link to="#" className="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></Link>
     </div>
     {/* End .details-action-wrapper */}
   </div>
@@ -148,10 +148,10 @@ const ProductExtend = () => {
 
     <div className="social-icons social-icons-sm">
       <span className="social-label">Share:</span>
-      <a href="#" className="social-icon" title="Facebook" target="_blank"><i className="icon-facebook-f" /></a>
-      <a href="#" className="social-icon" title="Twitter" target="_blank"><i className="icon-twitter" /></a>
-      <a href="#" className="social-icon" title="Instagram" target="_blank"><i className="icon-instagram" /></a>
-      <a href="#" className="social-icon" title="Pinterest" target="_blank"><i className="icon-pinterest" /></a>
+      <Link to="#" className="social-icon" title="Facebook" target="_blank"><i className="icon-facebook-f" /></Link>
+      <Link to="#" className="social-icon" title="Twitter" target="_blank"><i className="icon-twitter" /></Link>
+      <Link to="#" className="social-icon" title="Instagram" target="_blank"><i className="icon-instagram" /></Link>
+      <Link to="#" className="social-icon" title="Pinterest" target="_blank"><i className="icon-pinterest" /></Link>
     </div>
   </div>
   {/* End .product-details-footer */}
@@ -167,16 +167,16 @@ const ProductExtend = () => {
       <div className="container">
         <ul className="nav nav-pills justify-content-center" role="tablist">
           <li className="nav-item">
-            <a className="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+            <Link className="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
+            <Link className="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping &amp; Returns</a>
+            <Link className="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping &amp; Returns</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+            <Link className="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</Link>
           </li>
         </ul>
       </div>{/* End .container */}
@@ -254,8 +254,8 @@ const ProductExtend = () => {
           <div className="product-desc-content">
             <div className="container">
               <h3>Delivery &amp; returns</h3>
-              <p>We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <a href="#">Delivery information</a><br />
-                We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <a href="#">Returns information</a></p>
+              <p>We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <Link to="#">Delivery information</Link><br />
+                We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <Link to="#">Returns information</Link></p>
             </div>{/* End .container */}
           </div>{/* End .product-desc-content */}
         </div>{/* .End .tab-pane */}
@@ -266,7 +266,7 @@ const ProductExtend = () => {
               <div className="review">
                 <div className="row no-gutters">
                   <div className="col-auto">
-                    <h4><a href="#">Samanta J.</a></h4>
+                    <h4><Link to="#">Samanta J.</Link></h4>
                     <div className="ratings-container">
                       <div className="ratings">
                         <div className="ratings-val" style={{width: '80%'}} />{/* End .ratings-val */}
@@ -280,8 +280,8 @@ const ProductExtend = () => {
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
                     </div>{/* End .review-content */}
                     <div className="review-action">
-                      <a href="#"><i className="icon-thumbs-up" />Helpful (2)</a>
-                      <a href="#"><i className="icon-thumbs-down" />Unhelpful (0)</a>
+                      <Link to="#"><i className="icon-thumbs-up" />Helpful (2)</Link>
+                      <Link to="#"><i className="icon-thumbs-down" />Unhelpful (0)</Link>
                     </div>{/* End .review-action */}
                   </div>{/* End .col-auto */}
                 </div>{/* End .row */}
@@ -289,7 +289,7 @@ const ProductExtend = () => {
               <div className="review">
                 <div className="row no-gutters">
                   <div className="col-auto">
-                    <h4><a href="#">John Doe</a></h4>
+                    <h4><Link to="#">John Doe</Link></h4>
                     <div className="ratings-container">
                       <div className="ratings">
                         <div className="ratings-val" style={{width: '100%'}} />{/* End .ratings-val */}
@@ -303,8 +303,8 @@ const ProductExtend = () => {
                       <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi, quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
                     </div>{/* End .review-content */}
                     <div className="review-action">
-                      <a href="#"><i className="icon-thumbs-up" />Helpful (0)</a>
-                      <a href="#"><i className="icon-thumbs-down" />Unhelpful (0)</a>
+                      <Link to="#"><i className="icon-thumbs-up" />Helpful (0)</Link>
+                      <Link to="#"><i className="icon-thumbs-down" />Unhelpful (0)</Link>
                     </div>{/* End .review-action */}
                   </div>{/* End .col-auto */}
                 </div>{/* End .row */}
@@ -344,23 +344,23 @@ const ProductExtend = () => {
         <div className="product product-7">
           <figure className="product-media">
             <span className="product-label label-new">New</span>
-            <a href="/ProductExtend">
+            <Link to="/ProductExtend">
               <img src="assets/images/products/product-4.jpg" alt="Product image" className="product-image" />
-            </a>
+            </Link>
             <div className="product-action-vertical">
-              <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-              <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-              <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+              <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+              <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+              <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
             </div>{/* End .product-action-vertical */}
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+              <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
             </div>{/* End .product-action */}
           </figure>{/* End .product-media */}
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">Women</a>
+              <Link to="#">Women</Link>
             </div>{/* End .product-cat */}
-            <h3 className="product-title"><a href="/ProductExtend">Brown paperbag waist <br />pencil skirt</a></h3>{/* End .product-title */}
+            <h3 className="product-title"><Link to="/ProductExtend">Brown paperbag waist <br />pencil skirt</Link></h3>{/* End .product-title */}
             <div className="product-price">
               $60.00
             </div>{/* End .product-price */}
@@ -371,32 +371,32 @@ const ProductExtend = () => {
               <span className="ratings-text">( 2 Reviews )</span>
             </div>{/* End .rating-container */}
             <div className="product-nav product-nav-dots">
-              <a href="#" className="active" style={{background: '#cc9966'}}><span className="sr-only">Color name</span></a>
-              <a href="#" style={{background: '#7fc5ed'}}><span className="sr-only">Color name</span></a>
-              <a href="#" style={{background: '#e8c97a'}}><span className="sr-only">Color name</span></a>
+              <Link to="#" className="active" style={{background: '#cc9966'}}><span className="sr-only">Color name</span></Link>
+              <Link to="#" style={{background: '#7fc5ed'}}><span className="sr-only">Color name</span></Link>
+              <Link to="#" style={{background: '#e8c97a'}}><span className="sr-only">Color name</span></Link>
             </div>{/* End .product-nav */}
           </div>{/* End .product-body */}
         </div>{/* End .product */}
         <div className="product product-7">
           <figure className="product-media">
             <span className="product-label label-out">Out of Stock</span>
-            <a href="/ProductExtend">
+            <Link to="/ProductExtend">
               <img src="assets/images/products/product-6.jpg" alt="Product image" className="product-image" />
-            </a>
+            </Link>
             <div className="product-action-vertical">
-              <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-              <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-              <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+              <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+              <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+              <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
             </div>{/* End .product-action-vertical */}
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+              <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
             </div>{/* End .product-action */}
           </figure>{/* End .product-media */}
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">Jackets</a>
+              <Link to="#">Jackets</Link>
             </div>{/* End .product-cat */}
-            <h3 className="product-title"><a href="/ProductExtend">Khaki utility boiler jumpsuit</a></h3>{/* End .product-title */}
+            <h3 className="product-title"><Link to="/ProductExtend">Khaki utility boiler jumpsuit</Link></h3>{/* End .product-title */}
             <div className="product-price">
               <span className="out-price">$120.00</span>
             </div>{/* End .product-price */}
@@ -411,23 +411,23 @@ const ProductExtend = () => {
         <div className="product product-7">
           <figure className="product-media">
             <span className="product-label label-top">Top</span>
-            <a href="/ProductExtend">
+            <Link to="/ProductExtend">
               <img src="assets/images/products/product-11.jpg" alt="Product image" className="product-image" />
-            </a>
+            </Link>
             <div className="product-action-vertical">
-              <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-              <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-              <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+              <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+              <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+              <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
             </div>{/* End .product-action-vertical */}
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+              <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
             </div>{/* End .product-action */}
           </figure>{/* End .product-media */}
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">Shoes</a>
+              <Link to="#">Shoes</Link>
             </div>{/* End .product-cat */}
-            <h3 className="product-title"><a href="/ProductExtend">Light brown studded Wide fit wedges</a></h3>{/* End .product-title */}
+            <h3 className="product-title"><Link to="/ProductExtend">Light brown studded Wide fit wedges</Link></h3>{/* End .product-title */}
             <div className="product-price">
               $110.00
             </div>{/* End .product-price */}
@@ -438,31 +438,31 @@ const ProductExtend = () => {
               <span className="ratings-text">( 1 Reviews )</span>
             </div>{/* End .rating-container */}
             <div className="product-nav product-nav-dots">
-              <a href="#" className="active" style={{background: '#8b513d'}}><span className="sr-only">Color name</span></a>
-              <a href="#" style={{background: '#333333'}}><span className="sr-only">Color name</span></a>
-              <a href="#" style={{background: '#d2b99a'}}><span className="sr-only">Color name</span></a>
+              <Link to="#" className="active" style={{background: '#8b513d'}}><span className="sr-only">Color name</span></Link>
+              <Link to="#" style={{background: '#333333'}}><span className="sr-only">Color name</span></Link>
+              <Link to="#" style={{background: '#d2b99a'}}><span className="sr-only">Color name</span></Link>
             </div>{/* End .product-nav */}
           </div>{/* End .product-body */}
         </div>{/* End .product */}
         <div className="product product-7">
           <figure className="product-media">
-            <a href="/ProductExtend">
+            <Link to="/ProductExtend">
               <img src="assets/images/products/product-10.jpg" alt="Product image" className="product-image" />
-            </a>
+            </Link>
             <div className="product-action-vertical">
-              <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-              <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-              <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+              <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+              <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+              <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
             </div>{/* End .product-action-vertical */}
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+              <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
             </div>{/* End .product-action */}
           </figure>{/* End .product-media */}
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">Jumpers</a>
+              <Link to="#">Jumpers</Link>
             </div>{/* End .product-cat */}
-            <h3 className="product-title"><a href="/ProductExtend">Yellow button front tea top</a></h3>{/* End .product-title */}
+            <h3 className="product-title"><Link to="/ProductExtend">Yellow button front tea top</Link></h3>{/* End .product-title */}
             <div className="product-price">
               $56.00
             </div>{/* End .product-price */}
@@ -476,23 +476,23 @@ const ProductExtend = () => {
         </div>{/* End .product */}
         <div className="product product-7">
           <figure className="product-media">
-            <a href="/ProductExtend">
+            <Link to="/ProductExtend">
               <img src="assets/images/products/product-7.jpg" alt="Product image" className="product-image" />
-            </a>
+            </Link>
             <div className="product-action-vertical">
-              <a href="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-              <a href="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-              <a href="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
+              <Link to="#" className="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></Link>
+              <Link to="popup/quickView.html" className="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></Link>
+              <Link to="#" className="btn-product-icon btn-compare" title="Compare"><span>Compare</span></Link>
             </div>{/* End .product-action-vertical */}
             <div className="product-action">
-              <a href="#" className="btn-product btn-cart"><span>add to cart</span></a>
+              <Link to="#" className="btn-product btn-cart"><span>add to cart</span></Link>
             </div>{/* End .product-action */}
           </figure>{/* End .product-media */}
           <div className="product-body">
             <div className="product-cat">
-              <a href="#">Jeans</a>
+              <Link to="#">Jeans</Link>
             </div>{/* End .product-cat */}
-            <h3 className="product-title"><a href="/ProductExtend">Blue utility pinafore denim dress</a></h3>{/* End .product-title */}
+            <h3 className="product-title"><Link to="/ProductExtend">Blue utility pinafore denim dress</Link></h3>{/* End .product-title */}
             <div className="product-price">
               $76.00
             </div>{/* End .product-price */}

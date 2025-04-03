@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const BlogGrid2 = () => {
   return (
     <div>
@@ -14,8 +14,8 @@ const BlogGrid2 = () => {
     <nav aria-label="breadcrumb" className="breadcrumb-nav mb-2">
         <div className="container">
             <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li className="breadcrumb-item"><a href="#">Blog</a></li>
+                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                <li className="breadcrumb-item"><Link to="#">Blog</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Grid 2 Columns</li>
             </ol>
         </div>
@@ -25,12 +25,12 @@ const BlogGrid2 = () => {
         <div className="container">
             <nav className="blog-nav">
                 <ul className="menu-cat entry-filter justify-content-center">
-                    <li className="active"><a href="#" data-filter="*">All Blog Posts<span>12</span></a></li>
-                    <li><a href="#" data-filter=".lifestyle">Lifestyle<span>3</span></a></li>
-                    <li><a href="#" data-filter=".shopping">Shopping<span>1</span></a></li>
-                    <li><a href="#" data-filter=".fashion">Fashion<span>1</span></a></li>
-                    <li><a href="#" data-filter=".travel">Travel<span>2</span></a></li>
-                    <li><a href="#" data-filter=".hobbies">Hobbies<span>2</span></a></li>
+                    <li className="active"><Link to="#" data-filter="*">All Blog Posts<span>12</span></Link></li>
+                    <li><Link to="#" data-filter=".lifestyle">Lifestyle<span>3</span></Link></li>
+                    <li><Link to="#" data-filter=".shopping">Shopping<span>1</span></Link></li>
+                    <li><Link to="#" data-filter=".fashion">Fashion<span>1</span></Link></li>
+                    <li><Link to="#" data-filter=".travel">Travel<span>2</span></Link></li>
+                    <li><Link to="#" data-filter=".hobbies">Hobbies<span>2</span></Link></li>
                 </ul>
             </nav>
 
@@ -38,31 +38,31 @@ const BlogGrid2 = () => {
                 <div className="entry-item lifestyle shopping col-sm-6">
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media">
-                            <a href="single.html">
+                            <Link to="single.html">
                                 <img src="assets/images/blog/grid/2cols/post-1.jpg" alt="image desc"/>
-                            </a>
+                            </Link>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">John Doe</a></span>
+                                <span className="entry-author">by <Link to="#">John Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 22, 2018</a>
+                                <Link to="#">Nov 22, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">2 Comments</a>
+                                <Link to="#">2 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Cras ornare tristique elit.</a>
+                                <Link to="single.html">Cras ornare tristique elit.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Lifestyle</a>, <a href="#">Shopping</a>
+                                in <Link to="#">Lifestyle</Link>, <Link to="#">Shopping</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas vulputate ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -71,31 +71,31 @@ const BlogGrid2 = () => {
                 <div className="entry-item lifestyle col-sm-6">
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media entry-video">
-                            <a href="single.html">
+                            <Link to="single.html">
                                 <img src="assets/images/blog/grid/2cols/post-2.jpg" alt="image desc"/>
-                            </a>
+                            </Link>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">John Doe</a></span>
+                                <span className="entry-author">by <Link to="#">John Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 21, 2018</a>
+                                <Link to="#">Nov 21, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">0 Comments</a>
+                                <Link to="#">0 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Vivamus vestibulum ntulla necante.</a>
+                                <Link to="single.html">Vivamus vestibulum ntulla necante.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Lifestyle</a>
+                                in <Link to="#">Lifestyle</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Morbi purus libero, faucibus commodo quis, gravida id, est. Vestibulumvolutpat, lacus a ultrices sagittis, mi neque euismod dui ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -105,35 +105,35 @@ const BlogGrid2 = () => {
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media">
                             <div className="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/grid/2cols/post-3.jpg" alt="image desc"/>
-                                </a>
-                                <a href="single.html">
+                                </Link>
+                                <Link to="single.html">
                                     <img src="assets/images/blog/grid/2cols/post-1.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </div>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">John Doe</a></span>
+                                <span className="entry-author">by <Link to="#">John Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 18, 2018</a>
+                                <Link to="#">Nov 18, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">3 Comments</a>
+                                <Link to="#">3 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Utaliquam sollicitudin leo.</a>
+                                <Link to="single.html">Utaliquam sollicitudin leo.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Fashion</a>, <a href="#">Lifestyle</a>
+                                in <Link to="#">Fashion</Link>, <Link to="#">Lifestyle</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -142,31 +142,31 @@ const BlogGrid2 = () => {
                 <div className="entry-item travel col-sm-6">
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media">
-                            <a href="single.html">
+                            <Link to="single.html">
                                 <img src="assets/images/blog/grid/2cols/post-4.jpg" alt="image desc"/>
-                            </a>
+                            </Link>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">Jane Doe</a></span>
+                                <span className="entry-author">by <Link to="#">Jane Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 15, 2018</a>
+                                <Link to="#">Nov 15, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">4 Comments</a>
+                                <Link to="#">4 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Fusce pellentesque suscipit.</a>
+                                <Link to="single.html">Fusce pellentesque suscipit.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Travel</a>
+                                in <Link to="#">Travel</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -175,31 +175,31 @@ const BlogGrid2 = () => {
                 <div className="entry-item travel hobbies col-sm-6">
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media">
-                            <a href="single.html">
+                            <Link to="single.html">
                                 <img src="assets/images/blog/grid/2cols/post-5.jpg" alt="image desc"/>
-                            </a>
+                            </Link>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">John Doe</a></span>
+                                <span className="entry-author">by <Link to="#">John Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 11, 2018</a>
+                                <Link to="#">Nov 11, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">2 Comments</a>
+                                <Link to="#">2 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Aenean dignissim pellente squefelis.</a>
+                                <Link to="single.html">Aenean dignissim pellente squefelis.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Travel</a>, <a href="#">Hobbies</a>
+                                in <Link to="#">Travel</Link>, <Link to="#">Hobbies</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque lectus ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -208,31 +208,31 @@ const BlogGrid2 = () => {
                 <div className="entry-item hobbies col-sm-6">
                     <article className="entry entry-grid text-center">
                         <figure className="entry-media">
-                            <a href="single.html">
+                            <Link to="single.html">
                                 <img src="assets/images/blog/grid/2cols/post-6.jpg" alt="image desc"/>
-                            </a>
+                            </Link>
                         </figure>
 
                         <div className="entry-body">
                             <div className="entry-meta">
-                                <span className="entry-author">by <a href="#">John Doe</a></span>
+                                <span className="entry-author">by <Link to="#">John Doe</Link></span>
                                 <span className="meta-separator">|</span>
-                                <a href="#">Nov 10, 2018</a>
+                                <Link to="#">Nov 10, 2018</Link>
                                 <span className="meta-separator">|</span>
-                                <a href="#">4 Comments</a>
+                                <Link to="#">4 Comments</Link>
                             </div>
 
                             <h2 className="entry-title">
-                                <a href="single.html">Quisque volutpat mattiseros.</a>
+                                <Link to="single.html">Quisque volutpat mattiseros.</Link>
                             </h2>
 
                             <div className="entry-cats">
-                                in <a href="#">Hobbies</a>
+                                in <Link to="#">Hobbies</Link>
                             </div>
 
                             <div className="entry-content">
                                 <p>Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque lectus. Donec consectetuer ...</p>
-                                <a href="single.html" className="read-more">Continue Reading</a>
+                                <Link to="single.html" className="read-more">Continue Reading</Link>
                             </div>
                         </div>
                     </article>
@@ -242,16 +242,16 @@ const BlogGrid2 = () => {
             <nav aria-label="Page navigation">
                 <ul className="pagination justify-content-center">
                     <li className="page-item disabled">
-                        <a className="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                        <Link className="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
                             <span aria-hidden="true"><i className="icon-long-arrow-left"></i></span>Prev
-                        </a>
+                        </Link>
                     </li>
-                    <li className="page-item active" aria-current="page"><a className="page-link" href="#">1</a></li>
-                    <li className="page-item"><a className="page-link" href="#">2</a></li>
+                    <li className="page-item active" aria-current="page"><Link className="page-link" href="#">1</Link></li>
+                    <li className="page-item"><Link className="page-link" href="#">2</Link></li>
                     <li className="page-item">
-                        <a className="page-link page-link-next" href="#" aria-label="Next">
+                        <Link className="page-link page-link-next" href="#" aria-label="Next">
                             Next <span aria-hidden="true"><i className="icon-long-arrow-right"></i></span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

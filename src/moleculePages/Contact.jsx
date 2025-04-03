@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { contactUs } from '../Api/product/account/contact';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 const ContactPage = () => {
     const showToast = (type, message) => {
         toast[type](message, {
@@ -70,7 +70,7 @@ const ContactPage = () => {
             <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
                 <div className="container">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/">Home</a></li>
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                         <li className="breadcrumb-item active" aria-current="page">Contact us</li>
                     </ol>
                 </div>
@@ -98,11 +98,11 @@ const ContactPage = () => {
                                             </li>
                                             <li>
                                                 <i className="icon-phone"></i>
-                                                <a href="tel:#">+92 423 567</a>
+                                                <Link to="tel:#">+92 423 567</Link>
                                             </li>
                                             <li>
                                                 <i className="icon-envelope"></i>
-                                                <a href="mailto:#">info@Probo.com</a>
+                                                <Link to="mailto:#">info@Probo.com</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -221,11 +221,11 @@ const ContactPage = () => {
                                             <div className="store-content">
                                                 <h3 className="store-title">Wall Street Plaza</h3>
                                                 <address>88 Pine St, New York, NY 10005, USA</address>
-                                                <div><a href="tel:#">+1 987-876-6543</a></div>
+                                                <div><Link to="tel:#">+1 987-876-6543</Link></div>
                                                 <h4 className="store-subtitle">Store Hours:</h4>
                                                 <div>Monday - Saturday 11am to 7pm</div>
                                                 <div>Sunday 11am to 6pm</div>
-                                                <a href="#" className="btn btn-link" target="_blank" rel="noopener noreferrer"><span>View Map</span><i className="icon-long-arrow-right"></i></a>
+                                                <Link to="#" className="btn btn-link" target="_blank" rel="noopener noreferrer"><span>View Map</span><i className="icon-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -244,12 +244,12 @@ const ContactPage = () => {
                                             <div className="store-content">
                                                 <h3 className="store-title">One New York Plaza</h3>
                                                 <address>88 Pine St, New York, NY 10005, USA</address>
-                                                <div><a href="tel:#">+1 987-876-6543</a></div>
+                                                <div><Link to="tel:#">+1 987-876-6543</Link></div>
                                                 <h4 className="store-subtitle">Store Hours:</h4>
                                                 <div>Monday - Friday 9am to 8pm</div>
                                                 <div>Saturday - 9am to 2pm</div>
                                                 <div>Sunday - Closed</div>
-                                                <a href="#" className="btn btn-link" target="_blank" rel="noopener noreferrer"><span>View Map</span><i className="icon-long-arrow-right"></i></a>
+                                                <Link to="#" className="btn btn-link" target="_blank" rel="noopener noreferrer"><span>View Map</span><i className="icon-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>

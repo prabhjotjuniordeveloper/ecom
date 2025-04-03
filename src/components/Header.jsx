@@ -340,14 +340,13 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
             <div className="header-right">
               {/* Header Search */}
               <div className="header-search">
-                <a
-                  href="#"
+                <Link
                   className="search-toggle"
                   role="button"
                   aria-label="Toggle Search"
                 >
                   <i className="icon-search"></i>
-                </a>
+                </Link>
                 <form action="#" method="get">
                   <div className="relative header-search-wrapper flex-col" style={{flexDirection:"column"}}>
                     <label htmlFor="q" className="sr-only">
@@ -398,23 +397,23 @@ const Header = ({ isLoggedIn,setSelectedOption }) => {
 
               {isLoggedIn && (
                 <>
-                  <a
-                    href="/Wishlist#/Wishlist"
+                  <Link
+                    to="/Wishlist#/Wishlist"
                     className="wishlist-link"
                     aria-label="Wishlist"
                   >
                     <i className="icon-heart-o"></i>
                     <span className="wishlist-count">{wish}</span>
-                  </a>
+                  </Link>
 
                   <div className="dropdown cart-dropdown">
-                    <a
-                      href="/shopping-cart#/shopping-cart"
+                    <Link
+                      to="/shopping-cart#/shopping-cart"
                       className="dropdown-toggle"
                     >
                       <i className="icon-shopping-cart"></i>
                       <span className="cart-count">{product}</span>
-                    </a>
+                    </Link>
                   </div>
                 </>
               )}

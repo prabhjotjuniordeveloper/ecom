@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 const Listing = () => {
   return (
     <div>
@@ -16,8 +16,8 @@ const Listing = () => {
 <nav aria-label="breadcrumb" className="breadcrumb-nav mb-3">
     <div className="container">
         <ol className="breadcrumb">
-            <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li className="breadcrumb-item"><a href="#">Blog</a></li>
+            <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+            <li className="breadcrumb-item"><Link to="#">Blog</Link></li>
             <li className="breadcrumb-item active" aria-current="page">Listing</li>
         </ol>
     </div>
@@ -31,35 +31,35 @@ const Listing = () => {
                     <div className="row align-items-center">
                         <div className="col-md-5">
                             <figure className="entry-media">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/listing/post-1.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </figure>
                         </div>
                         <div className="col-md-7">
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">John Doe</a>
+                                        by <Link to="#">John Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 22, 2018</a>
+                                    <Link to="#">Nov 22, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">2 Comments</a>
+                                    <Link to="#">2 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Cras ornare tristique elit.</a>
+                                    <Link to="single.html">Cras ornare tristique elit.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Lifestyle</a>,
-                                    <a href="#">Shopping</a>
+                                    in <Link to="#">Lifestyle</Link>,
+                                    <Link to="#">Shopping</Link>
                                 </div>
 
                                 <div className="entry-content">
                                     <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas ... </p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                                 </div>
                             </div>
                         </div>
@@ -70,9 +70,9 @@ const Listing = () => {
                     <div className="row align-items-center">
                         <div className="col-md-5">
                             <figure className="entry-media entry-video">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/listing/post-2.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </figure>
                         </div>
 
@@ -80,25 +80,25 @@ const Listing = () => {
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">John Doe</a>
+                                        by <Link to="#">John Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 20, 2018</a>
+                                    <Link to="#">Nov 20, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">3 Comments</a>
+                                    <Link to="#">3 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Facilisis aliquam porttitor mauris sit  amet orci.</a>
+                                    <Link to="single.html">Facilisis aliquam porttitor mauris sit  amet orci.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Lifestyle</a>
+                                    in <Link to="#">Lifestyle</Link>
                                 </div>
 
                                 <div className="entry-content">
                                     <p>Morbi purus libero, faucibus commodo quis, gravida id, est. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui ... </p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                                 </div>
                             </div></div>
                     </div>
@@ -109,12 +109,12 @@ const Listing = () => {
                         <div className="col-md-5">
                             <figure className="entry-media">
                                 <div className="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl">
-                                    <a href="single.html">
+                                    <Link to="single.html">
                                         <img src="assets/images/blog/listing/post-3.jpg" alt="image desc"/>
-                                    </a>
-                                    <a href="single.html">
+                                    </Link>
+                                    <Link to="single.html">
                                         <img src="assets/images/blog/listing/post-1.jpg" alt="image desc"/>
-                                    </a>
+                                    </Link>
                                 </div>
                             </figure>
                         </div>
@@ -123,26 +123,26 @@ const Listing = () => {
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">John Doe</a>
+                                        by <Link to="#">John Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 17, 2018</a>
+                                    <Link to="#">Nov 17, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">0 Comments</a>
+                                    <Link to="#">0 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Utaliquam sollicitudin leo.</a>
+                                    <Link to="single.html">Utaliquam sollicitudin leo.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Lifestyle</a>,
-                                    <a href="#">Shopping</a>
+                                    in <Link to="#">Lifestyle</Link>,
+                                    <Link to="#">Shopping</Link>
                                 </div>
 
                                 <div className="entry-content">
                                     <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas ... </p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                              </div></div>
                         </div>
                     </div>
@@ -152,9 +152,9 @@ const Listing = () => {
                     <div className="row align-items-center">
                         <div className="col-md-5">
                             <figure className="entry-media">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/listing/post-4.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </figure>
                         </div>
 
@@ -162,24 +162,24 @@ const Listing = () => {
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">Jane Doe</a>
+                                        by <Link to="#">Jane Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 12, 2018</a>
+                                    <Link to="#">Nov 12, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">4 Comments</a>
+                                    <Link to="#">4 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Fusce pellentesque suscipit.</a>
+                                    <Link to="single.html">Fusce pellentesque suscipit.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Travel</a>
+                                    in <Link to="#">Travel</Link>
                                 </div>
                                 <div className="entry-content">
                                     <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas auguae, eu vulputate magna eros eu erat. Aliquam erat volutpat eget felis ... </p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                                 </div>
                             </div>
                         </div>
@@ -189,9 +189,9 @@ const Listing = () => {
                     <div className="row align-items-center">
                         <div className="col-md-5">
                             <figure className="entry-media">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/listing/post-5.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </figure>
                         </div>
 
@@ -199,25 +199,25 @@ const Listing = () => {
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">John Doe</a>
+                                        by <Link to="#">John Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 11, 2018</a>
+                                    <Link to="#">Nov 11, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">0 Comments</a>
+                                    <Link to="#">0 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Donec nec justo eget felis facilisis  fermentum.</a>
+                                    <Link to="single.html">Donec nec justo eget felis facilisis  fermentum.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Hobbies</a>
+                                    in <Link to="#">Hobbies</Link>
                                 </div>
 
                                 <div className="entry-content">
                                     <p>Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque lectus. Donec consectetuer ligula vulputate sem ...</p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                                 </div>
                             </div>
                         </div>
@@ -228,9 +228,9 @@ const Listing = () => {
                     <div className="row align-items-center">
                         <div className="col-md-5">
                             <figure className="entry-media">
-                                <a href="single.html">
+                                <Link to="single.html">
                                     <img src="assets/images/blog/listing/post-6.jpg" alt="image desc"/>
-                                </a>
+                                </Link>
                             </figure>
                         </div>
 
@@ -238,26 +238,26 @@ const Listing = () => {
                             <div className="entry-body">
                                 <div className="entry-meta">
                                     <span className="entry-author">
-                                        by <a href="#">Hans Doe</a>
+                                        by <Link to="#">Hans Doe</Link>
                                     </span>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">Nov 10, 2018</a>
+                                    <Link to="#">Nov 10, 2018</Link>
                                     <span className="meta-separator">|</span>
-                                    <a href="#">0 Comments</a>
+                                    <Link to="#">0 Comments</Link>
                                 </div>
 
                                 <h2 className="entry-title">
-                                    <a href="single.html">Quisque volutpat mattiseros.</a>
+                                    <Link to="single.html">Quisque volutpat mattiseros.</Link>
                                 </h2>
 
                                 <div className="entry-cats">
-                                    in <a href="#">Travel</a>,
-                                    <a href="#">Hobbies</a>
+                                    in <Link to="#">Travel</Link>,
+                                    <Link to="#">Hobbies</Link>
                                 </div>
 
                                 <div className="entry-content">
                                     <p>Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh. Quisque lectus. Donec consectetuer ...</p>
-                                    <a href="single.html" className="read-more">Continue Reading</a>
+                                    <Link to="single.html" className="read-more">Continue Reading</Link>
                                 </div>
                             </div>
                         </div>
@@ -268,16 +268,16 @@ const Listing = () => {
                 <nav aria-label="Page navigation">
                     <ul className="pagination">
                         <li className="page-item disabled">
-                            <a className="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+                            <Link className="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
                                 <span aria-hidden="true"><i className="icon-long-arrow-left"></i></span>Prev
-                            </a>
+                            </Link>
                         </li>
-                        <li className="page-item active" aria-current="page"><a className="page-link" href="#">1</a></li>
-                        <li className="page-item"><a className="page-link" href="#">2</a></li>
+                        <li className="page-item active" aria-current="page"><Link className="page-link" href="#">1</Link></li>
+                        <li className="page-item"><Link className="page-link" href="#">2</Link></li>
                         <li className="page-item">
-                            <a className="page-link page-link-next" href="#" aria-label="Next">
+                            <Link className="page-link page-link-next" href="#" aria-label="Next">
                                 Next <span aria-hidden="true"><i className="icon-long-arrow-right"></i></span>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
@@ -312,11 +312,11 @@ const Listing = () => {
                         <h3 className="widget-title">Categories</h3>
 
                         <ul>
-                            <li><a href="#">Lifestyle<span>3</span></a></li>
-                            <li><a href="#">Shopping<span>3</span></a></li>
-                            <li><a href="#">Fashion<span>1</span></a></li>
-                            <li><a href="#">Travel<span>3</span></a></li>
-                            <li><a href="#">Hobbies<span>2</span></a></li>
+                            <li><Link to="#">Lifestyle<span>3</span></Link></li>
+                            <li><Link to="#">Shopping<span>3</span></Link></li>
+                            <li><Link to="#">Fashion<span>1</span></Link></li>
+                            <li><Link to="#">Travel<span>3</span></Link></li>
+                            <li><Link to="#">Hobbies<span>2</span></Link></li>
                         </ul>
                     </div>
 
@@ -326,50 +326,50 @@ const Listing = () => {
                         <ul className="posts-list">
                             <li>
                                 <figure>
-                                    <a href="#">
+                                    <Link to="#">
                                         <img src="assets/images/blog/sidebar/post-1.jpg" alt="post"/>
-                                    </a>
+                                    </Link>
                                 </figure>
 
                                 <div>
                                     <span>Nov 22, 2018</span>
-                                    <h4><a href="#">Aliquam tincidunt mauris eurisus.</a></h4>
+                                    <h4><Link to="#">Aliquam tincidunt mauris eurisus.</Link></h4>
                                 </div>
                             </li>
                             <li>
                                 <figure>
-                                    <a href="#">
+                                    <Link to="#">
                                         <img src="assets/images/blog/sidebar/post-2.jpg" alt="post"/>
-                                    </a>
+                                    </Link>
                                 </figure>
 
                                 <div>
                                     <span>Nov 19, 2018</span>
-                                    <h4><a href="#">Cras ornare tristique elit.</a></h4>
+                                    <h4><Link to="#">Cras ornare tristique elit.</Link></h4>
                                 </div>
                             </li>
                             <li>
                                 <figure>
-                                    <a href="#">
+                                    <Link to="#">
                                         <img src="assets/images/blog/sidebar/post-3.jpg" alt="post"/>
-                                    </a>
+                                    </Link>
                                 </figure>
 
                                 <div>
                                     <span>Nov 12, 2018</span>
-                                    <h4><a href="#">Vivamus vestibulum ntulla nec ante.</a></h4>
+                                    <h4><Link to="#">Vivamus vestibulum ntulla nec ante.</Link></h4>
                                 </div>
                             </li>
                             <li>
                                 <figure>
-                                    <a href="#">
+                                    <Link to="#">
                                         <img src="assets/images/blog/sidebar/post-4.jpg" alt="post"/>
-                                    </a>
+                                    </Link>
                                 </figure>
 
                                 <div>
                                     <span>Nov 25, 2018</span>
-                                    <h4><a href="#">Donec quis dui at dolor  tempor interdum.</a></h4>
+                                    <h4><Link to="#">Donec quis dui at dolor  tempor interdum.</Link></h4>
                                 </div>
                             </li>
                         </ul>
@@ -379,9 +379,9 @@ const Listing = () => {
                         <div className="banner-sidebar-title">ad box 280 x 280</div>
                         
                         <div className="banner-sidebar banner-overlay">
-                            <a href="#">
+                            <Link to="#">
                                 <img src="assets/images/blog/sidebar/banner.jpg" alt="banner"/>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -389,13 +389,13 @@ const Listing = () => {
                         <h3 className="widget-title">Browse Tags</h3>
 
                         <div className="tagcloud">
-                            <a href="#">fashion</a>
-                            <a href="#">style</a>
-                            <a href="#">women</a>
-                            <a href="#">photography</a>
-                            <a href="#">travel</a>
-                            <a href="#">shopping</a>
-                            <a href="#">hobbies</a>
+                            <Link to="#">fashion</Link>
+                            <Link to="#">style</Link>
+                            <Link to="#">women</Link>
+                            <Link to="#">photography</Link>
+                            <Link to="#">travel</Link>
+                            <Link to="#">shopping</Link>
+                            <Link to="#">hobbies</Link>
                         </div>
                     </div>
 

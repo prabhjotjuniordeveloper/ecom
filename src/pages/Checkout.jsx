@@ -6,7 +6,7 @@ import { addNewOrd } from "../Api/product/account/createOrder";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 const Checkout = ({isLoggedIn}) => {
       const showToast = (type, message) => {
         toast[type](message, {
@@ -126,10 +126,10 @@ const Checkout = ({isLoggedIn}) => {
         <div className="container">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
-              <a href="/#/shoplist">Shop</a>
+              <Link to="/shoplist">Shop</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Checkout
@@ -165,22 +165,22 @@ const Checkout = ({isLoggedIn}) => {
                               <br />
                               {add[0]?.country}
                               <br />
-                              <a href="#/updateAdd">
+                              <Link to="#/updateAdd">
                                 Edit <i className="icon-edit"></i>
-                              </a>
+                              </Link>
                             </p>
                           </div>
                         </div>
                       ) : (
                         <div className="tab-pane">
                           <p>No addresses yet.</p>
-                          <a
-                            href="/#/newAdd"
+                          <Link
+                            to="/newAdd"
                             className="btn btn-outline-primary-2"
                           >
                             <span>ADD ONE</span>
                             <i className="icon-long-arrow-right"></i>
-                          </a>
+                          </Link>
                         </div>
                       )}
                     </div>
@@ -202,7 +202,7 @@ const Checkout = ({isLoggedIn}) => {
                       {product?.map((product) => (
                         <tr key={product.id}>
                           <td>
-                            <a>{product.product.productName}</a>
+                            <Link>{product.product.productName}</Link>
                           </td>
                           <td>₹{product?.product.price}</td>
                         </tr>
@@ -228,15 +228,15 @@ const Checkout = ({isLoggedIn}) => {
                       <div className="card">
                         <div className="card-header" id="heading-1">
                           <h2 className="card-title">
-                            <a
+                            <Link
                               role="button"
                               data-toggle="collapse"
-                              href="#collapse-1"
+                              to="#collapse-1"
                               aria-expanded="true"
                               aria-controls="collapse-1"
                             >
                               Direct bank transfer
-                            </a>
+                            </Link>
                           </h2>
                         </div>
                         {/* End .card-header */}
@@ -260,16 +260,16 @@ const Checkout = ({isLoggedIn}) => {
                       <div className="card">
                         <div className="card-header" id="heading-2">
                           <h2 className="card-title">
-                            <a
+                            <Link
                               className="collapsed"
                               role="button"
                               data-toggle="collapse"
-                              href="#collapse-2"
+                              to="#collapse-2"
                               aria-expanded="false"
                               aria-controls="collapse-2"
                             >
                               Check payments
-                            </a>
+                            </Link>
                           </h2>
                         </div>
                         {/* End .card-header */}
@@ -292,16 +292,16 @@ const Checkout = ({isLoggedIn}) => {
                       <div className="card">
                         <div className="card-header" id="heading-3">
                           <h2 className="card-title">
-                            <a
+                            <Link
                               className="collapsed"
                               role="button"
                               data-toggle="collapse"
-                              href="#collapse-3"
+                              to="#collapse-3"
                               aria-expanded="false"
                               aria-controls="collapse-3"
                             >
                               Cash on delivery
-                            </a>
+                            </Link>
                           </h2>
                         </div>
                         {/* End .card-header */}
@@ -324,11 +324,11 @@ const Checkout = ({isLoggedIn}) => {
                       <div className="card">
                         <div className="card-header" id="heading-4">
                           <h2 className="card-title">
-                            <a
+                            <Link
                               className="collapsed"
                               role="button"
                               data-toggle="collapse"
-                              href="#collapse-4"
+                              to="#collapse-4"
                               aria-expanded="false"
                               aria-controls="collapse-4"
                             >
@@ -336,7 +336,7 @@ const Checkout = ({isLoggedIn}) => {
                               <small className="float-right paypal-link">
                                 What is PayPal?
                               </small>
-                            </a>
+                            </Link>
                           </h2>
                         </div>
                         {/* End .card-header */}
@@ -359,11 +359,11 @@ const Checkout = ({isLoggedIn}) => {
                       <div className="card">
                         <div className="card-header" id="heading-5">
                           <h2 className="card-title">
-                            <a
+                            <Link
                               className="collapsed"
                               role="button"
                               data-toggle="collapse"
-                              href="#collapse-5"
+                              to="#collapse-5"
                               aria-expanded="false"
                               aria-controls="collapse-5"
                             >
@@ -372,7 +372,7 @@ const Checkout = ({isLoggedIn}) => {
                                 src="assets/images/payments-summary.png"
                                 alt="payments cards"
                               />
-                            </a>
+                            </Link>
                           </h2>
                         </div>
                         {/* End .card-header */}
@@ -396,13 +396,13 @@ const Checkout = ({isLoggedIn}) => {
                       {/* End .card */}
                     </div>
                     {/* End .accordion */}
-                    <a
+                    <Link
                       type="submit"
                       className="btn btn-outline-primary-2 btn-order btn-block"
                       onClick={handleSubmit}
                     >
                       Place Order
-                    </a>
+                    </Link>
                   </div>
                   {/* End .summary */}
                 </aside>

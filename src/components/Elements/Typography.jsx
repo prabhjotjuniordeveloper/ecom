@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const Typography = () => {
     return (
         <main className="main">
@@ -18,10 +18,10 @@ const Typography = () => {
                 <div className="container">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">
-                            <a href="index.html">Home</a>
+                            <Link to="index.html">Home</Link>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="elements-list.html">Elements</a>
+                            <Link to="elements-list.html">Elements</Link>
                         </li>
                         <li className="breadcrumb-item active" aria-current="page">
                             Typography & Text Grid
@@ -180,13 +180,13 @@ const Typography = () => {
                         { href: "elements-video-banners.html", text: "video" },
                     ].map((item, index) => (
                         <div className="col-xl-5col col-lg-4 col-md-3 col-6" key={index}>
-                            <a href={item.href} className="element-type">
+                            <Link to={item.href} className="element-type">
                                 <div className="element">
                                     <i className="element-img"></i>
                                     <i className="element-hover-img"></i>
                                     <p>{item.text}</p>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>

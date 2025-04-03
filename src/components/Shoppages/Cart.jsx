@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from "react-router-dom";
 const ShoppingCart = () => {
 
     const [cartItems, setCartItems] = useState([
@@ -42,8 +42,8 @@ const ShoppingCart = () => {
     <nav aria-label="breadcrumb" className="breadcrumb-nav">
         <div className="container">
             <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li className="breadcrumb-item"><a href="#">Shop</a></li>
+                <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                <li className="breadcrumb-item"><Link to="#">Shop</Link></li>
                 <li className="breadcrumb-item active" aria-current="page">Shopping Cart</li>
             </ol>
         </div>
@@ -71,13 +71,13 @@ const ShoppingCart = () => {
                                         <td className="product-col">
                                             <div className="product">
                                                 <figure className="product-media">
-                                                    <a href="#">
+                                                    <Link to="#">
                                                         <img src={item.image} alt="Product image" />
-                                                    </a>
+                                                    </Link>
                                                 </figure>
 
                                                 <h3 className="product-title">
-                                                    <a href="#">{item.name}</a>
+                                                    <Link to="#">{item.name}</Link>
                                                 </h3>
                                             </div>
                                         </td>
@@ -121,9 +121,9 @@ const ShoppingCart = () => {
                                 </form>
                             </div>
 
-                            <a href="#" className="btn btn-outline-dark-2">
+                            <Link to="#" className="btn btn-outline-dark-2">
                                 <span>UPDATE CART</span><i className="icon-refresh"></i>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <aside className="col-lg-3">
@@ -168,7 +168,7 @@ const ShoppingCart = () => {
                                         <td>$20.00</td>
                                     </tr>
                                     <tr className="summary-shipping-estimate">
-                                        <td>Estimate for Your Country<br /> <a href="dashboard.html">Change address</a></td>
+                                        <td>Estimate for Your Country<br /> <Link to="dashboard.html">Change address</Link></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <tr className="summary-total">
@@ -178,12 +178,12 @@ const ShoppingCart = () => {
                                 </tbody>
                             </table>
 
-                            <a href="checkout.html" className="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                            <Link to="checkout.html" className="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</Link>
                         </div>
 
-                        <a href="category.html" className="btn btn-outline-dark-2 btn-block mb-3">
+                        <Link to="category.html" className="btn btn-outline-dark-2 btn-block mb-3">
                             <span>CONTINUE SHOPPING</span><i className="icon-refresh"></i>
-                        </a>
+                        </Link>
                     </aside>
                 </div>
             </div>
